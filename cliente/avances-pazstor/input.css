@@ -1,0 +1,22 @@
+@import "flowbite/src/themes/default";
+@plugin "flowbite/plugin";
+@source "../node_modules/flowbite";
+@import "tailwindcss";
+@plugin "flowbite-react/plugin/tailwindcss";
+@source ".flowbite-react/class-list.json";
+
+div {
+    padding: 0.5%;
+}
+
+body {
+    background-color:white;
+}
+
+section {
+    padding: 0%;
+}
+
+table{
+    padding: 0%;
+}
