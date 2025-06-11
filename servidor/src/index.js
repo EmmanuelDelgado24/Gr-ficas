@@ -4,7 +4,8 @@ import morgan from "morgan";
 import cors from "cors";
 import {createServer} from "http";
 import { WebSocketServer } from "ws";
-import { Server } from "socket.io";
+import { Server as SocketIOServer } from "socket.io";
+import { LotesCorteL1 } from "./models/5 Dígitos/León/Corte/corteL1.model.js";
 
 //4 Dígitos
 import corteL1bz4Router from "./routes/4 Dígitos/León/Corte/corteL1.routes.js";
@@ -63,6 +64,7 @@ app.use(cors({
     methods: 'GET,POST,PUT,DELETE', //Este parámetro especifica qué métodos HTTP pueden ser utilizados en las solicitudes desde el frontend
     allowedHeaders: 'Content-Type'//Este parámetro define qué encabezados HTTP pueden ser enviados en la solicitud. En este caso, solo permite el encabezado Content-Type, que indica el tipo de datos enviados en el cuerpo de la solicitud.
 }));
+
 //4 Dígitos
 app.use("/avances",corteL1bz4Router);
 app.use("/avances",corteL2bz4Router);
@@ -110,78 +112,55 @@ app.use("/avances",montadoRouter);
 app.use("/avances",adornoRouter);
 app.use("/avances",auditoriaRouter);
 
+
+
+
 // Creamos el servidor HTTP usando la app Express
 const server = createServer(app);
 
 // Creamos el servidor WebSocket
-const wss = new WebSocketServer({ server });
+//const wss = new WebSocketServer({ server });
+const io = new SocketIOServer(server, {
+    cors:{
+    origin: 'http://localhost:5173', // Permite solo este origen
+    methods: 'GET,POST,PUT,DELETE', //Este parámetro especifica qué métodos HTTP pueden ser utilizados en las solicitudes desde el frontend
+    allowedHeaders: 'Content-Type'//Este parámetro define qué encabezados HTTP pueden ser enviados en la solicitud. En este caso, solo permite el encabezado Content-Type, que indica el tipo de datos enviados en el cuerpo de la solicitud.
+    }
+})
 
-const clients = new Map();
+// Manejador de conexiones
+io.on("connection", (socket) => {
+  console.log("Cliente conectado:", socket.id);
 
+  // Evento personalizado
+  socket.on("mensaje", async (data) => {
+    console.log("Mensaje recibido del cliente:", data);
 
-// Manejo de conexiones WebSocket
-wss.on('connection', (ws) => {
-    console.log('Cliente conectado');
-    
-    // Enviar mensaje de bienvenida
-    ws.send(JSON.stringify({
-        type: 'connection',
-        message: 'Conectado al servidor'
-    }));
-    
-    // Ejemplo: enviar actualizaciones periódicas
-    const interval = setInterval(() => {
-        // Solo enviamos si la conexión sigue abierta
-        if (ws.readyState === ws.OPEN) {
-            ws.send(JSON.stringify({
-                type: 'update',
-                timestamp: new Date(),
-                areas: {
-                    coordinado: Math.floor(Math.random() * 100),
-                    pespunte142: Math.floor(Math.random() * 100),
-                    pespunte241: Math.floor(Math.random() * 100),
-                    pespunte242: Math.floor(Math.random() * 100),
-                    pespunte243: Math.floor(Math.random() * 100),
-                    pespunte244: Math.floor(Math.random() * 100),
-                    pespunte245: Math.floor(Math.random() * 100),
-                    montado: Math.floor(Math.random() * 100),
-                    adorno: Math.floor(Math.random() * 100),
-                    auditoria: Math.floor(Math.random() * 100)
-                }
-            }));
-        }
-    }, 5000); // cada 5 segundos
-    
-    // Manejar mensajes recibidos del cliente
-    ws.on('message', (message) => {
-        try {
-            const data = JSON.parse(message);
-            console.log('Mensaje recibido del cliente:', data);
-            
-            // Aquí puedes procesar los mensajes según su tipo
-            if (data.type === 'requestData') {
-                // Ejemplo: enviar datos específicos solicitados
-                ws.send(JSON.stringify({
-                    type: 'responseData',
-                    data: { /* datos solicitados */ }
-                }));
-            }
-        } catch (error) {
-            console.error('Error al procesar mensaje:', error);
-        }
-    });
-    
-    // Manejar desconexión
-    ws.on('close', () => {
-        console.log('Cliente desconectado de WebSocket');
-        clearInterval(interval);
-    });
-    
-    // Manejar errores
-    ws.on('error', (error) => {
-        console.error('Error en la conexión WebSocket:', error);
-        clearInterval(interval);
-    });
+    socket.emit("respuesta", "Mensaje recibido");
+
+    try {
+      const lotes = await LotesCorteL1.getAllLotes();
+
+      lotes.forEach((lote) => {
+        io.emit("nuevoDato", {
+          linea: "L1",
+          departamento: "Corte",
+          valor: lote.sumaLC_PARLOT
+        });
+      });
+
+      // O enviar todos en un solo paquete:
+      io.emit("nuevoDato", lotes);
+
+    } catch (error) {
+      console.error("Error al emitir lotes:", error.message);
+    }
+  });
+
+  // Desconexión
+  socket.on("disconnect", () => {
+    console.log("Cliente desconectado:", socket.id);
+  });
 });
 
 // Iniciamos el servidor en el puerto 3000
@@ -189,6 +168,7 @@ const PORT = 3000;
 server.listen(PORT, () => {
     console.log(`Servidor levantado en ${PORT}`);
 });
+
 
 
 // Iniciamos el servidor en el puerto 3000

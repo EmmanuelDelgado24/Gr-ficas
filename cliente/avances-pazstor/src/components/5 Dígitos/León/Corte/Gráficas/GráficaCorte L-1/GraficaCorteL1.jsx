@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import Chart from "react-apexcharts";
+import { io } from "socket.io-client";
 
 const GraficaCorteL1 = () => {
   const [data, setData] = useState([]);
@@ -23,6 +24,24 @@ const GraficaCorteL1 = () => {
         setError(error.message);
         setLoading(false);
       });
+    // Crear conexión socket dentro del useEffect
+    const socket = io("http://localhost:3000");
+
+    // Escuchar evento 'nuevoDato'
+    socket.on("nuevoDato", (nuevoDato) => {
+      // Aquí decides cómo agregar el nuevo dato al estado `data`
+      // Por ejemplo, agregar al arreglo actual:
+      setData((prevData) => {
+        // Evitar duplicados según criterio si quieres
+        // Por ejemplo, si nuevoDato tiene LC_LOTE y ya está en prevData, actualizarlo o ignorarlo
+        return [...prevData, nuevoDato];
+      });
+    });
+
+    // Limpiar la conexión cuando el componente se desmonta
+    return () => {
+      socket.disconnect();
+    };
   }, []);
 
   // Obtener modelos únicos
@@ -89,7 +108,7 @@ const GraficaCorteL1 = () => {
               N° pares {sumaLC_PARLOT}
             </h5>
             <h5 className="leading-none text-3xl font-bold text-gray-900 dark:text-white pb-2">
-              Modelo {modelos}
+              Modelo {modelos.join(",")}
             </h5>
           </div>
           <Chart
