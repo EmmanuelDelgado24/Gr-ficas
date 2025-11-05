@@ -1,0 +1,89 @@
+@import "flowbite/src/themes/default";
+@plugin "flowbite/plugin";
+@source "../node_modules/flowbite";
+@import "tailwindcss";
+@plugin "flowbite-react/plugin/tailwindcss";
+@source ".flowbite-react/class-list.json";
+
+.titulo-produccion {
+  font-family: 'Poppins', sans-serif;
+  font-size: 2.5rem;
+  font-weight: 700;
+  padding: 20px 40px;
+  color: white;
+  background: #202c34;
+  text-align: center;
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+  justify-content: center;
+}
+
+.input-estandar1 {
+  @apply bg-gray-50 border border-gray-300 text-lg rounded-lg py-2.5 ps-10 pe-2.5 w-70  block text-black focus:ring-[#c27f57] focus:border-[#c27f57];
+}
+
+.input-estandar2 {
+  @apply bg-gray-50 border border-gray-300 text-lg rounded-lg py-2.5 pe-2.5 w-35 block text-black focus:ring-[#c27f57] focus:border-[#c27f57];
+}
+
+.input-estandar3 {
+  @apply bg-gray-50 border border-gray-300 text-lg rounded-lg py-2.5 ps-10 pe-2.5 w-full  block text-black focus:ring-[#c27f57] focus:border-[#c27f57];
+}
+
+.marquee-container {
+  width: 100%;
+  overflow: hidden;
+  white-space: nowrap;
+  box-sizing: border-box;
+  background: #202c34;
+  position: relative;
+  font-size: 32px; 
+  color: white;
+  border-radius: 16px;
+  font-weight: 600;
+}
+
+.marquee-content {
+  display: inline-block;
+  white-space: nowrap;
+  padding-left: 100%; /* Empieza fuera del contenedor, a la derecha */
+  animation: marqueeAnim 60s linear infinite;
+}
+
+@keyframes marqueeAnim {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+.banda {
+  color: #fbbf24; /* Amarillo dorado */
+  font-weight: 600;
+}
+
+.meta {
+  color: #25d366; /* Azul brillante */
+  font-weight: 700;
+}
+
+
+
+div {
+    padding: 0.5%;
+}
+
+body {
+    background-color:white;
+    padding: 0%;
+}
+
+section {
+    padding: 0;
+}
+
+table{
+    padding: 0%;
+}
