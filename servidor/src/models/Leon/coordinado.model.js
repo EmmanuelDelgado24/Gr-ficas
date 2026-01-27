@@ -43,7 +43,7 @@ export const lotesConfig = [
   { nombre: 'CoordinadoL5', depto: 40, subdepto: 241, origen: "5D" },    //Linea 5
   { nombre: 'CoordinadoL6', depto: 40, subdepto: 244, origen: "5D" },    //Linea 6
   { nombre: 'CoordinadoL7', depto: 40, subdepto:  27, origen: "5D" },    //Linea 7
-  { nombre: 'CoordinadoL8', depto: 40, subdepto: 208, origen: "5D" },    //Linea 8
+  { nombre: 'CoordinadoL8', depto: 40, subdepto: 408, origen: "5D" },    //Linea 8
 
   { nombre: '4D-CoordinadoL1', depto: 40, subdepto: 242, origen: "4D" }, //Linea 1
   { nombre: '4D-CoordinadoL2', depto: 40, subdepto: 142, origen: "4D" }, //Linea 2
@@ -51,6 +51,6 @@ export const lotesConfig = [
   { nombre: '4D-CoordinadoL5', depto: 40, subdepto: 241, origen: "4D" }, //Linea 5
   { nombre: '4D-CoordinadoL6', depto: 40, subdepto: 244, origen: "4D" }, //Linea 6
   { nombre: '4D-CoordinadoL7', depto: 40, subdepto:  27, origen: "4D" }, //Linea 7
-  { nombre: '4D-CoordinadoL8', depto: 40, subdepto: 208, origen: "4D" }, //Linea 8
+  { nombre: '4D-CoordinadoL8', depto: 40, subdepto: 408, origen: "4D" }, //Linea 8
   // { nombre: 'Pespunte245', depto: 59, subdepto: 96 },
 ];

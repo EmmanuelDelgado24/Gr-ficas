@@ -383,7 +383,7 @@ export const Navbar = () => {
 
                       <div
                         className={`${isOpenB ? "block" : "hidden"} 
-                                    md:absolute md:left-full md:top-0 
+                                    md:absolute md:right-full md:top-0 
                                     w-full md:w-56 bg-[#1F3C40] rounded-lg shadow-sm`}
                       >
                         <ul className="py-2">

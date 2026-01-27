@@ -7,11 +7,8 @@ export const executeQuery = async (query, params = []) => {
     const result = await client.query(query, params);
     return result;
   } catch (error) {
-    console.error("[PostgreSQL] Error al ejecutar consulta:", error.message);
+    console.error("[PostgreSQL] Error al ejecutar consulta:", error.message); 
     throw error;
-  } finally {
-    if (client) {
-      client.release();
-    }
-  }
+  } finally { if (client) { client.release(); } }
 };
+

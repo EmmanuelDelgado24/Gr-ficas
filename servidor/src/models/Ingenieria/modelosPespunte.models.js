@@ -11,7 +11,8 @@ export async function getModeloCompleto({departamento, modelo}) {
     }
     return result;
   } catch (err) {
-    throw new Error(`Error al obtener detalles completos del modelo: ${modelo} en ${nombreTabla}: ${err.message}`);
+    throw new Error(`Error al obtener detalles completos del modelo: 
+      ${modelo} en ${nombreTabla}: ${err.message}`);
   }
 }
 
@@ -48,7 +49,6 @@ export async function createModelo(datos) {
     RETURNING *;
   `;
 
-
   const values = [
     linea.trim(),
     modelo.trim(),
@@ -76,10 +76,11 @@ export async function deleteModelo(modelo, departamento) {
         const result = await executeQuery(query, [modelo]);
         console.log("Resultado de la eliminación:", result); 
         if (result.rowCount > 0) { 
-            return { message: `Modelo ${modelo} eliminado exitosamente.`, rowCount: result.rowCount };
+            return {message:`Modelo ${modelo} eliminado exitosamente.`, rowCount: result.rowCount};
         }
         return null; 
     } catch (err) {
         throw new Error(`Error al eliminar modelo ${modelo}: ${err.message}`);
     }
 }
+

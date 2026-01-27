@@ -1,7 +1,7 @@
 import pkg from 'pg';
 
-const PGHOST="localhost"
-// const PGHOST="mi-db"
+const PGHOST="localhost"             //Comentar esta linea para conectar al contenedor
+// const PGHOST="mi-db"              //Conexión al contenedor de base de datos
 const PGPORT=5432
 const PGUSER="postgres"
 const PGPASSWORD="PAZSTOR"

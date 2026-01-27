@@ -5,25 +5,27 @@ export const PageBuscar = () => {
   const [estilo, setEstilo] = useState("");
   const [tiempo, setTiempo] = useState("");
   const [proceso, setProceso] = useState("");
-
   const [modeloBusqueda, setModeloBusqueda] = useState(""); 
-
   const [departamento, setDepartamento] = useState("");
   const [isOpen, setIsOpen] = useState(false);
   const [mostrarResultados, setMostrarResultados] = useState(false);
 
   async function obtenerModelo(departamento, modelo) {
     try {
+
+// `http://192.168.17.24:3000/avances/ModeloPespunte?departamento=${departamento}&modelo=${modelo}`);
+
       const res = await fetch(
-        // `http://192.168.17.24:3000/avances/ModeloPespunte?departamento=${departamento}&modelo=${modelo}`); 
-        `https://159.65.78.91/avances/ModeloPespunte?departamento=${departamento}&modelo=${modelo}`); 
+        `https://159.65.78.91/avances/ModeloPespunte?departamento=
+        ${departamento}&modelo=${modelo}`
+      ); 
 
       if (!res.ok) {
         const errorData = await res.json();
         throw new Error(`Error al obtener el modelo: ${errorData.message || res.statusText}`);
       }
       const data = await res.json(); 
-      console.log(data);
+      
       if (data.modelo == null){ 
         alert("No se econtro este modelo");
         setMostrarResultados(false);
@@ -32,8 +34,7 @@ export const PageBuscar = () => {
       setProceso(data.proceso );
       setEstilo(data.estilo );
       setTiempo(data.tiempo_std_min );
-      setModeloBusqueda(data.modelo); 
-      
+      setModeloBusqueda(data.modelo);       
       return data;
     } catch (err) {
       console.error("Error en obtenerModelo:", err);

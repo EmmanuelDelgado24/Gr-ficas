@@ -50,15 +50,15 @@ import reporteMeta from "./routes/Ingenieria/reporteMeta.routes.js"
 // Contraseñas HASH 
 // import bcrypt from 'bcrypt';
 // async function generarHash() {
-//     const hash = await bcrypt.hash('MIPAZSTOR', 10);
+//     const hash = await bcrypt.hash('ASESORAINTERNA', 10);
 //     console.log(hash);
 // }
 // generarHash();
 
-const privateKey = fs.readFileSync('./private_key.pem', 'utf8');
-const certificate = fs.readFileSync('./certificate.pem', 'utf8');
+// const privateKey = fs.readFileSync('./private_key.pem', 'utf8');
+// const certificate = fs.readFileSync('./certificate.pem', 'utf8');
 
-const httpsServer = https.createServer({ key: privateKey, cert: certificate }, app);
+// const httpsServer = https.createServer({ key: privateKey, cert: certificate }, app);
 
 
 dotenv.config();
@@ -69,9 +69,8 @@ app.use(morgan("dev"));
 app.use(express.json());
 
 const allowedOrigins = [
-    'https://avances-pazstor-303b8.web.app', // <--- ¡AÑADE ESTA LÍNEA!
-    'http://192.168.17.24:5173', // El origen antiguo (desarrollo)
-    // Puedes usar '*' para permitir todos, pero no es recomendado en producción
+    'https://avances-pazstor-303b8.web.app', 
+    'http://192.168.17.24:5173', // El origen antiguo (local)
 ];
 
 app.use(cors({
@@ -103,9 +102,8 @@ const server = createServer(app);
 // const io = new SocketIOServer(httpsServer, {
 
 const allowedOriginsSocket = [
-    'https://avances-pazstor-303b8.web.app', // <--- ¡AÑADE ESTA LÍNEA!
-    'http://192.168.17.24:5173', // El origen antiguo (desarrollo)
-    // Puedes usar '*' para permitir todos, pero no es recomendado en producción
+    'https://avances-pazstor-303b8.web.app',
+    'http://192.168.17.24:5173', // El origen antiguo (local)
 ];
 
 const io = new SocketIOServer(server, {

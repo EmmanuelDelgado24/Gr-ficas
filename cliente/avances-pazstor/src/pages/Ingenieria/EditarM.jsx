@@ -13,10 +13,12 @@ export const PageEditar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [mostrarResultados, setMostrarResultados] = useState(false);
 
+  // `http://192.168.17.24:3000/avances/ModeloPespunte?departamento=${departamento}&modelo=${modelo}`);
+        
+
   async function obtenerModelo(departamento, modelo) {
     try {
       const res = await fetch(
-        // `http://192.168.17.24:3000/avances/ModeloPespunte?departamento=${departamento}&modelo=${modelo}`);
         `https://159.65.78.91/avances/ModeloPespunte?departamento=${departamento}&modelo=${modelo}`);  
 
       if (!res.ok) {
@@ -63,36 +65,32 @@ export const PageEditar = () => {
     }
   };
 
+  // const res = await fetch(`http://192.168.17.24:3000/avances/ModelPespunte/${modeloBusqueda}`, {
+// console.log(modeloEncontrado);
+      // console.log(datosActualizados);      
+
 const handleUpdate = async () => {
     const datosActualizados = {
-      linea, 
-      estilo,
-      proceso,
-      tiempo: parseFloat(tiempo),
-      departamento,     
+      linea, estilo, proceso, tiempo: parseFloat(tiempo), departamento,     
     };
 
     try {
-      console.log(modeloEncontrado);
-      console.log(datosActualizados);
-      // const res = await fetch(`http://192.168.17.24:3000/avances/ModelPespunte/${modeloBusqueda}`, {
+
+      
       const res = await fetch(`https://159.65.78.91/avances/ModelPespunte/${modeloBusqueda}`, {
         method: 'PUT', 
-        headers: {
-          'Content-Type': 'application/json',
-        },
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(datosActualizados),
       });
-
-      if (!res.ok) {
-        const errorData = await res.json();
-        throw new Error(`Error al actualizar el modelo: ${errorData.message || res.statusText}`);
-      }
 
       const result = await res.json();
       alert(`Modelo ${modeloEncontrado} actualizado exitosamente!`);
       console.log("Resultado de la actualización:", result);
 
+      if (!res.ok) {
+        const errorData = await res.json();
+        throw new Error(`Error al actualizar el modelo: ${errorData.message || res.statusText}`);
+      }
     } catch (err) {
       console.error("Error al actualizar el modelo:", err);
       alert(`Error al actualizar el modelo: ${err.message}`);

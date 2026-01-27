@@ -12,18 +12,16 @@ export const PageEliminar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [mostrarResultados, setMostrarResultados] = useState(false);
 
+// `http://192.168.17.24:3000/avances/ModeloPespunte?departamento=${departamento}&modelo=${modelo}`); 
+        
+
   async function obtenerModelo(modelo) {
     try {
       const res = await fetch(
-        // `http://192.168.17.24:3000/avances/ModeloPespunte?departamento=${departamento}&modelo=${modelo}`); 
         `https://159.65.78.91/avances/ModeloPespunte?departamento=${departamento}&modelo=${modelo}`); 
-
-
       if (!res.ok) {
         const errorData = await res.json();
-        throw new Error(
-          `Error al obtener el modelo: ${errorData.message || res.statusText}`
-        );
+        throw new Error(`Error al obtener el modelo: ${errorData.message || res.statusText}`);
       }
       const data = await res.json();
       if (data.modelo == null) {
@@ -35,9 +33,9 @@ export const PageEliminar = () => {
       setEstilo(data.estilo);
       setTiempo(data.tiempo_std_min);
       setModeloBusqueda(data.modelo);
-
       return data;
-    } catch (err) {
+    } 
+    catch (err) {
       console.error("Error en obtenerModelo:", err);
       setLinea("");
       setProceso("");
@@ -61,21 +59,25 @@ export const PageEliminar = () => {
     }
   };
 
+  // `http://192.168.17.24:3000/avances/ModelosPespunte/${modeloBusqueda}/${departamento}`,
+          
+
   const handleDelete = async () => {
     const confirmacion = window.confirm(
-      `¿Estás seguro de eliminar el registro del modelo: ${modeloBusqueda} del departamento ${departamento}?`
+      `¿Estás seguro de eliminar el registro del modelo: ${modeloBusqueda} 
+      del departamento ${departamento}?`
     );
-
     if (confirmacion) {
+      
       try {
+
         const res = await fetch(
-          // `http://192.168.17.24:3000/avances/ModelosPespunte/${modeloBusqueda}/${departamento}`,
           `https://159.65.78.91/avances/ModelosPespunte/${modeloBusqueda}/${departamento}`,
           {
             method: "DELETE", 
           }
         );
-
+        
         if (!res.ok) {
           const errorData = await res.json();
           throw new Error(
@@ -91,13 +93,13 @@ export const PageEliminar = () => {
         setEstilo("");
         setProceso("");
         setTiempo("");
+
       } catch (error) {
         console.error("Error en handleDelete (eliminación de API):", error);
         alert(`Error al eliminar el registro: ${error.message}`);
       }
     } else {
-      // Si el usuario hizo clic en "Cancel" (Cancelar), detiene la ejecución
-      console.log("Usuario canceló la eliminación.");
+      console.log("Eliminación cancelada");
       alert("La eliminación ha sido cancelada.");
     }
   };

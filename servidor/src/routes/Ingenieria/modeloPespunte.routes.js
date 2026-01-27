@@ -2,6 +2,7 @@
 import express from 'express';
 import { TiempoModelosPespunteController } from '../../controllers/Ingenieria/modelosPespunte.controller.js';
 import { ModelosPespunteController } from "../../controllers/Ingenieria/crudModelosPespunte.controller.js" 
+
 const router = express.Router();
 
 router.get('/ModelosPespunte', TiempoModelosPespunteController.getByModelo);

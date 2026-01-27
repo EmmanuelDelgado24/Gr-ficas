@@ -4,7 +4,7 @@ export const PageAgregar = () => {
   //   const [persona, setPersonal] = useState("");
   const [departamento, setDepartamento] = useState(""); // estado del valor
   const [isOpen, setIsOpen] = useState(false); // para mostrar
-
+  // "http://192.168.17.24:3000/avances/ModelosPespunte",
   const [linea, setLinea] = useState("");
   const [modelo, setModelo] = useState("");
   const [estilo, setEstilo] = useState("");
@@ -28,29 +28,24 @@ export const PageAgregar = () => {
 
     try {
       const res = await fetch(
-        // "http://192.168.17.24:3000/avances/ModelosPespunte",
         "https://159.65.78.91/avances/ModelosPespunte",
         {
           method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
+          headers: { "Content-Type": "application/json" },
           body: JSON.stringify(nuevoModeloData),
         }
       );
 
       if (!res.ok) {
         const errorData = await res.json();
-        throw new Error(
-          `Error al crear el modelo: ${errorData.message || res.statusText}`
-        );
+        throw new Error(`Error al crear el modelo: ${errorData.message || res.statusText}`);
       }
 
       const result = await res.json();
-      alert(
-        `Modelo ${result.modelo.modelo} creado exitosamente con ID: ${result.modelo.id}!`
-      );
+      alert(`Modelo ${result.modelo.modelo} creado exitosamente con ID: ${result.modelo.id}!`);
       console.log("Nuevo modelo creado:", result.modelo);
+
+      
     } catch (err) {
       console.error("Error en handleCrearModelo:", err);
       alert(`Error: ${err.message}`);
