@@ -1,0 +1,52 @@
+name: Despliegue avances-pazstor
+    
+on: 
+  push:
+      branches:
+        - master
+jobs: 
+    deploy:
+          runs-on: ubuntu-latest
+
+          steps:
+            - name: Checkout
+              uses: actions/checkout@v4
+              
+            - name: Build Docker image
+              run: docker build -t avances-pazstor:latest .
+
+            - name: Save image to file
+              run: docker save avances-pazstor:latest | gzip > avances.tar.gz
+            
+            - name: upload image to server
+              uses: appleboy/scp-action@v0.1.7
+              with:
+                  host: ${{secrets.SSH_HOST}}
+                  username: ${{secrets.SSH_USER}}
+                  key: ${{secrets.SSH_KEY}}
+                  source: "avances.tar.gz"
+                  target: "/tmp/avances.tar.gz"
+
+            - name: Deploy on server
+              uses: appleboy/ssh-action@v0.1.8
+              with:
+                  host: ${{secrets.SSH_HOST}}
+                  username: ${{secrets.SSH_USER}}
+                  key: ${{secrets.SSH_KEY}}
+                  script: |
+                    gzip -d /tmp/avances.tar.gz
+                    docker load -i /tmp/avances.tar
+        
+                    docker stop backend_container2 || true
+                    docker rm backend_container2 || true
+        
+                    docker run -d --name backend_container2 \
+                      --network mi-red-de-avances \
+                      -p 3000:3000 \
+                      -e DB_HOST=mi-db \
+                      -e DB_USER=postgres \
+                      -e DB_PASSWORD=PAZSTOR \
+                      -e DB_NAME=avances_pazstor \
+                      avances-pazstor:latest
+                    
+            
