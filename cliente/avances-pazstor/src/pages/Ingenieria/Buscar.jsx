@@ -16,8 +16,10 @@ export const PageBuscar = () => {
 // `http://192.168.17.24:3000/avances/ModeloPespunte?departamento=${departamento}&modelo=${modelo}`);
 
       const res = await fetch(
-        `https://159.65.78.91/avances/ModeloPespunte?departamento=
-        ${departamento}&modelo=${modelo}`
+        // `https://159.65.78.91/avances/ModeloPespunte?departamento=${departamento}&modelo=${modelo}`
+        `https://api.avances-pazstor.online/avances/ModeloPespunte?departamento=${departamento}&modelo=${modelo}`
+        // `http://192.168.17.24:3000/avances/ModeloPespunte?departamento=${departamento}&modelo=${modelo}`
+
       ); 
 
       if (!res.ok) {

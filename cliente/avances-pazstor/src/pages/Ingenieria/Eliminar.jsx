@@ -18,7 +18,10 @@ export const PageEliminar = () => {
   async function obtenerModelo(modelo) {
     try {
       const res = await fetch(
-        `https://159.65.78.91/avances/ModeloPespunte?departamento=${departamento}&modelo=${modelo}`); 
+         //`https://159.65.78.91/avances/ModeloPespunte?departamento=${departamento}&modelo=${modelo}`); 
+         `https://api.avances-pazstor.online/avances/ModeloPespunte?departamento=${departamento}&modelo=${modelo}`);
+         //`http://192.168.17.24:3000/avances/ModeloPespunte?departamento=${departamento}&modelo=${modelo}`); 
+
       if (!res.ok) {
         const errorData = await res.json();
         throw new Error(`Error al obtener el modelo: ${errorData.message || res.statusText}`);
@@ -72,7 +75,9 @@ export const PageEliminar = () => {
       try {
 
         const res = await fetch(
-          `https://159.65.78.91/avances/ModelosPespunte/${modeloBusqueda}/${departamento}`,
+          //`https://159.65.78.91/avances/ModelosPespunte/${modeloBusqueda}/${departamento}`,
+          `https://api.avances-pazstor.online/avances/ModelosPespunte/${modeloBusqueda}/${departamento}`,
+          //`http://192.168.17.24:3000/avances/ModelosPespunte/${modeloBusqueda}/${departamento}`, 
           {
             method: "DELETE", 
           }

@@ -18,8 +18,9 @@ export const Login = ({ onLogin }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      // const response = await fetch("http://192.168.17.24:3000/avances/login", {
-      const response = await fetch("https://159.65.78.91/avances/login", {
+      //const response = await fetch("http://192.168.17.24:3000/avances/login", {
+      //const response = await fetch("https://159.65.78.91/avances/login", {
+      const response = await fetch("https://api.avances-pazstor.online/avances/login",{
         method: "POST",
         headers: {
           "Content-Type": "application/json",

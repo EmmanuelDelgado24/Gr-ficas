@@ -19,7 +19,9 @@ export const PageEditar = () => {
   async function obtenerModelo(departamento, modelo) {
     try {
       const res = await fetch(
-        `https://159.65.78.91/avances/ModeloPespunte?departamento=${departamento}&modelo=${modelo}`);  
+         //`https://159.65.78.91/avances/ModeloPespunte?departamento=${departamento}&modelo=${modelo}`);
+         `https://api.avances-pazstor.online/avances/ModeloPespunte?departamento=${departamento}&modelo=${modelo}`);  
+         //`http://192.168.17.24:3000/avances/ModeloPespunte?departamento=${departamento}&modelo=${modelo}`);
 
       if (!res.ok) {
         const errorData = await res.json();
@@ -77,7 +79,9 @@ const handleUpdate = async () => {
     try {
 
       
-      const res = await fetch(`https://159.65.78.91/avances/ModelPespunte/${modeloBusqueda}`, {
+      //const res = await fetch(`https://159.65.78.91/avances/ModelPespunte/${modeloBusqueda}`, {
+      const res = await fetch(`https://avances-pazstor.online/avances/ModelPespunte/${modeloBusqueda}`, {  
+      //const res = await fetch(`http://192.168.17.24:3000/avances/ModelPespunte/${modeloBusqueda}`, {
         method: 'PUT', 
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(datosActualizados),

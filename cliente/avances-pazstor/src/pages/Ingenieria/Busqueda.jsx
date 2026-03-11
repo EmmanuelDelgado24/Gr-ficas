@@ -41,9 +41,9 @@ export const PageBusqueda = () => {
 
   const ConsultarGrafica = async (fechaInicio, fechaFin) => {
     setLoading(true);
-    const apiUrl = `https://159.65.78.91/avances/BusquedaFecha?depto=${departamentoKey}&subdepto=${selectedSubOption}&dateStart=${fechaInicio}&dateEnd=${fechaFin}`;
-    // const apiUrl = `http://192.168.17.24:3000/avances/BusquedaFecha?depto=${departamentoKey}&subdepto=${selectedSubOption}&dateStart=${fechaInicio}&dateEnd=${fechaFin}`;
-
+    //const apiUrl = `https://159.65.78.91/avances/BusquedaFecha?depto=${departamentoKey}&subdepto=${selectedSubOption}&dateStart=${fechaInicio}&dateEnd=${fechaFin}`;
+    //const apiUrl = `http://192.168.17.24:3000/avances/BusquedaFecha?depto=${departamentoKey}&subdepto=${selectedSubOption}&dateStart=${fechaInicio}&dateEnd=${fechaFin}`;
+    const apiUrl = `https://api.avances-pazstor.online/avances/BusquedaFecha?depto=${departamentoKey}&subdepto=${selectedSubOption}&dateStart=${fechaInicio}&dateEnd=${fechaFin}`;
     try {
       const response = await fetch(apiUrl);
 

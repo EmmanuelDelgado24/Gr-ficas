@@ -34,8 +34,9 @@ export const PageReporte = () => {
   }, []);
 
   const ConsultarTabla = async (fechaInicio, fechaFin) => {
-  const apiUrl = `https://159.65.78.91/avances/ReporteMeta?depto=${departamentoKey}&ciudad=${ciudad}&fechaInicio=${fechaInicio}&fechaFin=${fechaFin}`;
-  // const apiUrl = `http://192.168.17.24:3000/avances/ReporteMeta?depto=${departamentoKey}&ciudad=${ciudad}&fechaInicio=${fechaInicio}&fechaFin=${fechaFin}`;
+  //const apiUrl = `https://159.65.78.91/avances/ReporteMeta?depto=${departamentoKey}&ciudad=${ciudad}&fechaInicio=${fechaInicio}&fechaFin=${fechaFin}`;
+   //const apiUrl = `http://192.168.17.24:3000/avances/ReporteMeta?depto=${departamentoKey}&ciudad=${ciudad}&fechaInicio=${fechaInicio}&fechaFin=${fechaFin}`;
+  const apiUrl = `https://api.avances-pazstor.online/avances/ReporteMeta?depto=${departamentoKey}&ciudad=${ciudad}&fechaInicio=${fechaInicio}&fechaFin=${fechaFin}`;
 
   try {
     const response = await fetch(apiUrl);
