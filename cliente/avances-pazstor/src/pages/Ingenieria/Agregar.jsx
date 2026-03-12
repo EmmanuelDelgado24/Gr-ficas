@@ -29,7 +29,7 @@ export const PageAgregar = () => {
     try {
       const res = await fetch(
         //"https://159.65.78.91/avances/ModelosPespunte",
-        "https://gr-ficas.onrender.com/avances/ModelosPespunte",
+        "https://api.avances-pazstor.online/avances/ModelosPespunte",
         //"http://192.168.17.24:3000/avances/ModelosPespunte",
         {
           method: "POST",

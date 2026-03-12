@@ -95,7 +95,7 @@ export const PageFormulario = () => {
       const res = await fetch(
         //`http://192.168.17.24:3000/avances/ModelosPespunte?departamento=${departamento}&modelo=${modelo}`
         //`https://159.65.78.91/avances/ModelosPespunte?departamento=${departamento}&modelo=${modelo}`
-        `https://gr-ficas.onrender.com/avances/ModelosPespunte?departamento=${departamento}&modelo=${modelo}`
+        `https://api.avances-pazstor.online/avances/ModelosPespunte?departamento=${departamento}&modelo=${modelo}`
       );
       if (!res.ok) {
         const errorData = await res.json();
@@ -115,7 +115,7 @@ export const PageFormulario = () => {
       const res = await fetch(
         //`https://159.65.78.91/avances/ModelosCorte?departamento=${departamento}&modelo=${modelo}&subdepto=${subdepto}`
         //`http://192.168.17.24:3000/avances/ModelosCorte?departamento=${departamento}&modelo=${modelo}&subdepto=${subdepto}`
-        `https://gr-ficas.onrender.com/avances/ModelosCorte?departamento=${departamento}&modelo=${modelo}&subdepto=${subdepto}`
+        `https://api.avances-pazstor.online/avances/ModelosCorte?departamento=${departamento}&modelo=${modelo}&subdepto=${subdepto}`
       );
       console.log(res);
       if (!res.ok) {
@@ -203,7 +203,7 @@ export const PageFormulario = () => {
       const res = await fetch(
         //"https://159.65.78.91/avances/ReflejarMeta",
         //"http://192.168.17.24:3000/avances/ReflejarMeta",
-        "https://gr-ficas.onrender.com/avances/ReflejarMeta",
+        "https://api.avances-pazstor.online/avances/ReflejarMeta",
 
         {
           method: "POST",
