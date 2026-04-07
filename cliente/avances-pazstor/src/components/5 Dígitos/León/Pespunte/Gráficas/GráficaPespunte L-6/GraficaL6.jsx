@@ -102,7 +102,7 @@ const GraficaL6 = () => {
         <div className="max-w-lg p-6 border border-gray-100 rounded-lg shadow-sm bg-gray-800 border-dark-700">
           <div>
             <h5 className="leading-none text-3xl font-bold text-white pb-2 text-center">
-              B-243-245 L-6
+              Pespunte L-6
             </h5>
             <p className="text-2xl font-normal text-gray-400">
               N° total pares:{" "}

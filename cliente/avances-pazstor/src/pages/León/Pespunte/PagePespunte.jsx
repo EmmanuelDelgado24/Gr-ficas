@@ -9,6 +9,7 @@ import {Reloj} from "../../../util/Reloj.jsx";
 import GraficaPespunte4L1 from "../../../components/4 Dígitos/León/Pespunte/Gráficas/GráficaPespunte L-1/GraficaPespunte4L1.jsx";
 import GraficaPespunte4L2 from "../../../components/4 Dígitos/León/Pespunte/Gráficas/GráficaPespunte L-2/GraficaPespunte4L2.jsx";
 import GraficaPespunte4L4 from "../../../components/4 Dígitos/León/Pespunte/Gráficas/GráficaPespunte L-4/GraficaPespunte4L4.jsx";
+import GraficaPespunte4L5 from "../../../components/4 Dígitos/León/Pespunte/Gráficas/GráficaPespunte L-5/GraficaPespunte4L5.jsx";
 import GraficaPespunte4L6 from "../../../components/4 Dígitos/León/Pespunte/Gráficas/GráficaPespunte L-6/GraficaPespunte4L6.jsx";
 import GraficaPespunte4L8 from "../../../components/4 Dígitos/León/Pespunte/Gráficas/GráficaPespunte L-8/GraficaPespunte4L8.jsx";
 
@@ -16,6 +17,7 @@ import GraficaPespunte4L8 from "../../../components/4 Dígitos/León/Pespunte/Gr
 import GraficaL1 from "../../../components/5 Dígitos/León/Pespunte/Gráficas/GráficaPespunte L-1/GraficaL1.jsx";
 import GraficaL1142 from "../../../components/5 Dígitos/León/Pespunte/Gráficas/GráficaPespunte L-1/GraficaL1142.jsx";
 import GraficaL4 from "../../../components/5 Dígitos/León/Pespunte/Gráficas/GráficaPespunte L-4/GraficaL4.jsx";
+import GraficaL5 from "../../../components/5 Dígitos/León/Pespunte/Gráficas/GráficaPespunte L-5/GraficaL5.jsx";
 import GraficaL6 from "../../../components/5 Dígitos/León/Pespunte/Gráficas/GráficaPespunte L-6/GraficaL6.jsx";
 import GraficaL8 from "../../../components/5 Dígitos/León/Pespunte/Gráficas/GráficaMaquilaL8/GraficaL8.jsx";
 
@@ -29,6 +31,7 @@ export const PagePespunte = () => {
       { nombre: 'Banda 243' },
       { nombre: 'Banda 244' },  
       { nombre: 'Banda 245' },
+      { nombre: 'Banda 246' },
     ], []);
     const [metas, setMetas] = useState({});
   
@@ -108,6 +111,11 @@ export const PagePespunte = () => {
               </th>
               <th scope="col" className="w-1/4">
                 <div className="">
+                <GraficaPespunte4L5 />
+                </div>
+              </th>
+              <th scope="col" className="w-1/4">
+                <div className="">
                 <GraficaPespunte4L6 />
                 </div>
               </th>
@@ -133,6 +141,11 @@ export const PagePespunte = () => {
               <th scope="row" className="w-1/4">
                 <div className="">
                 <GraficaL4 />
+                </div>
+              </th>
+                <th scope="row" className="w-1/4">
+                <div className="">
+                <GraficaL5 />
                 </div>
               </th>
               <th scope="row" className="w-1/4">
