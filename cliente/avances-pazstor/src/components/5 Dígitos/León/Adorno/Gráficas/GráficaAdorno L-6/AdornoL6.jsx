@@ -3,7 +3,7 @@ import Chart from "react-apexcharts";
 import { socket } from "../../../../../../socket";
 
 const AdornoL6 = () => {
-  
+
   const [data, setData] = useState([]);
 
   useEffect(() => {
@@ -23,7 +23,7 @@ const AdornoL6 = () => {
         console.warn("Reintentando conexión al socket...");
         conectarSocket();
       }
-    }, 5000); 
+    }, 5000);
 
     // Conexión establecida
     socket.on("connect", () => {
@@ -52,7 +52,7 @@ const AdornoL6 = () => {
       socket.off("disconnect");
     };
   }, []);
-  
+
   // Obtener modelos únicos
   const modelos = [...new Set(data.map((item) => item.LC_ESTILO))];
 
@@ -75,6 +75,15 @@ const AdornoL6 = () => {
 
   const options = {
     chart: { id: "basic-bar" },
+    dataLabels: {
+      enabled: true,
+      style: {
+        fontSize: "16px", // <--- Ajusta este tamaño a tu gusto (ej. '18px', '20px')
+        fontFamily: "Inter, sans-serif",
+        fontWeight: "bold",
+        colors: ["#fff"], // Mantiene el color blanco
+      },
+    },
     xaxis: {
       categories: modelos?.length > 0 ? modelos : ["Sin datos"],
       labels: {
@@ -99,38 +108,38 @@ const AdornoL6 = () => {
   const series = [{ name: "Pares", data: sumaPorModelo }];
 
   return (
-      <div>
-          <div className="max-w-lg p-6 border border-gray-100 rounded-lg shadow-sm bg-gray-800 border-dark-700">
-            <div>
-              <h5 className="leading-none text-3xl font-bold text-white pb-2 text-center">
-                Adorno L-6
-              </h5>
-              <p className="text-2xl font-normal text-gray-400">
-                Pares producidos por día
-              </p>
-               <p className="text-2xl font-normal text-gray-400">
-                N° total pares: <span className="font-bold text-white"> {sumaLC_PARLOT} </span>
-              </p>
-              <p className="text-2xl font-normal text-gray-400">
-                Modelos: <br />
-                <span className="font-bold text-white"> {modelos.join(', ')} </span>
-              </p>
-  
-              {/* Mensaje si no hay datos */}
-              {data.length === 0 && (
-                <p className="text-yellow-400 mt-2">No hay datos registrados</p>
-              )}
-            </div>
-            <Chart
-              options={options}
-              series={series}
-              type="bar"
-              width="100%"
-              height="250px"
-            />
-          </div>
+    <div>
+      <div className="max-w-lg p-6 border border-gray-100 rounded-lg shadow-sm bg-gray-800 border-dark-700">
+        <div>
+          <h5 className="leading-none text-3xl font-bold text-white pb-2 text-center">
+            Adorno L-6
+          </h5>
+          <p className="text-2xl font-normal text-gray-400">
+            Pares producidos por día
+          </p>
+          <p className="text-2xl font-normal text-gray-400">
+            N° total pares: <span className="font-bold text-white"> {sumaLC_PARLOT} </span>
+          </p>
+          <p className="text-2xl font-normal text-gray-400">
+            Modelos: <br />
+            <span className="font-bold text-white"> {modelos.join(', ')} </span>
+          </p>
+
+          {/* Mensaje si no hay datos */}
+          {data.length === 0 && (
+            <p className="text-yellow-400 mt-2">No hay datos registrados</p>
+          )}
+        </div>
+        <Chart
+          options={options}
+          series={series}
+          type="bar"
+          width="100%"
+          height="250px"
+        />
       </div>
-    );
-  };
+    </div>
+  );
+};
 
 export default AdornoL6;

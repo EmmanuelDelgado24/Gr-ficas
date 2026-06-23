@@ -73,6 +73,15 @@ const GraficaCorteL6 = () => {
 
   const options = {
     chart: { id: "basic-bar" },
+    dataLabels: {
+      enabled: true,
+      style: {
+        fontSize: "18px", // <--- Ajusta este tamaño a tu gusto (ej. '18px', '20px')
+        fontFamily: "Inter, sans-serif",
+        fontWeight: "bold",
+        colors: ["#fff"], // Mantiene el color blanco
+      },
+    },
     xaxis: {
       categories: modelos?.length > 0 ? modelos : ["Sin datos"],
       labels: {

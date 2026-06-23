@@ -10,6 +10,8 @@ import { socket } from "../../../socket";
 //import { Pespunte245 } from "./components/5 Dígitos/León/Pespunte/Tablas/TablaPespunte L-6/Pespunte245.jsx";
 //import { Pespunte244 } from "./components/5 Dígitos/León/Pespunte/Tablas/TablaPespunte L-6/Pespunte244.jsx";
 
+import TablaInventario from "../../../components/4 Dígitos/Inventario/TablaInventario.jsx"
+
 //Gráficas 4 Dígitos
 import GraficaCorte4L1 from "../../../components/4 Dígitos/León/Corte/Gráficas/GráficaCorte L-1/GraficaCorte4L1.jsx";
 import GraficaCorte4L2 from "../../../components/4 Dígitos/León/Corte/Gráficas/GráficaCorte L-2/GraficaCorte4L2.jsx";
