@@ -78,7 +78,7 @@ const GraficaCoordinado4L4 = () => {
     dataLabels: {
       enabled: true,
       style: {
-        fontSize: "75px", // <--- Ajusta este tamaño a tu gusto (ej. '18px', '20px')
+        fontSize: "60px", // <--- Ajusta este tamaño a tu gusto (ej. '18px', '20px')
         fontFamily: "Inter, sans-serif",
         fontWeight: "bold",
         colors: ["#fff"], // Mantiene el color blanco
