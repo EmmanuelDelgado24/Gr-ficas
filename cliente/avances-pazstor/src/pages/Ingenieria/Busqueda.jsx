@@ -142,7 +142,7 @@ export const PageBusqueda = () => {
 
   const mainOptions = [
     { label: "Corte", subOptions: [121, 221, 225, 25] },
-    { label: "Coordinado", subOptions: [141, 142, 143, 241, 242, 243, 244, 245, 245, 44, 45, 46, 47, 408] },
+    { label: "Coordinado", subOptions: [141, 142, 143, 241, 242, 243, 244, 245, 44, 45, 46, 47, 408] },
     { label: "Pespunte", subOptions: [91, 92, 93, 94, 95, 96, 97, 98] },
     { label: "Montado/Adorno", subOptions: [81, 82, 83, 84, 85, 86, 87, 88] },
   ];
@@ -197,8 +197,8 @@ export const PageBusqueda = () => {
                 <div className="absolute mt-2 z-10 w-44 divide-y divide-gray-100 rounded-lg shadow-sm bg-[#1F3C40]">
                   <ul className="py-2 text-lg text-white">
                     {[
-                      { label: "Corte", value: 10 },
-                      { label: "Coordinado", value: 20 },
+                      { label: "Corte", value: 20},
+                      { label: "Coordinado", value: 40 },
                       { label: "Pespunte", value: 59 },
                       { label: "Montado/Adorno", value: 80 },
                       // { label: "Embarque", value: 89 },
