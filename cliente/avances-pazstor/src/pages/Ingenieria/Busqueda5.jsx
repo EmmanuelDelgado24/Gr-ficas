@@ -144,8 +144,8 @@ export const PageBusqueda5 = () => {
   const series = [{ name: "Pares", data: sumaPorModelo }];
 
   const mainOptions = [
-    { label: "Corte", subOptions: [11, 112, 115, 13, 14, 155, 16, 17, 18, 215,216] },
-    { label: "Coordinado", subOptions: [121, 122, 208, 21, 22, 221,222,224,225,23,24,25,26,27] },
+    { label: "Corte", subOptions: [121, 221, 225, 25] },
+    { label: "Coordinado", subOptions: [141, 142, 143, 241, 242, 243, 244, 245, 245, 44, 45, 46, 47, 408] },
     { label: "Pespunte", subOptions: [91, 92, 93, 94, 95, 96, 97, 98] },
     { label: "Montado/Adorno", subOptions: [81, 82, 83, 84, 85, 86, 87, 88] },
   ];
