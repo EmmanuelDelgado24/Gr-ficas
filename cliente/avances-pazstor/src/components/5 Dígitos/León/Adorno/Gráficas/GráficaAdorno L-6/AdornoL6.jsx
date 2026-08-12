@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import Chart from "react-apexcharts";
 import { socket } from "../../../../../../socket";
 
-const AdornoL6 = () => {
+const AdornoL6 = ({onTotalChange}) => {
 
   const [data, setData] = useState([]);
 
@@ -66,6 +66,10 @@ const AdornoL6 = () => {
 
   const sumaLC_PARLOT = calcularSumaLC_PARLOT(data);
 
+  useEffect(() => {
+    onTotalChange?.(sumaLC_PARLOT);
+  }, [sumaLC_PARLOT, onTotalChange]);
+
   // Calcular suma de pares por modelo
   const sumaPorModelo = modelos.map((modelo) => {
     return data
@@ -78,7 +82,7 @@ const AdornoL6 = () => {
     dataLabels: {
       enabled: true,
       style: {
-        fontSize: "60px", // <--- Ajusta este tamaño a tu gusto (ej. '18px', '20px')
+        fontSize: "30px", // <--- Ajusta este tamaño a tu gusto (ej. '18px', '20px')
         fontFamily: "Inter, sans-serif",
         fontWeight: "bold",
         colors: ["#fff"], // Mantiene el color blanco
@@ -112,7 +116,7 @@ const AdornoL6 = () => {
       <div className="max-w-lg p-6 border border-gray-100 rounded-lg shadow-sm bg-gray-800 border-dark-700">
         <div>
           <h5 className="leading-none text-3xl font-bold text-white pb-2 text-center">
-            Adorno L-6
+            ADORNO L-6
           </h5>
           <p className="text-2xl font-normal text-gray-400">
             Pares producidos por día
@@ -130,15 +134,15 @@ const AdornoL6 = () => {
             <p className="text-yellow-400 mt-2">No hay datos registrados</p>
           )}
         </div>
-        <Chart
-          options={options}
-          series={series}
-          type="bar"
-          width="100%"
-          height="250px"
-        />
+          <Chart
+            options={options}
+            series={series}
+            type="bar"
+            width="100%"
+            height="310px"
+          />
+        </div>
       </div>
-    </div>
   );
 };
 

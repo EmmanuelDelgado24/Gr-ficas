@@ -1,10 +1,11 @@
 import pkg from 'pg';
 
-const PGHOST="localhost"             //Comentar esta linea para conectar al contenedor
-// const PGHOST="mi-db"              //Conexión al contenedor de base de datos
+const PGHOST="api.avances-pazstor.online"  
+//const PGHOST="localhost"             //Comentar esta linea para conectar al contenedor
+//const PGHOST="mi-db"              //Conexión al contenedor de base de datos
 const PGPORT=5432
 const PGUSER="postgres"
-const PGPASSWORD="PAZSTOR"
+const PGPASSWORD="PAZSTOR" // nube PAZSTOR local postgres
 const PGDATABASE="avances-pazstor"
 
 const { Pool } = pkg;

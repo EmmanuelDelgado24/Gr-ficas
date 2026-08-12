@@ -2,9 +2,9 @@ import cors from "cors";
 import fs from 'fs';
 import https from 'https';
 import app from "./app.js";
-import morgan from  "morgan";
-import express from  "express";
-import {createServer} from "http";
+import morgan from "morgan";
+import express from "express";
+import { createServer } from "http";
 import dotenv from "dotenv";
 import { Server as SocketIOServer } from "socket.io";
 import Login from "./routes/Login/login.routes.js"
@@ -46,6 +46,21 @@ import busquedaFecha from "./routes/Ingenieria/busquedaFechas.routes.js"
 import reflejarMeta from "./routes/Ingenieria/reflejarMeta.routes.js"
 import reporteMeta from "./routes/Ingenieria/reporteMeta.routes.js"
 
+//INVENTARIO
+import inventario4 from "./routes/Inventario/inventario4.routes.js"
+
+import personaldepto from "./routes/Personal/personal.routes.js"
+import personalcorte from "./routes/Personal/personalCorte.routes.js"
+import personalcoordinado from "./routes/Personal/personalCoordinado.routes.js"
+import personalpespunte242 from "./routes/Personal/personalPespunte242.routes.js"
+import personalpespunte244 from "./routes/Personal/personalPespunte244.routes.js"
+import personalpespunte245 from "./routes/Personal/personalPespunte245.routes.js"
+import personalpespunte246 from "./routes/Personal/personalPespunte246.routes.js"
+import personalmontado from "./routes/Personal/personalMontado.routes.js"
+import personaladorno from "./routes/Personal/personalAdorno.routes.js"
+import personalmontadoadorno from "./routes/Personal/personalMontaAdorn.routes.js"
+
+import informacionGeneral from "./routes/Ingenieria/infoGeneral.routes.js"
 
 // Contraseñas HASH 
 // import bcrypt from 'bcrypt';
@@ -65,19 +80,31 @@ dotenv.config();
 //app.listen(3000);
 //console.log('Servidor levantado', 3000);
 
-app.use(morgan("dev"));
-app.use(express.json());
-
 const allowedOrigins = [
-    'https://avances-pazstor-303b8.web.app', 
-    'http://192.168.17.24:5173', // El origen antiguo (local)
+  'https://avances-pazstor.online',
+  'https://gr-ficas.onrender.com',
+  //'http://192.168.17.24:5173', // Tu IP anterior
+  'http://192.168.17.25:5173', // <-- NUEVA: La IP real desde la que estás testeando
+  'http://localhost:5173'
 ];
 
+// cometar para subir a producción
 app.use(cors({
-    origin: allowedOrigins,
-    methods: 'GET,POST,PUT,DELETE', //Este parámetro especifica qué métodos HTTP pueden ser utilizados en las solicitudes desde el frontend
-    allowedHeaders: ['Content-Type', 'Authorization']//Este parámetro define qué encabezados HTTP pueden ser enviados en la solicitud. En este caso, solo permite el encabezado Content-Type, que indica el tipo de datos enviados en el cuerpo de la solicitud.
+  origin: allowedOrigins,
+  methods: 'GET,POST,PUT,DELETE', //Este parámetro especifica qué métodos HTTP pueden ser utilizados en las solicitudes desde el frontend
+  allowedHeaders: ['Content-Type', 'Authorization'],//Este parámetro define qué encabezados HTTP pueden ser enviados en la solicitud. En este caso, solo permite el encabezado Content-Type, que indica el tipo de datos enviados en el cuerpo de la solicitud.
+  credentials: true
 }));
+
+app.use(morgan("dev"));
+app.use(express.json());
+app.get("/health", (req, res) => {
+    res.status(200).json({
+        status: "ok",
+        service: "avances-pazstor",
+        timestamp: new Date().toISOString()
+    });
+});
 
 app.use("/avances", pespunteRouter);     //Rutas para Pespunte general
 app.use("/avances", corteRouter);        //Rutas para Corte general
@@ -87,13 +114,30 @@ app.use("/avances", embarqueRouter);
 
 app.use("/avances", inyeccionRouter);
 app.use("/avances", preacabadoRouter);
-app.use("/avances", suelaRouter); 
+app.use("/avances", suelaRouter);
 
 app.use("/avances", modeloPespunte);
 app.use("/avances", busquedaFecha);
 app.use("/avances", reflejarMeta);
 app.use("/avances", reporteMeta);
 app.use("/avances", Login);
+
+app.use("/avances", inventario4);
+
+app.use("/avances", personaldepto); 
+app.use("/avances", personalcorte); 
+app.use("/avances", personalcoordinado); 
+app.use("/avances", personalpespunte242); 
+app.use("/avances", personalpespunte244); 
+app.use("/avances", personalpespunte245); 
+app.use("/avances", personalpespunte246); 
+app.use("/avances", personalmontado); 
+app.use("/avances", personaladorno); 
+app.use("/avances", personalmontadoadorno); 
+
+app.use("/avances", informacionGeneral); 
+
+
 
 // Creamos el servidor HTTP usando la app Express
 const server = createServer(app);
@@ -102,47 +146,57 @@ const server = createServer(app);
 // const io = new SocketIOServer(httpsServer, {
 
 const allowedOriginsSocket = [
-    'https://avances-pazstor-303b8.web.app',
-    'http://192.168.17.24:5173', // El origen antiguo (local)
+    'https://avances-pazstor.online',  
+    'https://gr-ficas.onrender.com',         
+    //'http://192.168.17.24:5173', // Tu IP anterior
+    'http://192.168.17.25:5173', // <-- NUEVA: La IP real desde la que estás testeando
+    'http://localhost:5173'
 ];
 
+// cometar para subir a producción
 const io = new SocketIOServer(server, {
-    cors:{
+  cors: {
     origin: allowedOriginsSocket,
     methods: 'GET,POST,PUT,DELETE', //Este parámetro especifica qué métodos HTTP pueden ser utilizados en las solicitudes desde el frontend
-    allowedHeaders: 'Content-Type'//Este parámetro define qué encabezados HTTP pueden ser enviados en la solicitud. En este caso, solo permite el encabezado Content-Type, que indica el tipo de datos enviados en el cuerpo de la solicitud.
-    }
+    allowedHeaders: ['Content-Type', 'Authorization'], //Este parámetro define qué encabezados HTTP pueden ser enviados en la solicitud. En este caso, solo permite el encabezado Content-Type, que indica el tipo de datos enviados en el cuerpo de la solicitud.
+    credentials: true
+  }
 })
+
+// descomentar para subir a producción
+/*  const io = new SocketIOServer(server, {
+    cors: false
+  });*/
 
 // Manejador de conexiones
 io.on("connection", (socket) => {
   console.log("Cliente conectados:", socket.id);
-  
+
   socket.on("iniciar-verificacion", (modulo) => {
     console.log("Solicitan verificador de:", modulo);
-      switch(modulo){
-        case "coordinado": iniciarVerificacionCoordinado(io); break;
-        case "pespunte":  iniciarVerificacionPespunte(io); break;
-        case "embarque": iniciarVerificacionEmbarque(io); break;
-        case "montado": iniciarVerificacionMontado(io); break;
-        case "corte": iniciarVerificacionCorte(io); break;
-        case "general": iniciarVerificacionCoordinado(io); iniciarVerificacionPespunte(io); iniciarVerificacionMontado(io); iniciarVerificacionCorte(io); iniciarVerificacionEmbarque(io); break;
-        
-        case "inyeccion": iniciarVerificacionInyeccion(io); break;
-        case "suela": iniciarVerificacionSuela(io); break;
-        case "preacabado": iniciarVerificacionPreacabado(io); break;
-        case "montadoMD": iniciarVerificacionMontadoMD(io); break;
-        case "adornoMD": iniciarVerificacionAdornoMD(io); break;
-        case "auditoriaMD": iniciarVerificacionAuditoriaMD(io); break;
-        case "generalMD":  iniciarVerificacionAuditoriaMD(io); iniciarVerificacionAdornoMD(io); iniciarVerificacionPreacabado(io); iniciarVerificacionSuela(io); iniciarVerificacionInyeccion(io); iniciarVerificacionCoordinado(io); iniciarVerificacionPespunte(io); iniciarVerificacionMontadoMD(io); iniciarVerificacionCorte(io); iniciarVerificacionEmbarque(io); break;
+    switch (modulo) {
+      case "coordinado": iniciarVerificacionCoordinado(io); break;
+      case "pespunte": iniciarVerificacionPespunte(io); break;
+      case "embarque": iniciarVerificacionEmbarque(io); break;
+      case "montado": iniciarVerificacionMontado(io); break;
+      case "corte": iniciarVerificacionCorte(io); break;
+      case "general": iniciarVerificacionCoordinado(io); iniciarVerificacionPespunte(io); iniciarVerificacionMontado(io); iniciarVerificacionCorte(io); iniciarVerificacionEmbarque(io); break;
 
-        case "generalCU": iniciarVerificacionAuditoriaCU(io); iniciarVerificacionAdornoCU(io); iniciarVerificacionCoordinado(io); iniciarVerificacionPespunte(io); iniciarVerificacionMontadoCU(io); iniciarVerificacionCorte(io); iniciarVerificacionEmbarque(io); break;
-        case "montadoCU": iniciarVerificacionMontadoCU(io); break;
-        case "adornoCU": iniciarVerificacionAdornoCU(io); break;
-        case "auditoriaCU": iniciarVerificacionAuditoriaCU(io); break;
-      }
+      case "inyeccion": iniciarVerificacionInyeccion(io); break;
+      case "suela": iniciarVerificacionSuela(io); break;
+      case "preacabado": iniciarVerificacionPreacabado(io); break;
+      case "montadoMD": iniciarVerificacionMontadoMD(io); break;
+      case "adornoMD": iniciarVerificacionAdornoMD(io); break;
+      case "auditoriaMD": iniciarVerificacionAuditoriaMD(io); break;
+      case "generalMD": iniciarVerificacionAuditoriaMD(io); iniciarVerificacionAdornoMD(io); iniciarVerificacionPreacabado(io); iniciarVerificacionSuela(io); iniciarVerificacionInyeccion(io); iniciarVerificacionCoordinado(io); iniciarVerificacionPespunte(io); iniciarVerificacionMontadoMD(io); iniciarVerificacionCorte(io); iniciarVerificacionEmbarque(io); break;
+
+      case "generalCU": iniciarVerificacionAuditoriaCU(io); iniciarVerificacionAdornoCU(io); iniciarVerificacionCoordinado(io); iniciarVerificacionPespunte(io); iniciarVerificacionMontadoCU(io); iniciarVerificacionCorte(io); iniciarVerificacionEmbarque(io); break;
+      case "montadoCU": iniciarVerificacionMontadoCU(io); break;
+      case "adornoCU": iniciarVerificacionAdornoCU(io); break;
+      case "auditoriaCU": iniciarVerificacionAuditoriaCU(io); break;
+    }
   });
-  
+
   // Desconexión
   socket.on("disconnect", () => {
     console.log("Cliente desconectado:", socket.id);
@@ -153,6 +207,6 @@ const PORT = 3000;
 const HOST = '0.0.0.0'; // Escucha en todas las interfaces de red
 
 server.listen(PORT, HOST, () => {
-// httpsServer.listen(PORT, HOST, () => {
-    console.log(`Servidor levantado en http://${HOST}:${PORT}`);
+  // httpsServer.listen(PORT, HOST, () => {
+  console.log(`Servidor levantado en http://${HOST}:${PORT}`);
 });

@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import Chart from "react-apexcharts";
 import { socket } from "../../../../../../socket";
 
-const AuditoriaL6 = () => {
+const AuditoriaL6 = ({onTotalChange}) => {
   const [data, setData] = useState([]);
 
   useEffect(() => {
@@ -22,7 +22,7 @@ const AuditoriaL6 = () => {
         console.warn("Reintentando conexión al socket...");
         conectarSocket();
       }
-    }, 5000); 
+    }, 5000);
 
     // Conexión establecida
     socket.on("connect", () => {
@@ -47,7 +47,7 @@ const AuditoriaL6 = () => {
     return () => {
       clearInterval(intervalo);
       socket.off("connect");
-      socket.off("actualizar-Pespunte142");
+      socket.off("actualizar-Auditoria");
       socket.off("disconnect");
     };
   }, []);
@@ -65,6 +65,10 @@ const AuditoriaL6 = () => {
 
   const sumaLC_PARLOT = calcularSumaLC_PARLOT(data);
 
+  useEffect(() => {
+    onTotalChange?.(sumaLC_PARLOT);
+  }, [sumaLC_PARLOT, onTotalChange]);
+
   // Calcular suma de pares por modelo
   const sumaPorModelo = modelos.map((modelo) => {
     return data
@@ -77,7 +81,7 @@ const AuditoriaL6 = () => {
     dataLabels: {
       enabled: true,
       style: {
-        fontSize: "60px", // <--- Ajusta este tamaño a tu gusto (ej. '18px', '20px')
+        fontSize: "30px", // <--- Ajusta este tamaño a tu gusto (ej. '18px', '20px')
         fontFamily: "Inter, sans-serif",
         fontWeight: "bold",
         colors: ["#fff"], // Mantiene el color blanco
@@ -107,38 +111,38 @@ const AuditoriaL6 = () => {
   const series = [{ name: "Pares", data: sumaPorModelo }];
 
   return (
-      <div>
-          <div className="max-w-lg p-6 border border-gray-100 rounded-lg shadow-sm bg-gray-800 border-dark-700">
-            <div>
-              <h5 className="leading-none text-3xl font-bold text-white pb-2 text-center">
-                Auditoria L-6
-              </h5>
-              <p className="text-2xl font-normal text-gray-400">
-                Pares producidos por día
-              </p>
-               <p className="text-2xl font-normal text-gray-400">
-                N° total pares: <span className="font-bold text-white"> {sumaLC_PARLOT} </span>
-              </p>
-              <p className="text-2xl font-normal text-gray-400">
-                Modelos: <br />
-                <span className="font-bold text-white"> {modelos.join(', ')} </span>
-              </p>
-  
-              {/* Mensaje si no hay datos */}
-              {data.length === 0 && (
-                <p className="text-yellow-400 mt-2">No hay datos registrados</p>
-              )}
-            </div>
-            <Chart
-              options={options}
-              series={series}
-              type="bar"
-              width="100%"
-              height="250px"
-            />
-          </div>
+    <div>
+      <div className="max-w-lg p-6 border border-gray-100 rounded-lg shadow-sm bg-gray-800 border-dark-700">
+        <div>
+          <h5 className="leading-none text-3xl font-bold text-white pb-2 text-center">
+            AUDITORIA L-6
+          </h5>
+          <p className="text-2xl font-normal text-gray-400">
+            Pares producidos por día
+          </p>
+          <p className="text-2xl font-normal text-gray-400">
+            N° total pares: <span className="font-bold text-white"> {sumaLC_PARLOT} </span>
+          </p>
+          <p className="text-2xl font-normal text-gray-400">
+            Modelos: <br />
+            <span className="font-bold text-white"> {modelos.join(', ')} </span>
+          </p>
+
+          {/* Mensaje si no hay datos */}
+          {data.length === 0 && (
+            <p className="text-yellow-400 mt-2">No hay datos registrados</p>
+          )}
+        </div>
+          <Chart
+            options={options}
+            series={series}
+            type="bar"
+            width="100%"
+            height="310px"
+          />
+        </div>
       </div>
-    );
-  };
+  );
+};
 
 export default AuditoriaL6;

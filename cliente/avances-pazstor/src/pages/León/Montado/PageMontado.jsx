@@ -22,7 +22,7 @@ export const PageMontado = () => {
   const ciudad = "León";
   const subdepto = "Linea 6";
   const [metaDiaria, setMetaDiaria] = useState(null);
-  const [empleados, setEmpleados] = useState([]);
+  //const [empleados, setEmpleados] = useState([]);
   const [empleadosmo, setEmpleadosMon] = useState([]);
   const [empleadosad, setEmpleadosAdo] = useState([]);
   const [totales, setTotales] = useState({
@@ -41,9 +41,9 @@ export const PageMontado = () => {
   }, []);
 
   const ConsultarMeta = async () => {
-    //const apiUrl = `http://192.168.17.25:3000/avances/ReflejarMeta?departamento=${departamento}&subdepto=${subdepto}&ciudad=${ciudad}`;
+    const apiUrl = `http://192.168.17.25:3000/avances/ReflejarMeta?departamento=${departamento}&subdepto=${subdepto}&ciudad=${ciudad}`;
     //const apiUrl = `https://159.65.78.91/avances/ReflejarMeta?departamento=${departamento}&subdepto=${subdepto}&ciudad=${ciudad}`;
-    const apiUrl = `https://api.avances-pazstor.online/avances/ReflejarMeta?departamento=${departamento}&subdepto=${subdepto}&ciudad=${ciudad}`;
+    //const apiUrl = `https://api.avances-pazstor.online/avances/ReflejarMeta?departamento=${departamento}&subdepto=${subdepto}&ciudad=${ciudad}`;
     try {
       const response = await fetch(apiUrl);
       if (!response.ok) {
@@ -60,11 +60,11 @@ export const PageMontado = () => {
     }
   };
 
-  useEffect(() => {
+  /*useEffect(() => {
 
     const obtenerEmpleados = async () => {
-      const apiUrl = `https://api.avances-pazstor.online/avances/personaldepto`;
-      //const apiUrl = `http://192.168.17.25:3000/avances/personalmontadoadorno`;
+      //const apiUrl = `https://api.avances-pazstor.online/avances/personaldepto`;
+      const apiUrl = `http://192.168.17.25:3000/avances/personaldepto`;
 
       try {
         const response = await fetch(apiUrl);
@@ -87,14 +87,14 @@ export const PageMontado = () => {
 
     return () => clearInterval(intervalo);
 
-  }, []);
+  }, []);*/
 
 
   useEffect(() => {
 
     const obtenerEmpleadosMontado = async () => {
-      const apiUrl = `https://api.avances-pazstor.online/avances/personaldepto`;
-      //const apiUrl = `http://192.168.17.25:3000/avances/personalmontado`;
+      //const apiUrl = `https://api.avances-pazstor.online/avances/personaldepto`;
+      const apiUrl = `http://192.168.17.25:3000/avances/personalmontado`;
 
       try {
         const response = await fetch(apiUrl);
@@ -123,8 +123,8 @@ export const PageMontado = () => {
   useEffect(() => {
 
     const obtenerEmpleadosAdorno = async () => {
-      const apiUrl = `https://api.avances-pazstor.online/avances/personaldepto`;
-      //const apiUrl = `http://192.168.17.25:3000/avances/personaladorno`;
+      //const apiUrl = `https://api.avances-pazstor.online/avances/personaldepto`;
+      const apiUrl = `http://192.168.17.25:3000/avances/personaladorno`;
 
       try {
         const response = await fetch(apiUrl);
@@ -149,8 +149,8 @@ export const PageMontado = () => {
 
   }, []);
 
-
-  const sumarEmpleados = empleados.length;
+ 
+  const sumarEmpleados = empleadosmo.length + empleadosad.length;
 
   const sumarEmplaeadosmon = empleadosmo.length;
 
@@ -188,7 +188,7 @@ export const PageMontado = () => {
       <div className="flex gap-2 items-stretch w-full">
 
         {/* SIDEBAR IZQUIERDO */}
-        <aside className="flex flex-col gap-4 w-72 bg-[#1a2332] p-4 rounded-xl border-l-[6px] border-green-500 shadow-xl shrink-0 max-h-[88vh] overflow-y-auto">
+        <aside className="flex flex-col gap-4 w-72 bg-[#1a2332] p-4 rounded-xl border-l-[6px] border-green-500 shadow-xl shrink-0 max-h-[96vh] overflow-y-auto">
 
           {/* Primera Sección: Personal Montado */}
           <section className="bg-[#202c34] p-4 rounded-lg">
@@ -234,7 +234,7 @@ export const PageMontado = () => {
             &nbsp;&nbsp;
             <div className="p-6 rounded-2xl bg-[#202c34] h-56 text-white shadow-md w-106 mx-auto text-center">
               <h5 className="mb-3 text-2xl font-semibold tracking-tight text-heading leading-8">PERSONAL TOTAL</h5>
-              <p className="text-6xl text-heading">{sumarEmpleados}</p>
+              <p className="text-6xl text-heading">{ sumarEmpleados }</p>
             </div>
             &nbsp;&nbsp;
             <EficienciaProg />

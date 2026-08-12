@@ -10,7 +10,7 @@ const Footer = () => {
               className="flex items-center mb-4 sm:mb-0 space-x-3 rtl:space-x-reverse"
             >
               <img
-                src="https://www.pazstor.com.mx/logo-pazstor-big.png"
+                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSsxrRNut7o0EzpOBiUdROAve_sdql4jiraqMLvRmQtQBoP8_kN3NBntZM&s=10"
                 className="h-8"
                 alt="Flowbite Logo"
               />

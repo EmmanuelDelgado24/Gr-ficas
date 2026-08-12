@@ -66,7 +66,7 @@ export const Navbar = () => {
         <div className="flex items-center justify-between">
           <Link to="/" className="flex items-center space-x-3 rtl:space-x-reverse">
             <img
-              src="https://www.pazstor.com.mx/logo-pazstor-big.png"
+              src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSsxrRNut7o0EzpOBiUdROAve_sdql4jiraqMLvRmQtQBoP8_kN3NBntZM&s=10"
               className="h-8"
               alt="PAZSTOR Logo"
             />
@@ -275,6 +275,9 @@ export const Navbar = () => {
                     )}
                     {hasRole(["admin","ingenieria_leon","gerencia","planta_leon","pespunte_leon"]) && (
                       <li><NavLink to="/León/Pespunte" className={ddLinkClass} onClick={closeAllMenus}>Pespunte</NavLink></li>
+                    )}
+                    {hasRole(["admin","ingenieria_leon","gerencia","planta_leon","pespunte_leon"]) && (
+                      <li><NavLink to="/León/PespunteLotes" className={ddLinkClass} onClick={closeAllMenus}>Pespunte Lotes</NavLink></li>
                     )}
                     {hasRole(["admin","ingenieria_leon","gerencia","planta_leon","montado_leon"]) && (
                       <li><NavLink to="/León/Montado" className={ddLinkClass} onClick={closeAllMenus}>Montado - Adorno</NavLink></li>

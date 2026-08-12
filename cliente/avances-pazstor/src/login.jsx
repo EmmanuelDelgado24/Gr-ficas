@@ -18,7 +18,7 @@ export const Login = ({ onLogin }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      //const response = await fetch("http://192.168.17.24:3000/avances/login", {
+      //const response = await fetch("http://192.168.17.25:3000/avances/login", {
       //const response = await fetch("https://159.65.78.91/avances/login", {
       const response = await fetch("https://api.avances-pazstor.online/avances/login",{
         method: "POST",
@@ -54,8 +54,8 @@ export const Login = ({ onLogin }) => {
     >
       <div className="bg-white rounded-2xl shadow-lg translate-x-[10%] translate-y-[8%] p-8 w-full max-w-md ">
         <img
-          src="https://www.pazstor.com.mx/logo-pazstor-big.png"
-          className="translate-x-[60%] h-35"
+          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSsxrRNut7o0EzpOBiUdROAve_sdql4jiraqMLvRmQtQBoP8_kN3NBntZM&s=10"
+          className="translate-x-[100%] h-35"
           alt="PAZSTOR Logo"
         />
         <h5 className="text-4xl text-center">Reporte de producción</h5>

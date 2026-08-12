@@ -2,10 +2,10 @@ import { useEffect, useState } from "react";
 import Chart from "react-apexcharts";
 import { socket } from "../../../../../../socket";
 
-const MontadoL6 = () => {
+const MontadoL6 = ({onTotalChange}) => {
   const [data, setData] = useState([]);
-  
-    useEffect(() => {
+
+  useEffect(() => {
     const conectarSocket = () => {
       if (!socket.connected) {
         console.log("Intentando conectar al socket...");
@@ -22,38 +22,38 @@ const MontadoL6 = () => {
         console.warn("Reintentando conexión al socket...");
         conectarSocket();
       }
-    }, 5000); 
+    }, 5000);
 
-      // Conexión establecida
-      socket.on("connect", () => {
-        console.log("Conectado al servidor de WebSockets Montado");
-      });
-  
-      // Escuchar evento específico
-      socket.on("actualizar-Montado", (datos) => {
-        console.log("Datos Actualizados en Montado 5L6");
-        if (Array.isArray(datos)) {
-          setData(datos);
-        } else {
-          setData([]);
-        }
-      });
-  
-      // Manejo de error si se desconecta
-      socket.on("disconnect", () => {
-        console.warn("Desconectado del servidor");
-      });
-  
+    // Conexión establecida
+    socket.on("connect", () => {
+      console.log("Conectado al servidor de WebSockets Montado");
+    });
+
+    // Escuchar evento específico
+    socket.on("actualizar-Montado", (datos) => {
+      console.log("Datos Actualizados en Montado 5L6");
+      if (Array.isArray(datos)) {
+        setData(datos);
+      } else {
+        setData([]);
+      }
+    });
+
+    // Manejo de error si se desconecta
+    socket.on("disconnect", () => {
+      console.warn("Desconectado del servidor");
+    });
+
     return () => {
       clearInterval(intervalo);
       socket.off("connect");
-      socket.off("actualizar-Pespunte142");
+      socket.off("actualizar-Montado");
       socket.off("disconnect");
     };
 
-    }, []);
+  }, []);
 
-  // Obtener modelos únicos
+  // Obtener modelos únicos ... es el operador spread (esparcido) Toma los elementos de algo iterable (un array, un Set, etc.) y los "esparce" como elementos individuales, en vez de dejarlos agrupados dentro de ese objeto.
   const modelos = [...new Set(data.map((item) => item.LC_ESTILO))];
 
   // Sumar los pares
@@ -66,6 +66,10 @@ const MontadoL6 = () => {
 
   const sumaLC_PARLOT = calcularSumaLC_PARLOT(data);
 
+  useEffect(() => {
+    onTotalChange?.(sumaLC_PARLOT);
+  }, [sumaLC_PARLOT, onTotalChange]);
+
   // Calcular suma de pares por modelo
   const sumaPorModelo = modelos.map((modelo) => {
     return data
@@ -74,11 +78,11 @@ const MontadoL6 = () => {
   });
 
   const options = {
-    chart: { id: "basic-bar" },
+    chart: { id: "basic-bar", type: "bar"},
     dataLabels: {
       enabled: true,
       style: {
-        fontSize: "60px", // <--- Ajusta este tamaño a tu gusto (ej. '18px', '20px')
+        fontSize: "30px", // <--- Ajusta este tamaño a tu gusto (ej. '18px', '20px')
         fontFamily: "Inter, sans-serif",
         fontWeight: "bold",
         colors: ["#fff"], // Mantiene el color blanco
@@ -108,38 +112,38 @@ const MontadoL6 = () => {
   const series = [{ name: "Pares", data: sumaPorModelo }];
 
   return (
-      <div>
-          <div className="max-w-lg p-6 border border-gray-100 rounded-lg shadow-sm bg-gray-800 border-dark-700">
-            <div>
-              <h5 className="leading-none text-3xl font-bold text-white pb-2 text-center">
-                Montado L-6
-              </h5>
-              <p className="text-2xl font-normal text-gray-400">
-                Pares producidos por día
-              </p>
-               <p className="text-2xl font-normal text-gray-400">
-                N° total pares: <span className="font-bold text-white"> {sumaLC_PARLOT} </span>
-              </p>
-              <p className="text-2xl font-normal text-gray-400">
-                Modelos: <br />
-                <span className="font-bold text-white"> {modelos.join(', ')} </span>
-              </p>
-  
-              {/* Mensaje si no hay datos */}
-              {data.length === 0 && (
-                <p className="text-yellow-400 mt-2">No hay datos registrados</p>
-              )}
-            </div>
-            <Chart
-              options={options}
-              series={series}
-              type="bar"
-              width="100%"
-              height="250px"
-            />
-          </div>
+    <div>
+      <div className="max-w-lg p-6 border border-gray-100 rounded-lg shadow-sm bg-gray-800 border-dark-700">
+        <div>
+          <h5 className="leading-none text-3xl font-bold text-white pb-2 text-center">
+            MONTADO L-6 KANBAN
+          </h5>
+          <p className="text-2xl font-normal text-gray-400">
+            Pares producidos por día
+          </p>
+          <p className="text-2xl font-normal text-gray-400">
+            N° total pares: <span className="font-bold text-white"> {sumaLC_PARLOT} </span>
+          </p>
+          <p className="text-2xl font-normal text-gray-400">
+            Modelos: <br />
+            <span className="font-bold text-white"> {modelos.join(', ')} </span>
+          </p>
+
+          {/* Mensaje si no hay datos */}
+          {data.length === 0 && (
+            <p className="text-yellow-400 mt-2">No hay datos registrados</p>
+          )}
+        </div>
+          <Chart
+            options={options}
+            series={series}
+            type="bar"
+            width="100%"
+            height="280px"
+          />
+        </div>
       </div>
-    );
-  };
+  );
+};
 
 export default MontadoL6;
