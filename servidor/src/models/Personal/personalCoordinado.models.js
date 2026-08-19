@@ -23,7 +23,7 @@ export async function obtenerPersonalCoordinado() {
                 ON l.clave = e.clave
                     
             WHERE CAST(l.registro AS date) = CAST(GETDATE() AS date) 
-                AND l.UltimoEStatus IN('ENTRADA DEL TURNO')
+                AND l.UltimoEStatus IN('ENTRADA DEL TURNO', 'ENTRADA DEL TURNO FALTA', 'ENTRADA DEL TURNO RETARDO')
                 AND e.departamento IN ('PROD CD221', 'PROD CD222', 'PROD CD223','PROD CD224')`);
 
         return result.recordset;

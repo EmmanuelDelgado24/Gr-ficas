@@ -33,7 +33,7 @@ export const PageMontado = () => {
     adorno4: 0,
     auditoria4: 0,
   });
-  
+
 
   useEffect(() => {
     socket.emit("iniciar-verificacion", "montado");
@@ -41,9 +41,9 @@ export const PageMontado = () => {
   }, []);
 
   const ConsultarMeta = async () => {
-    const apiUrl = `http://192.168.17.25:3000/avances/ReflejarMeta?departamento=${departamento}&subdepto=${subdepto}&ciudad=${ciudad}`;
+    //const apiUrl = `http://192.168.17.25:3000/avances/ReflejarMeta?departamento=${departamento}&subdepto=${subdepto}&ciudad=${ciudad}`;
     //const apiUrl = `https://159.65.78.91/avances/ReflejarMeta?departamento=${departamento}&subdepto=${subdepto}&ciudad=${ciudad}`;
-    //const apiUrl = `https://api.avances-pazstor.online/avances/ReflejarMeta?departamento=${departamento}&subdepto=${subdepto}&ciudad=${ciudad}`;
+    const apiUrl = `https://api.avances-pazstor.online/avances/ReflejarMeta?departamento=${departamento}&subdepto=${subdepto}&ciudad=${ciudad}`;
     try {
       const response = await fetch(apiUrl);
       if (!response.ok) {
@@ -93,8 +93,8 @@ export const PageMontado = () => {
   useEffect(() => {
 
     const obtenerEmpleadosMontado = async () => {
-      //const apiUrl = `https://api.avances-pazstor.online/avances/personaldepto`;
-      const apiUrl = `http://192.168.17.25:3000/avances/personalmontado`;
+      const apiUrl = `https://api.avances-pazstor.online/avances/personaldepto`;
+      //const apiUrl = `http://192.168.17.25:3000/avances/personalmontado`;
 
       try {
         const response = await fetch(apiUrl);
@@ -123,8 +123,8 @@ export const PageMontado = () => {
   useEffect(() => {
 
     const obtenerEmpleadosAdorno = async () => {
-      //const apiUrl = `https://api.avances-pazstor.online/avances/personaldepto`;
-      const apiUrl = `http://192.168.17.25:3000/avances/personaladorno`;
+      const apiUrl = `https://api.avances-pazstor.online/avances/personaldepto`;
+      //const apiUrl = `http://192.168.17.25:3000/avances/personaladorno`;
 
       try {
         const response = await fetch(apiUrl);
@@ -149,7 +149,7 @@ export const PageMontado = () => {
 
   }, []);
 
- 
+
   const sumarEmpleados = empleadosmo.length + empleadosad.length;
 
   const sumarEmplaeadosmon = empleadosmo.length;
@@ -234,12 +234,12 @@ export const PageMontado = () => {
             &nbsp;&nbsp;
             <div className="p-6 rounded-2xl bg-[#202c34] h-56 text-white shadow-md w-106 mx-auto text-center">
               <h5 className="mb-3 text-2xl font-semibold tracking-tight text-heading leading-8">PERSONAL TOTAL</h5>
-              <p className="text-6xl text-heading">{ sumarEmpleados }</p>
+              <p className="text-6xl text-heading">{sumarEmpleados}</p>
             </div>
             &nbsp;&nbsp;
             <EficienciaProg />
             &nbsp;&nbsp;
-            <Eficiencia totalPares={sumaGeneral}/>
+            <Eficiencia totalPares={sumaGeneral} />
             &nbsp;&nbsp;
             <Reloj />
           </div>
@@ -261,7 +261,7 @@ export const PageMontado = () => {
                     <AdornoL64 />
                   </th>
                   <th scope="col" className="flex-1 bg-[#202c34] p-2 rounded-xl flex flex-col justify-between items-center h-full text-white">
-                    <AuditoriaL64 onTotalChange={setTotalAuditoria4}/>
+                    <AuditoriaL64 onTotalChange={setTotalAuditoria4} />
                   </th>
                   <th scope="col" className="flex-1 bg-[#202c34] p-2 rounded-xl flex flex-col justify-between items-center h-full text-white">
                     <MontadoL6 />

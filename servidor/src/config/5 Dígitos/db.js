@@ -2,13 +2,11 @@
 
 export const options = {
     // Configura los parámetros de conexión a la base de datos Firebird
-    //host: '172.18.0.1', //✔
-    host: '192.168.16.3',
-    //port: 43050, //✔
-    port: 3050, // Puerto predeterminado de Firebird
-    database: 'C:/Empresas$/McmZ2026/BigZap.fdb',
-    user: 'SYSDBA',
-    password: 'masterkey',
+    host: process.env.FIREHOST,
+    port: process.env.FIREPORT, // Puerto predeterminado de Firebird
+    database: process.env.FIREDATABASE,
+    user: process.env.FIREUSER,
+    password: process.env.FIREPASSWORD,
     options: {
       encrypt: false, // Corrección de la propiedad encrypt
       trustServerCertificate: true

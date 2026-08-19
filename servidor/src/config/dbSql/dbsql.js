@@ -1,9 +1,9 @@
 export const config = {
-    user: 'Sa',
-    password: 'National09',
-    server: '192.168.17.12',
-    database: 'checador45Pro',
-    port: 1433,
+    user: process.env.DB_USER,
+    password: process.env.DB_PASSWORD,
+    server: process.env.DB_HOST,
+    database: process.env.DB_NAME,
+    port: parseInt(process.env.DB_PORT, 10),
     options: {
         encrypt: false,
         trustServerCertificate: true,

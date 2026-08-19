@@ -10,14 +10,14 @@ if (typeof HighchartsMore === "function") {
     HighchartsMore(Highcharts);
 }
 
-const Eficiencia = ({ totalPares = 0 }) => {
+const EficienciaCoordinado = ({ totalPares = 0 }) => {
 
-    const [infoGeneral, setInfoGeneral] = useState([]);
+    const [infoCoordinado, setInfoCoordinado] = useState([]);
 
     useEffect(() => {
-        const obtenerInfoGeneral = async () => {
+        const obtenerInfoCoordinado = async () => {
             const apiUrl = `https://api.avances-pazstor.online/avances/personaldepto`;
-            //const apiUrl = `http://192.168.17.25:3000/avances/informacionGeneral`;
+            //const apiUrl = `http://192.168.17.25:3000/avances/informacionCoordinado`;
 
             try {
                 const response = await fetch(apiUrl);
@@ -26,17 +26,17 @@ const Eficiencia = ({ totalPares = 0 }) => {
                     throw new Error(errorData.message || "Error al consultar la API");
                 }
 
-                const infogeneral = await response.json();
-                console.log("Datos recibidos de la API:", infogeneral);
-                setInfoGeneral(infogeneral);
+                const infocoordinado = await response.json();
+                console.log("Datos recibidos de la API:", infocoordinado);
+                setInfoCoordinado(infocoordinado);
             } catch (error) {
                 console.error("Error al realizar la consulta:", error);
             }
         };
 
-        obtenerInfoGeneral();
+        obtenerInfoCoordinado();
 
-        const intervalo = setInterval(obtenerInfoGeneral, 60000);
+        const intervalo = setInterval(obtenerInfoCoordinado, 60000);
 
         return () => clearInterval(intervalo);
 
@@ -50,7 +50,7 @@ const Eficiencia = ({ totalPares = 0 }) => {
     };
 
 
-    const metaDiaria = infoGeneral?.meta_diaria || 0;
+    const metaDiaria = infoCoordinado?.meta_diaria || 0;
     const valorEficiencia =
         metaDiaria > 0
             ? Number.parseInt((totalPares / metaDiaria) * 100)
@@ -227,4 +227,4 @@ const Eficiencia = ({ totalPares = 0 }) => {
     );
 };
 
-export default Eficiencia
+export default EficienciaCoordinado

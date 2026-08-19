@@ -10,14 +10,14 @@ if (typeof HighchartsMore === "function") {
     HighchartsMore(Highcharts);
 }
 
-const Eficiencia = ({ totalPares = 0 }) => {
-
-    const [infoGeneral, setInfoGeneral] = useState([]);
+const EficienciaProgCoordinado = () => {
+    // 1. Inicializamos como objeto o null para evitar inconsistencias
+    const [infoCoordinado, setInfoCoordinado] = useState(null);
 
     useEffect(() => {
-        const obtenerInfoGeneral = async () => {
+        const obtenerInfoCoordinado = async () => {
             const apiUrl = `https://api.avances-pazstor.online/avances/personaldepto`;
-            //const apiUrl = `http://192.168.17.25:3000/avances/informacionGeneral`;
+            //const apiUrl = `http://192.168.17.25:3000/avances/informacionCoordinado`;
 
             try {
                 const response = await fetch(apiUrl);
@@ -28,19 +28,22 @@ const Eficiencia = ({ totalPares = 0 }) => {
 
                 const infogeneral = await response.json();
                 console.log("Datos recibidos de la API:", infogeneral);
-                setInfoGeneral(infogeneral);
+                setInfoCoordinado(infogeneral);
             } catch (error) {
                 console.error("Error al realizar la consulta:", error);
             }
         };
 
-        obtenerInfoGeneral();
+        obtenerInfoCoordinado();
 
-        const intervalo = setInterval(obtenerInfoGeneral, 60000);
+        const intervalo = setInterval(obtenerInfoCoordinado, 60000)
 
         return () => clearInterval(intervalo);
 
     }, []);
+
+    // Extraemos el valor de forma segura; si no existe, usamos 0
+    const valorEficienciaProg = Number.parseInt(infoCoordinado?.eficiencia) || 0;
 
     // Lógica para determinar el color según el valor de eficiencia
     const obtenerColorSegunEficiencia = (valor) => {
@@ -49,15 +52,7 @@ const Eficiencia = ({ totalPares = 0 }) => {
         return '#10B981';                  // Verde (Alta)
     };
 
-
-    const metaDiaria = infoGeneral?.meta_diaria || 0;
-    const valorEficiencia =
-        metaDiaria > 0
-            ? Number.parseInt((totalPares / metaDiaria) * 100)
-            : 0;
-    console.log("Valor de eficiencia calculado:", valorEficiencia);
-
-    const colorActual = obtenerColorSegunEficiencia(valorEficiencia);
+    const colorActual = obtenerColorSegunEficiencia(valorEficienciaProg);
 
     // Configuración de Highcharts para el Gauge Semi-circular
     const chartOptions = {
@@ -121,7 +116,7 @@ const Eficiencia = ({ totalPares = 0 }) => {
         series: [
             {
                 name: "Eficiencia",
-                data: [valorEficiencia],
+                data: [valorEficienciaProg],
                 dataLabels: {
                     format: "{y:,.0f}%",
                     borderWidth: 0,
@@ -163,6 +158,7 @@ const Eficiencia = ({ totalPares = 0 }) => {
             sparkline: {
                 enabled: true,
             },
+            foreColor: '#FFFFFF',
         },
         plotOptions: {
             radialBar: {
@@ -176,7 +172,7 @@ const Eficiencia = ({ totalPares = 0 }) => {
                         enabled: true,
                         top: 2,
                         left: 0,
-                        color: '#fdfbfb',
+                        color: '#FFFFFF',
                         opacity: 0.3,
                         blur: 4,
                     },
@@ -212,19 +208,19 @@ const Eficiencia = ({ totalPares = 0 }) => {
             {/* Encabezado */}
             <div className="flex justify-between items-center mb-4 w-full">
                 <h5 className="mb-3 text-2xl font-semibold tracking-tight text-heading leading-8">
-                    EFICIENCIA REAL
+                    EFICIENCIA PROGRAMADA
                 </h5>
             </div>
 
             {/* Contenedor de la gráfica con altura/ancho contenidos */}
             <div className="w-full flex justify-center items-center flex-1 overflow-hidden">
                 <div style={{ width: "100%", height: "158px" }}>
-                    <HighchartsReact highcharts={Highcharts} options={chartOptions} 
-                      containerProps={{ style: { width: "100%", height: "100%" } }}/>
+                    <HighchartsReact highcharts={Highcharts} options={chartOptions}
+                    containerProps={{ style: { width: "100%", height: "100%" } }} />
                 </div>
             </div>
         </div>
     );
 };
 
-export default Eficiencia
+export default EficienciaProgCoordinado

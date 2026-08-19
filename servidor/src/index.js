@@ -1,3 +1,5 @@
+import 'dotenv/config';
+
 import cors from "cors";
 import fs from 'fs';
 import https from 'https';
@@ -5,7 +7,6 @@ import app from "./app.js";
 import morgan from "morgan";
 import express from "express";
 import { createServer } from "http";
-import dotenv from "dotenv";
 import { Server as SocketIOServer } from "socket.io";
 import Login from "./routes/Login/login.routes.js"
 
@@ -61,6 +62,8 @@ import personaladorno from "./routes/Personal/personalAdorno.routes.js"
 import personalmontadoadorno from "./routes/Personal/personalMontaAdorn.routes.js"
 
 import informacionGeneral from "./routes/Ingenieria/infoGeneral.routes.js"
+import infoCorte from "./routes/Ingenieria/infoCorte.routes.js";
+import infoCoordinado from "./routes/Ingenieria/infoCoordinado.routes.js";
 
 // Contraseñas HASH 
 // import bcrypt from 'bcrypt';
@@ -76,7 +79,7 @@ import informacionGeneral from "./routes/Ingenieria/infoGeneral.routes.js"
 // const httpsServer = https.createServer({ key: privateKey, cert: certificate }, app);
 
 
-dotenv.config();
+//dotenv.config();
 //app.listen(3000);
 //console.log('Servidor levantado', 3000);
 
@@ -89,20 +92,22 @@ const allowedOrigins = [
 ];
 
 // cometar para subir a producción
-app.use(cors({
+/*app.use(cors({
   origin: allowedOrigins,
   methods: 'GET,POST,PUT,DELETE', //Este parámetro especifica qué métodos HTTP pueden ser utilizados en las solicitudes desde el frontend
   allowedHeaders: ['Content-Type', 'Authorization'],//Este parámetro define qué encabezados HTTP pueden ser enviados en la solicitud. En este caso, solo permite el encabezado Content-Type, que indica el tipo de datos enviados en el cuerpo de la solicitud.
   credentials: true
-}));
+}));*/
 
 app.use(morgan("dev"));
 app.use(express.json());
+
+// ========================================
+// HEALTH CHECK
+// ========================================
 app.get("/health", (req, res) => {
     res.status(200).json({
-        status: "ok",
-        service: "avances-pazstor",
-        timestamp: new Date().toISOString()
+        status: "ok"
     });
 });
 
@@ -136,8 +141,8 @@ app.use("/avances", personaladorno);
 app.use("/avances", personalmontadoadorno); 
 
 app.use("/avances", informacionGeneral); 
-
-
+app.use("/avances", infoCorte); 
+app.use("/avances", infoCoordinado); 
 
 // Creamos el servidor HTTP usando la app Express
 const server = createServer(app);
@@ -154,19 +159,19 @@ const allowedOriginsSocket = [
 ];
 
 // cometar para subir a producción
-const io = new SocketIOServer(server, {
+/*const io = new SocketIOServer(server, {
   cors: {
     origin: allowedOriginsSocket,
     methods: 'GET,POST,PUT,DELETE', //Este parámetro especifica qué métodos HTTP pueden ser utilizados en las solicitudes desde el frontend
     allowedHeaders: ['Content-Type', 'Authorization'], //Este parámetro define qué encabezados HTTP pueden ser enviados en la solicitud. En este caso, solo permite el encabezado Content-Type, que indica el tipo de datos enviados en el cuerpo de la solicitud.
     credentials: true
   }
-})
+})*/
 
 // descomentar para subir a producción
-/*  const io = new SocketIOServer(server, {
+  const io = new SocketIOServer(server, {
     cors: false
-  });*/
+  });
 
 // Manejador de conexiones
 io.on("connection", (socket) => {

@@ -30,7 +30,7 @@ const GraficaCoordinadoL5 = () => {
     });
 
     // Escuchar evento específico
-    socket.on("actualizar-CoordinadoL5", (datos) => {
+    socket.on("actualizar-CoordinadosL5", (datos) => {
       console.log("Datos Actualizados en Coordinado-L5");
       if (Array.isArray(datos)) {
         setData(datos);
