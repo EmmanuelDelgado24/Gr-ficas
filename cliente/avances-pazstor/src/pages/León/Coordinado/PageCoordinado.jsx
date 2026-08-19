@@ -71,7 +71,7 @@ export const PageCoordinado = () => {
    useEffect(() => {
 
     const obtenerEmpleadosCoordinado = async () => {
-      const apiUrl = `https://api.avances-pazstor.online/avances/personaldepto`;
+      const apiUrl = `https://api.avances-pazstor.online/avances/personalcoordinado`;
       //const apiUrl = `http://192.168.17.25:3000/avances/personalcoordinado`;
 
       try {

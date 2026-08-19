@@ -93,7 +93,7 @@ export const PageMontado = () => {
   useEffect(() => {
 
     const obtenerEmpleadosMontado = async () => {
-      const apiUrl = `https://api.avances-pazstor.online/avances/personaldepto`;
+      const apiUrl = `https://api.avances-pazstor.online/avances/personalmontado`;
       //const apiUrl = `http://192.168.17.25:3000/avances/personalmontado`;
 
       try {
@@ -123,7 +123,7 @@ export const PageMontado = () => {
   useEffect(() => {
 
     const obtenerEmpleadosAdorno = async () => {
-      const apiUrl = `https://api.avances-pazstor.online/avances/personaldepto`;
+      const apiUrl = `https://api.avances-pazstor.online/avances/personaladorno`;
       //const apiUrl = `http://192.168.17.25:3000/avances/personaladorno`;
 
       try {
