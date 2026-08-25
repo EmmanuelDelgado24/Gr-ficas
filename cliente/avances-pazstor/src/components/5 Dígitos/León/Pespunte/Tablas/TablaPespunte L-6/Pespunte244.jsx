@@ -20,7 +20,7 @@ export const Pespunte244 = () => {
 
   return (
     <div>
-    <h1 className="text-xl font-bold mb-4">PESPUNTE L-6</h1>
+    <h1 className="text-xl font-bold mb-4">PESPUNTE L-2</h1>
 
     <div className="relative overflow-x-auto shadow-md sm:rounded-lg">
       {error && <p style={{ color: "red" }}>Error: {error}</p>}
