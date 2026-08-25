@@ -7,7 +7,7 @@ export const Pespunte241 = () => {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    fetch("http://localhost:3000/avances/Pespunte241")
+    fetch("https://api.avances-pazstor.online/avances/Pespunte241")
       .then((response) => {
         if (!response.ok) {
           throw new Error("Error en la respuesta del servidor");

@@ -8,7 +8,7 @@ export const TablaPespunteL4 = () => {
 
   useEffect(() => {
     setInterval(() => {
-      fetch("http://localhost:3000/avances/Pespunte241-4")
+      fetch("https://api.avances-pazstor.online/avances/Pespunte241-4")
         .then((response) => {
           if (!response.ok) {
             throw new Error("Error en la respuesta del servidor");
