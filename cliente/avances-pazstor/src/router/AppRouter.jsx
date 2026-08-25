@@ -7,7 +7,7 @@ import {PagePespunte} from "../pages/León/Pespunte/PagePespunte.jsx";
 import {PageMontado} from "../pages/León/Montado/PageMontado.jsx";
 import {PageEmbarque} from "../pages/León/Embarque/PageEmbarque.jsx";
 import {PageGeneral} from "../pages/León/General/PageGeneral.jsx";
-import {PagePespunteLotes} from "../pages/León/PespunteLotes/PagePespunteLotes.jsx";
+//import {PagePespunteLotes} from "../pages/León/PespunteLotes/PagePespunteLotes.jsx";
 
 import {PageEmbarqueCU} from "../pages/Cueramaro/Embarque/PageEmbarque.jsx";
 import {PagePespunteCU} from "../pages/Cueramaro/Pespunte/PagePespunte.jsx";
@@ -55,7 +55,7 @@ const AppRouter = () => {
                     <Route path="/León/Pespunte" element={<PagePespunte/>} />
                     <Route path="/León/Montado" element={<PageMontado/>} />
                     <Route path="/León/Embarque" element={<PageEmbarque/>} />
-                    <Route path="/León/PespunteLotes" element={<PagePespunteLotes/>} />
+                    {/* <Route path="/León/PespunteLotes" element={<PagePespunteLotes/>} /> */}
 
 
                     <Route path="/Cueramaro/Embarque" element={<PageEmbarqueCU/>} />

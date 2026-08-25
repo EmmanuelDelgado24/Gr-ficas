@@ -276,9 +276,9 @@ export const Navbar = () => {
                     {hasRole(["admin","ingenieria_leon","gerencia","planta_leon","pespunte_leon"]) && (
                       <li><NavLink to="/León/Pespunte" className={ddLinkClass} onClick={closeAllMenus}>Pespunte</NavLink></li>
                     )}
-                    {hasRole(["admin","ingenieria_leon","gerencia","planta_leon","pespunte_leon"]) && (
+                  {/* {hasRole(["admin","ingenieria_leon","gerencia","planta_leon","pespunte_leon"]) && (
                       <li><NavLink to="/León/PespunteLotes" className={ddLinkClass} onClick={closeAllMenus}>Pespunte Lotes</NavLink></li>
-                    )}
+                    )} */}
                     {hasRole(["admin","ingenieria_leon","gerencia","planta_leon","montado_leon"]) && (
                       <li><NavLink to="/León/Montado" className={ddLinkClass} onClick={closeAllMenus}>Montado - Adorno</NavLink></li>
                     )}
