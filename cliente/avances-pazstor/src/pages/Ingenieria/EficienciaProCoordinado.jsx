@@ -16,7 +16,7 @@ const EficienciaProgCoordinado = () => {
 
     useEffect(() => {
         const obtenerInfoCoordinado = async () => {
-            const apiUrl = `https://api.avances-pazstor.online/avances/personaldepto`;
+            const apiUrl = `https://api.avances-pazstor.online/avances/informacionCoordinado`;
             //const apiUrl = `http://192.168.17.25:3000/avances/informacionCoordinado`;
 
             try {

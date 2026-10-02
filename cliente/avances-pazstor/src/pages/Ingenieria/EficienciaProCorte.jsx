@@ -16,7 +16,7 @@ const EficienciaProCorte = () => {
 
     useEffect(() => {
         const obtenerInfoCorte = async () => {
-            const apiUrl = `https://api.avances-pazstor.online/avances/personaldepto`;
+            const apiUrl = `https://api.avances-pazstor.online/avances/informacionCorte`;
             //const apiUrl = `http://192.168.17.25:3000/avances/informacionCorte`;
 
             try {

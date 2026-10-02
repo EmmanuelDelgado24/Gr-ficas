@@ -16,7 +16,7 @@ const EficienciaProg = () => {
 
     useEffect(() => {
         const obtenerInfoGeneral = async () => {
-            const apiUrl = `https://api.avances-pazstor.online/avances/personaldepto`;
+            const apiUrl = `https://api.avances-pazstor.online/avances/informacionGeneral`;
             //const apiUrl = `http://192.168.17.25:3000/avances/informacionGeneral`;
 
             try {

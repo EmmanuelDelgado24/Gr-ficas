@@ -112,8 +112,8 @@ export const PageCorte = () => {
   useEffect(() => {
 
     const obtenerEmpleadosCorte = async () => {
-      //const apiUrl = `https://api.avances-pazstor.online/avances/personalcorte`;
-      const apiUrl = `http://192.168.17.25:3000/avances/personalcorte`;
+      const apiUrl = `https://api.avances-pazstor.online/avances/personalcorte`;
+      //const apiUrl = `http://192.168.17.25:3000/avances/personalcorte`;
 
       try {
         const response = await fetch(apiUrl);
