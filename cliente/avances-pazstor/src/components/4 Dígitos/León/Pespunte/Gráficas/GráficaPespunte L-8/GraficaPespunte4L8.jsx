@@ -47,7 +47,7 @@ const GraficaPespunte4L8 = () => {
     return () => {
       clearInterval(intervalo);
       socket.off("connect");
-      socket.off("actualizar-Pespunte142");
+      socket.off("actualizar-Pespunte408-4");
       socket.off("disconnect");
     };
   }, []);

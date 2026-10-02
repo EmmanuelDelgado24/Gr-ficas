@@ -47,7 +47,7 @@ const MontadoL64 = ({onTotalChange}) => {
         return () => {
             clearInterval(intervalo);
             socket.off("connect");
-            socket.off("actualizar-AuditoriaL6-4");
+            socket.off("actualizar-Montado-4");
             socket.off("disconnect");
         };
     }, []);

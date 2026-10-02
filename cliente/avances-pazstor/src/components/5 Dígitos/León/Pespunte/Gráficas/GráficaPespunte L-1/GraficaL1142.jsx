@@ -30,9 +30,22 @@ const GraficaL1142 = () => {
     });
 
     // Escuchar evento específico
-    socket.on("actualizar-Pespunte142", (datos) => {
+    socket.on("actualizar-Pespunte244", (datos) => {
       console.log("Datos Actualizados en Pespunte L2");
+      console.log(datos);
       if (Array.isArray(datos)) {
+
+        console.table(
+      datos.map(item => ({
+        programa: item.AV_PROGRAMA,
+        lote: item.AV_LOTE,
+        modelo: item.LC_ESTILO,
+        pares: item.LC_PARLOT,
+        departamento: item.AV_DEPTO,
+        subdepartamento: item.AV_SUBDEPTO
+      }))
+    );
+    
         setData(datos);
       } else {
         setData([]);
@@ -47,7 +60,7 @@ const GraficaL1142 = () => {
     return () => {
       // Limpieza al desmontar el componente
       socket.off("connect");
-      socket.off("actualizar-Pespunte142");
+      socket.off("actualizar-Pespunte244");
       clearInterval(intervalo);
       socket.off("disconnect");
     };

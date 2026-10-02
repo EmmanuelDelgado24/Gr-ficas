@@ -47,7 +47,7 @@ const AuditoriaL64 = ({onTotalChange}) => {
         return () => {
             clearInterval(intervalo);
             socket.off("connect");
-            socket.off("actualizar-AuditoriaL6-4");
+            socket.off("actualizar-Auditoria-4");
             socket.off("disconnect");
         };
     }, []);

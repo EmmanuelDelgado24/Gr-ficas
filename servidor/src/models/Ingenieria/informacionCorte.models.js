@@ -4,7 +4,7 @@ export async function getInformacionCorte() {
     const query = `SELECT ciudad, departamento, subdepto, fecha, eficiencia, meta_diaria, minutos_disponibles FROM meta_diaria 
     WHERE ciudad = 'León'
     AND departamento = 'Corte'
-    AND subdepto = 'Loteo'
+    AND subdepto = 'General'
     AND fecha =  CURRENT_DATE
     ORDER BY id_meta ASC`;
 

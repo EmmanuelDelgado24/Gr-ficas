@@ -225,7 +225,7 @@ export const PageMontado = () => {
         <div className="flex flex-col gap-4 flex-1 min-w-0">
 
           <div className="flex pb-20">
-            <p className="titulo-produccion w-full">PRODUCCIÓN MONTADO - ADORNO  L - 6</p>
+            <p className="titulo-produccion w-full">PRODUCCIÓN MONTADO/ADORNO LÍNEA 6</p>
             &nbsp;&nbsp;
             <div className="p-6 rounded-2xl bg-[#202c34] h-56 text-white shadow-md w-125 mx-auto text-center">
               <h5 className="mb-3 text-2xl font-semibold tracking-tight text-heading leading-8">PARES TOTALES</h5>

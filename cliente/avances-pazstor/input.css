@@ -1,9 +1,9 @@
-@import "flowbite/src/themes/default";
-@plugin "flowbite/plugin";
-@source "../node_modules/flowbite";
 @import "tailwindcss";
-@plugin "flowbite-react/plugin/tailwindcss";
 @source ".flowbite-react/class-list.json";
+@import "flowbite-react/plugin/tailwindcss";
+
+@source "./.flowbite-react/class-list.json";
+
 
 .titulo-produccion {
   font-family: 'Poppins', sans-serif;
@@ -15,11 +15,10 @@
   text-align: center;
   border-radius: 16px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
-  justify-content: center;
 }
 
 .input-estandar1 {
-  @apply bg-gray-50 border border-gray-300 text-lg rounded-lg py-2.5 ps-10 pe-2.5 w-70  block text-black focus:ring-[#c27f57] focus:border-[#c27f57];
+  @apply bg-gray-50 border border-gray-300 text-lg rounded-lg py-2.5 ps-10 pe-2.5 w-70 block text-black focus:ring-[#c27f57] focus:border-[#c27f57];
 }
 
 .input-estandar2 {
@@ -27,7 +26,7 @@
 }
 
 .input-estandar3 {
-  @apply bg-gray-50 border border-gray-300 text-lg rounded-lg py-2.5 ps-10 pe-2.5 w-full  block text-black focus:ring-[#c27f57] focus:border-[#c27f57];
+  @apply bg-gray-50 border border-gray-300 text-lg rounded-lg py-2.5 ps-10 pe-2.5 w-full block text-black focus:ring-[#c27f57] focus:border-[#c27f57];
 }
 
 .marquee-container {
@@ -37,7 +36,7 @@
   box-sizing: border-box;
   background: #202c34;
   position: relative;
-  font-size: 32px; 
+  font-size: 32px;
   color: white;
   border-radius: 16px;
   font-weight: 600;
@@ -46,7 +45,7 @@
 .marquee-content {
   display: inline-block;
   white-space: nowrap;
-  padding-left: 100%; /* Empieza fuera del contenedor, a la derecha */
+  padding-left: 100%;
   animation: marqueeAnim 60s linear infinite;
 }
 
@@ -54,36 +53,36 @@
   0% {
     transform: translateX(0%);
   }
+
   100% {
     transform: translateX(-100%);
   }
 }
 
 .banda {
-  color: #fbbf24; /* Amarillo dorado */
+  color: #fbbf24;
   font-weight: 600;
 }
 
 .meta {
-  color: #25d366; /* Azul brillante */
+  color: #25d366;
   font-weight: 700;
 }
 
-
-
 div {
-    padding: 0.5%;
+  padding: 0.5%;
 }
 
+
 body {
-    background-color:white;
-    padding: 0%;
+  background-color: white;
+  padding: 0;
 }
 
 section {
-    padding: 0;
+  padding: 0;
 }
 
-table{
-    padding: 0%;
+table {
+  padding: 0;
 }

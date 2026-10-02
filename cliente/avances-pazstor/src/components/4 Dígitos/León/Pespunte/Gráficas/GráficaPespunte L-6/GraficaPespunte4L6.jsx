@@ -30,7 +30,7 @@ const GraficaPespunte4L6 = () => {
     });
 
     // Escuchar evento específico
-    socket.on("actualizar-4D-Pespunte244", (datos) => {
+    socket.on("actualizar-4D-Pespunte245", (datos) => {
       console.log("Datos Actualizadosen 4L6");
       if (Array.isArray(datos)) {
         setData(datos);
@@ -47,7 +47,7 @@ const GraficaPespunte4L6 = () => {
     return () => {
       clearInterval(intervalo);
       socket.off("connect");
-      socket.off("actualizar-Pespunte142");
+      socket.off("actualizar-Pespunte245-4");
       socket.off("disconnect");
     };
   }, []);

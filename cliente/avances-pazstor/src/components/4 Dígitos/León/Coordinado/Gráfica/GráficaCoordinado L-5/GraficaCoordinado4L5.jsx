@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import Chart from "react-apexcharts";
 import { socket } from "../../../../../../socket";
 
-const GraficaCoordinado4L5 = () => {
+const GraficaCoordinado4L5 = ({ onTotalChange }) => {
   const [data, setData] = useState([]);
     
       useEffect(() => {
@@ -47,7 +47,7 @@ const GraficaCoordinado4L5 = () => {
         return () => {
           clearInterval(intervalo);
           socket.off("connect");
-          socket.off("actualizar-Pespunte142");
+          socket.off("actualizar-CoordinadoL5-4");
           socket.off("disconnect");
         };
       }, []);
@@ -64,6 +64,10 @@ const GraficaCoordinado4L5 = () => {
   };
 
   const sumaLC_PARLOT = calcularSumaLC_PARLOT(data);
+
+   useEffect(() => {
+    onTotalChange?.(sumaLC_PARLOT);
+  }, [sumaLC_PARLOT, onTotalChange]);
 
   // Calcular suma de pares por modelo
   const sumaPorModelo = modelos.map((modelo) => {

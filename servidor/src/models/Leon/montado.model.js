@@ -1,5 +1,5 @@
 import { executeQuery as executeQuery5D } from "../../config/5 Dígitos/conection.js";
-// import { executeQuery as executeQuery4D } from "../../config/4 Dígitos/conection4.js";
+import { executeQuery as executeQuery4D } from "../../config/4 Dígitos/conection4.js";
 
 export async function obtenerLotes({ depto, subdepto, origen}) {
     const query = `
@@ -27,7 +27,7 @@ export async function obtenerLotes({ depto, subdepto, origen}) {
 
     try {
     if (origen === "4D") {
-    //   return await executeQuery4D(query);
+       return await executeQuery4D(query);
     } else {
       return await executeQuery5D(query);
     }
@@ -39,6 +39,10 @@ export async function obtenerLotes({ depto, subdepto, origen}) {
 export const lotesConfig = [
   { nombre: 'Montado', depto: 60, subdepto:  266, origen: "5D"},
   { nombre: 'Adorno', depto: 70, subdepto:  276, origen: "5D" },    
-  { nombre: 'Auditoria', depto: 80, subdepto: 86, origen: "5D"},     
+  { nombre: 'Auditoria', depto: 80, subdepto: 86, origen: "5D"},    
+  
+  { nombre: 'Montado-4', depto: 60, subdepto:  266, origen: "4D"},
+  { nombre: 'Adorno-4', depto: 70, subdepto:  276, origen: "4D" },    
+  { nombre: 'Auditoria-4', depto: 80, subdepto: 86, origen: "4D"}, 
   
 ];

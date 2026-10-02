@@ -2,7 +2,7 @@
 import "flowbite";
 import { useEffect, useState, useCallback, useMemo } from "react";
 import { socket } from "../../../socket";
-import {Reloj} from "../../../util/Reloj.jsx";
+import { Reloj } from "../../../util/Reloj.jsx";
 
 
 //Gráficas 4 Dígitos
@@ -24,17 +24,17 @@ import GraficaL8 from "../../../components/5 Dígitos/León/Pespunte/Gráficas/G
 
 export const PagePespunte = () => {
   const departamento = "Pespunte";
-    const ciudad = "León";
-    const subdeptos = useMemo(() => [
-      { nombre: 'Banda 241' },
-      { nombre: 'Banda 242' },
-      { nombre: 'Banda 243' },
-      { nombre: 'Banda 244' },  
-      { nombre: 'Banda 245' },
-      { nombre: 'Banda 246' },
-    ], []);
-    const [metas, setMetas] = useState({});
-  
+  const ciudad = "León";
+  const subdeptos = useMemo(() => [
+    { nombre: 'Banda 241' },
+    { nombre: 'Banda 242' },
+    { nombre: 'Banda 243' },
+    { nombre: 'Banda 244' },
+    { nombre: 'Banda 245' },
+    { nombre: 'Banda 246' },
+  ], []);
+  const [metas, setMetas] = useState({});
+
   const ConsultarMeta = useCallback(async () => {
     try {
       const nuevasMetas = {};
@@ -48,7 +48,7 @@ export const PagePespunte = () => {
             const errorData = await response.json();
             throw new Error(errorData.message || "Error al consultar la API");
           }
-            
+
           const data = await response.json();
           // metas[subdepto.nombre] = data.meta_diaria;
           console.log("Datos recibidos de la API:", data);
@@ -57,10 +57,10 @@ export const PagePespunte = () => {
         } catch (error) {
           console.error("Error al realizar la consulta:", error);
           // alert(`Error al consultar: ${error.message}`);
-        }      
+        }
       }
       setMetas(nuevasMetas);
-    } catch(error){
+    } catch (error) {
       console.error(error);
     }
   }, [subdeptos, departamento, ciudad]);
@@ -70,21 +70,20 @@ export const PagePespunte = () => {
     ConsultarMeta();
   }, [ConsultarMeta]);
 
-  
 
   return (
     <div>
-      <br/><br/>
+      <br /><br />
       <div className="flex">
         <p className="titulo-produccion w-full">PRODUCCIÓN PESPUNTE </p>
         &nbsp;&nbsp;
-        <Reloj/>
+        <Reloj />
       </div>
       <div className="marquee-container">
         <div className="marquee-content">
           {subdeptos.map((subdepto) => (
             <span key={subdepto.nombre}>
-              {"Meta Asignada "}{subdepto.nombre}: <span className="meta">{metas[subdepto.nombre] || '--'}</span> 
+              {"Meta Asignada "}{subdepto.nombre}: <span className="meta">{metas[subdepto.nombre] || '--'}</span>
               &nbsp; &nbsp; &nbsp; &nbsp;
             </span>
           ))}
@@ -96,32 +95,32 @@ export const PagePespunte = () => {
             <tr>
               <th scope="col" className="w-1/4">
                 <div>
-                <GraficaPespunte4L1 />
+                  <GraficaPespunte4L1 />
                 </div>
               </th>
               <th scope="col" className="w-1/4">
                 <div className="">
-                <GraficaPespunte4L2 />
+                  <GraficaPespunte4L2 />
                 </div>
               </th>
               <th scope="col" className="w-1/4">
                 <div className="">
-                <GraficaPespunte4L4 />
+                  <GraficaPespunte4L4 />
                 </div>
               </th>
               <th scope="col" className="w-1/4">
                 <div className="">
-                <GraficaPespunte4L5 />
+                  <GraficaPespunte4L5 />
                 </div>
               </th>
               <th scope="col" className="w-1/4">
                 <div className="">
-                <GraficaPespunte4L6 />
+                  <GraficaPespunte4L6 />
                 </div>
               </th>
               <th scope="col" className="w-1/4">
                 <div className="">
-                <GraficaPespunte4L8 />
+                  <GraficaPespunte4L8 />
                 </div>
               </th>
             </tr>
@@ -130,32 +129,32 @@ export const PagePespunte = () => {
             <tr className="odd:bg-white odd:dark:bg-gray-50 even:bg-gray-50 even:dark:bg-gray-500">
               <th scope="row" className="w-1/4">
                 <div className="">
-                <GraficaL1 />
+                  <GraficaL1 />
                 </div>
               </th>
               <th scope="row" className="w-1/4">
                 <div className="">
-                <GraficaL1142 />
+                  <GraficaL1142 />
                 </div>
               </th>
               <th scope="row" className="w-1/4">
                 <div className="">
-                <GraficaL4 />
-                </div>
-              </th>
-                <th scope="row" className="w-1/4">
-                <div className="">
-                <GraficaL5 />
+                  <GraficaL4 />
                 </div>
               </th>
               <th scope="row" className="w-1/4">
                 <div className="">
-                <GraficaL6 />
+                  <GraficaL5 />
                 </div>
               </th>
               <th scope="row" className="w-1/4">
                 <div className="">
-                <GraficaL8 />
+                  <GraficaL6 />
+                </div>
+              </th>
+              <th scope="row" className="w-1/4">
+                <div className="">
+                  <GraficaL8 />
                 </div>
               </th>
             </tr>

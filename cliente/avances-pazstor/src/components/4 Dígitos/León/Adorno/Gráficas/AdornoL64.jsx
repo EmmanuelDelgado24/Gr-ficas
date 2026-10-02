@@ -47,7 +47,7 @@ const AdornoL64 = ({onTotalChange}) => {
         return () => {
             clearInterval(intervalo);
             socket.off("connect");
-            socket.off("actualizar-AdornoL6-4");
+            socket.off("actualizar-Adorno-4");
             socket.off("disconnect");
         };
     }, []);

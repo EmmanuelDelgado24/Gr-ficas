@@ -6,7 +6,7 @@ export const createConnection = () => {
   return new Promise((resolve, reject) => {
     Firebird.attach(options, (err, db) => {
       if (err) reject(err);
-      else resolve(db); 
+      else resolve(db);
       // console.log("CCCCCCCCCCcccccccc");
     });
   });

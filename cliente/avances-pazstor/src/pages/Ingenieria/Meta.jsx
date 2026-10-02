@@ -29,7 +29,7 @@ export const PageFormulario = () => {
 
 
   const mainOptions = [
-      { label: "Corte", subOptions: ["Piel", "Forro", "Loteo"] },
+      { label: "Corte", subOptions: ["General"] },
       { label: "Coordinado", subOptions: ["General"] },
       { label: "Pespunte", subOptions: ["Banda 241", "Banda 242", "Banda 243", "Banda 244", "Banda 245"] },
       { label: "Montado", subOptions: ["Linea 1","Linea 2","Linea 4","Linea 5","Linea 6","Linea 8"] },

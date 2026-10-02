@@ -47,7 +47,7 @@ const GraficaPespunte4L1 = () => {
     return () => {
       clearInterval(intervalo);
       socket.off("connect");
-      socket.off("actualizar-Pespunte142");
+      socket.off("actualizar-Pespunte242-4");
       socket.off("disconnect");
     };
   }, []);
@@ -104,41 +104,41 @@ const GraficaPespunte4L1 = () => {
     },
   };
 
- const series = [{ name: "Pares", data: sumaPorModelo }];
+  const series = [{ name: "Pares", data: sumaPorModelo }];
 
   return (
-      <div>
-        {/* {loading ? (
+    <div>
+      {/* {loading ? (
           <p>Cargando datos...</p>
         ) : error ? (
           <p style={{ color: "white" }}>Error: {error}</p>
         ) : ( */}
-          <div className="max-w-lg p-6 border border-gray-100 rounded-lg shadow-sm bg-gray-800 border-dark-700">
-            <div>
-              <h5 className="leading-none text-3xl font-bold text-white pb-2 text-center">
-                Pespunte L-1
-              </h5>
-              <p className="text-2xl font-normal text-gray-400">
-                N° total pares: <span className="font-bold text-white"> {sumaLC_PARLOT} </span>
-              </p>
-              <p className="text-2xl font-normal text-gray-400">
-                Modelos: <br/>
-                <span className={`font-bold ${modelos.length > 0 ? "text-white" : "text-yellow-400 text-lg"}`}>
-    {modelos.length > 0 ? modelos.join(", ") : " No hay datos"}
-  </span>
-              </p>
-            </div>
-            <Chart
-              options={options}
-              series={series}
-              type="bar"
-              width="100%"
-              height="250px"
-            />
-          </div>
-        {/* )} */}
+      <div className="max-w-lg p-6 border border-gray-100 rounded-lg shadow-sm bg-gray-800 border-dark-700">
+        <div>
+          <h5 className="leading-none text-3xl font-bold text-white pb-2 text-center">
+            Pespunte L-1
+          </h5>
+          <p className="text-2xl font-normal text-gray-400">
+            N° total pares: <span className="font-bold text-white"> {sumaLC_PARLOT} </span>
+          </p>
+          <p className="text-2xl font-normal text-gray-400">
+            Modelos: <br />
+            <span className={`font-bold ${modelos.length > 0 ? "text-white" : "text-yellow-400 text-lg"}`}>
+              {modelos.length > 0 ? modelos.join(", ") : " No hay datos"}
+            </span>
+          </p>
+        </div>
+        <Chart
+          options={options}
+          series={series}
+          type="bar"
+          width="100%"
+          height="250px"
+        />
       </div>
-    );
-  };
+      {/* )} */}
+    </div>
+  );
+};
 
 export default GraficaPespunte4L1;

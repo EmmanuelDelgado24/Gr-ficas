@@ -47,7 +47,7 @@ const GraficaCoordinado4L8 = ({ onTotalChange }) => {
       return () => {
         clearInterval(intervalo);
         socket.off("connect");
-        socket.off("actualizar-Pespunte142");
+        socket.off("actualizar-CoordinadoL8-4");
         socket.off("disconnect");
       };
     }, []);

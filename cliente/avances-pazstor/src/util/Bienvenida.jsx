@@ -9,9 +9,8 @@ export const Bienvenida = () => {
   
   return (
     <>
-      <br/><br/>
       {/* <p className="titulo-produccion w-full">Avances Pazstor</p> */}
-      <div className="h-135">
+      <div className="h-210">
       <Carousel>
         <img src={C1} />
         <img src={C3} />

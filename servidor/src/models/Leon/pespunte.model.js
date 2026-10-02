@@ -1,8 +1,8 @@
 import { executeQuery as executeQuery5D } from "../../config/5 Dígitos/conection.js";
 import { executeQuery as executeQuery4D } from "../../config/4 Dígitos/conection4.js";
 
-export async function obtenerLotes({ depto, subdepto, origen}) {
-    const query = `    
+export async function obtenerLotes({ depto, subdepto, origen }) {
+  const query = `    
       SELECT     
         A.AV_FECHA,
         A.AV_HORA,
@@ -25,31 +25,33 @@ export async function obtenerLotes({ depto, subdepto, origen}) {
       WHERE A.AV_FECHA = CURRENT_DATE
     `;
 
-    try {
+  try {
     if (origen === "4D") {
       return await executeQuery4D(query);
-    } else {
+    }
+
+    if (origen === "5D") {
       return await executeQuery5D(query);
     }
-    } catch (error) {
-        throw new Error(`Error al obtener datos para depto: ${depto} subdepto: ${subdepto}: ${error.message}`);
-    }
+  } catch (error) {
+    throw new Error(`Error al obtener datos para depto: ${depto} subdepto: ${subdepto}: ${error.message}`);
+  }
 }
 
 export const lotesConfig = [
-  { nombre: 'Pespunte242', depto: 59, subdepto: 91, origen: "5D" },    //Linea 1
-  { nombre: 'Pespunte142', depto: 59, subdepto: 92, origen: "5D"},     //Linea 2
+  //{ nombre: 'Pespunte242', depto: 59, subdepto: 91, origen: "5D" },    //Linea 1
+  { nombre: 'Pespunte244', depto: 59, subdepto: 92, origen: "5D" },     //Linea 2
   { nombre: 'Pespunte241', depto: 59, subdepto: 94, origen: "5D" },    //Linea 4
-  { nombre: 'Pespunte243', depto: 59, subdepto: 95, origen: "5D" },    //Linea 5
-  { nombre: 'Pespunte244', depto: 59, subdepto: 96, origen: "5D" },    //Linea 6
+  { nombre: 'Pespunte141', depto: 59, subdepto: 95, origen: "5D" },    //Linea 5
+  { nombre: 'Pespunte245', depto: 59, subdepto: 96, origen: "5D" },    //Linea 6
   { nombre: 'MaquilaL8', depto: 59, subdepto: 98, origen: "5D" },    //Linea 8
 
-  
-  { nombre: '4D-Pespunte242', depto: 59, subdepto: 91, origen: "4D" }, //Linea 1
-  { nombre: '4D-Pespunte142', depto: 59, subdepto: 92, origen: "4D" }, //Linea 2
+
+ // { nombre: '4D-Pespunte242', depto: 59, subdepto: 91, origen: "4D" }, //Linea 1
+  { nombre: '4D-Pespunte244', depto: 59, subdepto: 92, origen: "4D" }, //Linea 2
   { nombre: '4D-Pespunte241', depto: 59, subdepto: 94, origen: "4D" }, //Linea 4
-  { nombre: '4D-Pespunte243', depto: 59, subdepto: 95, origen: "4D" }, //Linea 5
-  { nombre: '4D-Pespunte244', depto: 59, subdepto: 96, origen: "4D" }, //Linea 6
+  { nombre: '4D-Pespunte141', depto: 59, subdepto: 95, origen: "4D" }, //Linea 5
+  { nombre: '4D-Pespunte245', depto: 59, subdepto: 96, origen: "4D" }, //Linea 6
   { nombre: '4D-MaquilaL8', depto: 59, subdepto: 98, origen: "4D" }, //Linea 8
 
   // { nombre: 'Pespunte245', depto: 59, subdepto: 96 },

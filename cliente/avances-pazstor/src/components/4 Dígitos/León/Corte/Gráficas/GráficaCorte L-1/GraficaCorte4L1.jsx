@@ -66,6 +66,7 @@ const GraficaCorte4L1 = () => {
 
   const sumaLC_PARLOT = calcularSumaLC_PARLOT(data);
 
+
   // Calcular suma de pares por modelo
   const sumaPorModelo = modelos.map((modelo) => {
     return data

@@ -44,5 +44,5 @@ export const lotesConfig = [
   { nombre: '4D-Montado-L1', depto: 60, subdepto: 61, origen: "4D" }, //Linea 1
   { nombre: '4D-Montado-L2', depto: 60, subdepto: 62, origen: "4D" }, //Linea 2
   { nombre: '4D-Montado-L4', depto: 60, subdepto: 64, origen: "4D" }, //Linea 4
-  
+
 ];

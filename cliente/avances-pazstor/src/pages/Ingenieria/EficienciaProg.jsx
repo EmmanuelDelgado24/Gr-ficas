@@ -208,7 +208,7 @@ const EficienciaProg = () => {
             {/* Encabezado */}
             <div className="flex justify-between items-center mb-4 w-full">
                 <h5 className="mb-3 text-2xl font-semibold tracking-tight text-heading leading-8">
-                    EFICIENCIA PROGRAMADA
+                    EFICIENCIA PROG
                 </h5>
             </div>
 

@@ -34,10 +34,12 @@ export const PageCoordinado = () => {
   const [totales, setTotales] = useState({
     coordinado2: 0,
     coordinado4: 0,
+    coordinado5: 0,
     coordinado6: 0,
     coordinado8: 0,
     coordinado24: 0,
     coordinado44: 0,
+    coordinado54: 0,
     coordinado64: 0,
     coordinado84: 0,
 
@@ -50,7 +52,7 @@ export const PageCoordinado = () => {
 
   const ConsultarMeta = async () => {
     //const apiUrl = `https://159.65.78.91/avances/ReflejarMeta?departamento=${departamento}&subdepto=${subdepto}&ciudad=${ciudad}`;
-    //const apiUrl = `http://192.168.17.24:3000/avances/ReflejarMeta?departamento=${departamento}&subdepto=${subdepto}&ciudad=${ciudad}`;
+   // const apiUrl = `http://192.168.17.25:3000/avances/ReflejarMeta?departamento=${departamento}&subdepto=${subdepto}&ciudad=${ciudad}`;
     const apiUrl = `https://api.avances-pazstor.online/avances/ReflejarMeta?departamento=${departamento}&subdepto=${subdepto}&ciudad=${ciudad}`;
     try {
       const response = await fetch(apiUrl);
@@ -80,10 +82,9 @@ export const PageCoordinado = () => {
           const errorData = await response.json();
           throw new Error(errorData.message || "Error al consultar la API");
         }
-
-        const empleadosmo = await response.json();
-        console.log("Datos recibidos de la API:", empleadosmo);
-        setEmpleadosCor(empleadosmo);
+        const empleadosco = await response.json();
+        console.log("Datos recibidos de la API:", empleadosco);
+        setEmpleadosCor(empleadosco);
       } catch (error) {
         console.error("Error al realizar la consulta:", error);
       }
@@ -107,6 +108,10 @@ export const PageCoordinado = () => {
     setTotales((prev) => ({ ...prev, coordinado4: valor }));
   }, []);
 
+  const setTotalCoordinado5 = useCallback((valor) => {
+    setTotales((prev) => ({ ...prev, coordinado5: valor }));
+  }, []);
+
   const setTotalCoordinado6 = useCallback((valor) => {
     setTotales((prev) => ({ ...prev, coordinado6: valor }));
   }, []);
@@ -127,6 +132,10 @@ export const PageCoordinado = () => {
     setTotales((prev) => ({ ...prev, coordinado64: valor }));
   }, []);
 
+  const setTotalCoordinado54 = useCallback((valor) => {
+    setTotales((prev) => ({ ...prev, coordinado54: valor }));
+  }, []);
+
   const setTotalCoordinado84 = useCallback((valor) => {
     setTotales((prev) => ({ ...prev, coordinado84: valor }));
   }, []);
@@ -142,12 +151,12 @@ export const PageCoordinado = () => {
       <br /><br />
 
       {/* CONTENEDOR PRINCIPAL */}
-      <div className="flex gap-2 items-stretch w-full">
+      <div className="flex flex-col lg:flex-row gap-2 w-full">
 
         {/* SIDEBAR IZQUIERDO */}
-        <aside className="flex flex-col gap-4 w-72 bg-[#1a2332] p-4 rounded-xl border-l-[6px] border-green-500 shadow-xl shrink-0 max-h-[96vh] overflow-y-auto">
+        <aside className="flex flex-col gap-4 w-full lg:w-72 lg:shrink-0 bg-[#1a2332] p-4 rounded-xl border-l-[6px] border-green-500 shadow-xl max-h-[50vh]lg:max-h-[96vh] overflow-y-auto">
 
-          {/* Primera Sección: Personal Montado */}
+          {/* Primera Sección: Personal Coordinado */}
           <section className="bg-[#202c34] p-4 rounded-lg">
             <h3 className="text-sm font-bold text-white uppercase tracking-wider mb-3 border-b border-gray-700 pb-2">
               PERSONAL COORDINADO {sumarEmpleadosCoordinado}
@@ -195,9 +204,9 @@ export const PageCoordinado = () => {
             <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
               <thead class="text-xs text-gray-700 bg-gray-50 dark:bg-gray-100 dark:text-gray-400">
                 <tr>
-                  <th scope="col" class="px-0">
+                 {/* <th scope="col" class="px-0">
                     <GraficaCoordinado4L1 />
-                  </th>
+                  </th>*/} 
                   <th scope="col" class="px-0">
                     <GraficaCoordinado4L2 onTotalChange={setTotalCoordinado24} />
                   </th>
@@ -205,14 +214,14 @@ export const PageCoordinado = () => {
                     <GraficaCoordinado4L4 onTotalChange={setTotalCoordinado44} />
                   </th>
                   <th scope="col" class="px-0">
-                    <GraficaCoordinado4L5 />
+                    <GraficaCoordinado4L5 onTotalChange={setTotalCoordinado54} />
                   </th>
                   <th scope="col" class="px-0">
                     <GraficaCoordinado4L6 onTotalChange={setTotalCoordinado64} />
                   </th>
-                  <th scope="col" class="px-0">
+                {/* <th scope="col" class="px-0">
                     <GraficaCoordinado4L7 />
-                  </th>
+                  </th>*/} 
                   <th scope="col" class="px-0">
                     <GraficaCoordinado4L8 onTotalChange={setTotalCoordinado84} />
                   </th>
@@ -220,9 +229,9 @@ export const PageCoordinado = () => {
               </thead>
               <tbody>
                 <tr class="odd:bg-white odd:dark:bg-gray-50 even:bg-gray-50 even:dark:bg-gray-500 border-b dark:border-gray-500 border-gray-400">
-                  <th scope="row" class="px-0">
+                  {/*<th scope="row" class="px-0">
                     <GraficaCoordinadoL1 />
-                  </th>
+                  </th>*/} 
                   <th scope="row" class="px-0">
                     <GraficaCoordinadoL2 onTotalChange={setTotalCoordinado2} />
                   </th>
@@ -230,14 +239,14 @@ export const PageCoordinado = () => {
                     <GraficaCoordinadoL4 onTotalChange={setTotalCoordinado4} />
                   </th>
                   <th scope="row" class="px-0">
-                    <GraficaCoordinadoL5 />
+                    <GraficaCoordinadoL5 onTotalChange={setTotalCoordinado5} />
                   </th>
                   <th scope="row" class="px-0">
                     <GraficaCoordinadoL6 onTotalChange={setTotalCoordinado6} />
                   </th>
-                  <th scope="row" class="px-0">
+                 {/* <th scope="row" class="px-0">
                     <GraficaCoordinadoL7 />
-                  </th>
+                  </th> */}
                   <th scope="row" class="px-0">
                     <GraficaCoordinadoL8 onTotalChange={setTotalCoordinado8} />
                   </th>

@@ -1,14 +1,16 @@
 import { BrowserRouter as Router,Route, Routes } from "react-router-dom";
 import {Navbar} from "../util/Navbar.jsx";
 import {Bienvenida} from "../util/Bienvenida.jsx";
+
+// León General
 import {PageCorte} from "../pages/León/Corte/PageCorte.jsx";
 import {PageCoordinado} from "../pages/León/Coordinado/PageCoordinado.jsx";
 import {PagePespunte} from "../pages/León/Pespunte/PagePespunte.jsx";
 import {PageMontado} from "../pages/León/Montado/PageMontado.jsx";
 import {PageEmbarque} from "../pages/León/Embarque/PageEmbarque.jsx";
 import {PageGeneral} from "../pages/León/General/PageGeneral.jsx";
-//import {PagePespunteLotes} from "../pages/León/PespunteLotes/PagePespunteLotes.jsx";
 
+// Cuerámaro General
 import {PageEmbarqueCU} from "../pages/Cueramaro/Embarque/PageEmbarque.jsx";
 import {PagePespunteCU} from "../pages/Cueramaro/Pespunte/PagePespunte.jsx";
 import {PageCorteCU} from "../pages/Cueramaro/Corte/PageCorte.jsx";
@@ -18,7 +20,7 @@ import {PageAdornoCU} from "../pages/Cueramaro/Adorno/PageAdorno.jsx";
 import {PageAuditoriaCU} from "../pages/Cueramaro/Auditoria/PageAuditoria.jsx";
 import {PageGeneralCU} from "../pages/Cueramaro/General/PageGeneral.jsx";
 
-
+// Manuel Doblado General
 import {PageGeneralMD} from "../pages/Manuel Doblado/General/PageGeneral.jsx";
 import {PageCorteMD} from "../pages/Manuel Doblado/Corte/PageCorte.jsx";
 import {PagePespunteMD} from "../pages/Manuel Doblado/Pespunte/PagePespunte.jsx";
@@ -31,7 +33,25 @@ import {PageSuela} from "../pages/Manuel Doblado/Suela/PageSuela.jsx";
 import {PageInyeccion} from "../pages/Manuel Doblado/Inyeccion/PageInyeccion.jsx";
 import {PagePreacabado} from "../pages/Manuel Doblado/Preacabado/PagePreacabado.jsx";
 
+// Calidad León
+import {PageCorteL} from "../pages/Calidad/León/PageCorteL.jsx";
+import {PageCoordinadoL} from "../pages/Calidad/León/PageCoordinadoL.jsx";
+import {PagePespunteL} from "../pages/Calidad/León/PagePespunteL.jsx";
+import {PageMontadoAdornoL} from "../pages/Calidad/León/PageMontadoAdornoL.jsx";
 
+// Calidad Cuerámaro
+import {PageCorteC} from "../pages/Calidad/Cueramaro/PageCorteC.jsx"
+import {PageCoordinadoC} from "../pages/Calidad/Cueramaro/PageCoordinadoC.jsx";
+import {PagePespunteC} from "../pages/Calidad/Cueramaro/PagePespunteC.jsx"
+import {PageMontadoAdornoC} from "../pages/Calidad/Cueramaro/PageMontadoAdornoC.jsx"
+
+
+// Calidad Manuel Doblado
+import {PageCorteM} from "../pages/Calidad/Manuel Doblado/PageCorteM.jsx"
+import {PageCoordinadoM} from "../pages/Calidad/Manuel Doblado/PageCoordinadoM.jsx";
+import PagePespunteM from "../pages/Calidad/Manuel Doblado/PagePespunteM.jsx";
+import {PageMontadoAdornoM} from "../pages/Calidad/Manuel Doblado/PageMontadoAdornoM.jsx";
+ 
 import {PageFormulario} from "../pages/Ingenieria/Meta.jsx";
 import {PageReporte} from "../pages/Ingenieria/Reporte.jsx";
 import {PageAgregar} from "../pages/Ingenieria/Agregar.jsx";
@@ -49,6 +69,8 @@ const AppRouter = () => {
             <Layout>
                 <Routes>
                     <Route path="/" element={<Bienvenida/>} />
+
+                    {/* León */}
                     <Route path="/León/General" element={<PageGeneral/>} />
                     <Route path="/León/Corte" element={<PageCorte/>} />
                     <Route path="/León/Coordinado" element={<PageCoordinado/>} />
@@ -57,7 +79,7 @@ const AppRouter = () => {
                     <Route path="/León/Embarque" element={<PageEmbarque/>} />
                     {/* <Route path="/León/PespunteLotes" element={<PagePespunteLotes/>} /> */}
 
-
+                    {/* Cuerámaro */}
                     <Route path="/Cueramaro/Embarque" element={<PageEmbarqueCU/>} />
                     <Route path="/Cueramaro/Corte" element={<PageCorteCU/>} />
                     <Route path="/Cueramaro/Pespunte" element={<PagePespunteCU/>} />
@@ -67,7 +89,7 @@ const AppRouter = () => {
                     <Route path="/Cueramaro/Adorno" element={<PageAdornoCU/>} />
                     <Route path="/Cueramaro/General" element={<PageGeneralCU/>} />
 
-
+                    {/* Manuel Doblado */}
                     <Route path="/ManuelDoblado/General" element={<PageGeneralMD/>} />
                     <Route path="/ManuelDoblado/Corte" element={<PageCorteMD/>} />
                     <Route path="/ManuelDoblado/Pespunte" element={<PagePespunteMD/>} />
@@ -80,6 +102,23 @@ const AppRouter = () => {
                     <Route path="/ManuelDoblado/Inyeccion" element={<PageInyeccion/>} />
                     <Route path="/ManuelDoblado/Preacabado" element={<PagePreacabado/>} />
 
+                    {/* ---------------- CALIDAD CUERÁMARO ---------------- */}
+                    <Route path="/Calidad/Cueramaro/Corte" element={<PageCorteC />} />
+                    <Route path="/Calidad/Cueramaro/Coordinado" element={<PageCoordinadoC />} />
+                    <Route path="/Calidad/Cueramaro/Pespunte" element={<PagePespunteC />} />
+                    <Route path="/Calidad/Cueramaro/Montado" element={<PageMontadoAdornoC />} />
+
+                    {/* ---------------- CALIDAD MANUEL DOBLADO ---------------- */}
+                    <Route path="/Calidad/ManuelDoblado/Corte" element={<PageCorteM />} />
+                    <Route path="/Calidad/ManuelDoblado/Coordinado" element={<PageCoordinadoM />} />
+                    <Route path="/Calidad/ManuelDoblado/Pespunte" element={<PagePespunteM />} />
+                    <Route path="/Calidad/ManuelDoblado/Montado" element={<PageMontadoAdornoM />} />
+
+                    {/* ---------------- CALIDAD LEÓN ---------------- */}
+                    <Route path="/Calidad/Leon/CorteL" element={<PageCorteL />} />
+                    <Route path="/Calidad/Leon/CoordinadoL" element={<PageCoordinadoL />} />
+                    <Route path="/Calidad/Leon/PespunteL" element={<PagePespunteL />} />
+                    <Route path="/Calidad/Leon/MontadoAdornoL" element={<PageMontadoAdornoL />} />
 
                     <Route path="/Ingenieria/Meta" element={<PageFormulario/>} />
                     <Route path="/Ingenieria/Reporte" element={<PageReporte/>} />

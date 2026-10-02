@@ -17,11 +17,12 @@ export async function ModelosPespunte({ departamento, modelo }) {
   }
 }
 
-export async function ModelosCorte({ departamento, modelo, subdepto }) {
+export async function ModelosCorte({ departamento, modelo }) {
   const nombreTabla = `modelos_${departamento}`;
+  const query = `SELECT tiempo_std_min FROM ${nombreTabla} WHERE modelo = $1`;
   
   // Mapeo de subdepartamento a nombre de columna
-  const columnas = {
+  /*const columnas = {
     "Piel": "tiempo_piel",
     "Forro": "tiempo_forro",
     "Loteo": "tiempo_loteo"
@@ -33,7 +34,7 @@ export async function ModelosCorte({ departamento, modelo, subdepto }) {
   }
 
   const query = `SELECT ${columnaTiempo} FROM ${nombreTabla} WHERE modelo = $1`;
-
+*/
   try {
     const result = await executeQuery(query, [modelo]); 
     if (result.rows && result.rows.length > 0) {

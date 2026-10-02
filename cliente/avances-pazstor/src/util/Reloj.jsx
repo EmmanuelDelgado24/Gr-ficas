@@ -194,7 +194,7 @@ export const Reloj = () => {
   };
 
   return (
-    <div className="p-6 rounded-2xl bg-[#202c34] h-56 text-white shadow-md w-full max-w-[15rem] mx-auto text-center flex flex-col items-center justify-between">
+    <div className="p-6 rounded-2xl bg-[#202c34] h-56 text-white shadow-md w-full max-w-[17rem] mx-auto text-center flex flex-col items-center justify-between">
       {/* Reloj Analógico */}
       <div className="w-full">
         <HighchartsReact

@@ -65,6 +65,15 @@ import informacionGeneral from "./routes/Ingenieria/infoGeneral.routes.js"
 import infoCorte from "./routes/Ingenieria/infoCorte.routes.js";
 import infoCoordinado from "./routes/Ingenieria/infoCoordinado.routes.js";
 
+// Calidad
+import obtenerCategorias  from './routes/Calidad/categoria.routes.js';
+import crearCategoria from './routes/Calidad/categoria.routes.js';
+import editarCategoria from './routes/Calidad/categoria.routes.js';
+import eliminarCategoria from './routes/Calidad/categoria.routes.js';
+import buscarCategoria from './routes/Calidad/categoria.routes.js';
+import obtenerDefectos from './routes/Calidad/defecto.routes.js';
+import crearInspeccion from './routes/Calidad/inspeccion.routes.js';
+
 // Contraseñas HASH 
 // import bcrypt from 'bcrypt';
 // async function generarHash() {
@@ -143,6 +152,16 @@ app.use("/avances", personalmontadoadorno);
 app.use("/avances", informacionGeneral); 
 app.use("/avances", infoCorte); 
 app.use("/avances", infoCoordinado); 
+
+app.use("/avances", obtenerCategorias); 
+app.use("/avances", crearCategoria);
+app.use("/avances", editarCategoria);
+app.use("/avances", eliminarCategoria);
+app.use("/avances", buscarCategoria);
+
+app.use("/avances", obtenerDefectos);
+
+app.use("avances", crearInspeccion);
 
 // Creamos el servidor HTTP usando la app Express
 const server = createServer(app);

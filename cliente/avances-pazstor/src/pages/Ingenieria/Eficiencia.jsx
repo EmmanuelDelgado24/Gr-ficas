@@ -17,7 +17,7 @@ const Eficiencia = ({ totalPares = 0 }) => {
     useEffect(() => {
         const obtenerInfoGeneral = async () => {
             const apiUrl = `https://api.avances-pazstor.online/avances/personaldepto`;
-            //const apiUrl = `http://192.168.17.25:3000/avances/informacionGeneral`;
+           // const apiUrl = `http://192.168.17.25:3000/avances/informacionGeneral`;
 
             try {
                 const response = await fetch(apiUrl);
