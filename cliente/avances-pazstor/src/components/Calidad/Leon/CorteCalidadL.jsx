@@ -23,6 +23,8 @@ export const CorteCalidadL = () => {
         listaOperaciones,
         listaInspeccionesLeonCorte,
         listaSupervisores,
+        editandoId,
+        iniciarEdicion, 
         handleDeleteCorteL,
         handleFormularioChange,
         handleFecha,
@@ -64,6 +66,7 @@ export const CorteCalidadL = () => {
                     onCiudad={handleCiudadChange}
                     onDepartamento={handleDepartamentoChange}
                     onSubdepartamento={handleSubdepartamentoChange}
+                    editandoId = {editandoId} 
 
                 />
 
@@ -89,17 +92,12 @@ export const CorteCalidadL = () => {
                     <Button type="submit" color="green">
                         Registrar inspección
                     </Button>
-                    <Button
-                        type="button"
-                        className="text-white bg-amber-500 hover:bg-amber-600 focus:ring-4 focus:ring-amber-300 font-medium rounded-base text-sm px-4 py-2.5"
-                    >
-                        Editar inspección
-                    </Button>
                 </div>
 
                 <TablaInspeccionesLeonCorte 
                 lista={listaInspeccionesLeonCorte}
-                handleDeleteCorteL={handleDeleteCorteL} />
+                handleDeleteCorteL={handleDeleteCorteL}
+                iniciarEdicion={iniciarEdicion} />
             </form>
         </div>
     )

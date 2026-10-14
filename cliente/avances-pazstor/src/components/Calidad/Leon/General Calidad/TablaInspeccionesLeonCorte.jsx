@@ -1,6 +1,6 @@
 import { Button, Table, TableBody, TableCell, TableHead, TableHeadCell, TableRow } from "flowbite-react";
 
-export function TablaInspeccionesLeonCorte({ lista, handleDeleteCorteL}) {
+export function TablaInspeccionesLeonCorte({ lista, handleDeleteCorteL, iniciarEdicion }) {
     return (
         <section>
             <h2 className="text-2xl font-bold text-gray-900 mb-6">Registros de Inspección</h2>
@@ -39,10 +39,10 @@ export function TablaInspeccionesLeonCorte({ lista, handleDeleteCorteL}) {
                                 <TableCell className="whitespace-nowrap font-medium text-gray-900 dark:text-white">
                                     {insp.fecha
                                         ? new Date(insp.fecha).toLocaleDateString("es-MX", {
-                                              day: "2-digit",
-                                              month: "2-digit",
-                                              year: "numeric",
-                                          })
+                                            day: "2-digit",
+                                            month: "2-digit",
+                                            year: "numeric",
+                                        })
                                         : ""}
                                 </TableCell>
                                 <TableCell className="whitespace-nowrap font-medium text-gray-900 dark:text-white">{insp.nombre_inspector}</TableCell>
@@ -65,6 +65,15 @@ export function TablaInspeccionesLeonCorte({ lista, handleDeleteCorteL}) {
                                         onClick={() => handleDeleteCorteL(insp.id_inspeccion)}
                                     >
                                         Eliminar
+                                    </Button>
+                                </TableCell>
+                                <TableCell>
+                                    <Button
+                                        onClick={() => iniciarEdicion(insp.id_inspeccion)}
+                                        type="button"
+                                        className="text-white bg-amber-500 hover:bg-amber-600 focus:ring-4 focus:ring-amber-300 font-medium rounded-base text-sm px-4 py-2.5"
+                                    >
+                                        Editar
                                     </Button>
                                 </TableCell>
                             </TableRow>

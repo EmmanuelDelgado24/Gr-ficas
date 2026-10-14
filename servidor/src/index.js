@@ -66,14 +66,14 @@ import infoCorte from "./routes/Ingenieria/infoCorte.routes.js";
 import infoCoordinado from "./routes/Ingenieria/infoCoordinado.routes.js";
 
 // Calidad
-import obtenerCategorias  from './routes/Calidad/categoria.routes.js';
+import obtenerCategorias from './routes/Calidad/categoria.routes.js';
 import crearCategoria from './routes/Calidad/categoria.routes.js';
 import editarCategoria from './routes/Calidad/categoria.routes.js';
 import eliminarCategoria from './routes/Calidad/categoria.routes.js';
 import buscarCategoria from './routes/Calidad/categoria.routes.js';
 import obtenerDefectos from './routes/Calidad/defecto.routes.js';
 import crearInspeccion from './routes/Calidad/inspeccion.routes.js';
-import obtenerInspeccion  from './routes/Calidad/inspeccion.routes.js';
+import obtenerInspeccion from './routes/Calidad/inspeccion.routes.js';
 import obtenerDepartamentos from './routes/Calidad/departamento.routes.js';
 import obtenerSubDepartamentos from './routes/Calidad/subDepartamento.routes.js';
 import obtenerLineas from './routes/Calidad/linea.routes.js';
@@ -133,9 +133,9 @@ app.use(express.json());
 // HEALTH CHECK
 // ========================================
 app.get("/health", (req, res) => {
-    res.status(200).json({
-        status: "ok"
-    });
+  res.status(200).json({
+    status: "ok"
+  });
 });
 
 app.use("/avances", pespunteRouter);     //Rutas para Pespunte general
@@ -156,23 +156,23 @@ app.use("/avances", Login);
 
 app.use("/avances", inventario4);
 
-app.use("/avances", personaldepto); 
-app.use("/avances", personalcorte); 
-app.use("/avances", personalcoordinado); 
-app.use("/avances", personalpespunte242); 
-app.use("/avances", personalpespunte244); 
-app.use("/avances", personalpespunte245); 
-app.use("/avances", personalpespunte246); 
-app.use("/avances", personalmontado); 
-app.use("/avances", personaladorno); 
-app.use("/avances", personalmontadoadorno); 
+app.use("/avances", personaldepto);
+app.use("/avances", personalcorte);
+app.use("/avances", personalcoordinado);
+app.use("/avances", personalpespunte242);
+app.use("/avances", personalpespunte244);
+app.use("/avances", personalpespunte245);
+app.use("/avances", personalpespunte246);
+app.use("/avances", personalmontado);
+app.use("/avances", personaladorno);
+app.use("/avances", personalmontadoadorno);
 
-app.use("/avances", informacionGeneral); 
-app.use("/avances", infoCorte); 
-app.use("/avances", infoCoordinado); 
+app.use("/avances", informacionGeneral);
+app.use("/avances", infoCorte);
+app.use("/avances", infoCoordinado);
 
 // Calidad
-app.use("/avances", obtenerCategorias); 
+app.use("/avances", obtenerCategorias);
 app.use("/avances", crearCategoria);
 app.use("/avances", editarCategoria);
 app.use("/avances", eliminarCategoria);
@@ -208,11 +208,11 @@ const server = createServer(app);
 // const io = new SocketIOServer(httpsServer, {
 
 const allowedOriginsSocket = [
-    'https://avances-pazstor.online',  
-    'https://gr-ficas.onrender.com',         
-    //'http://192.168.17.24:5173', // Tu IP anterior
-    'http://192.168.17.25:5173', // <-- NUEVA: La IP real desde la que estás testeando
-    'http://localhost:5173'
+  'https://avances-pazstor.online',
+  'https://gr-ficas.onrender.com',
+  //'http://192.168.17.24:5173', // Tu IP anterior
+  'http://192.168.17.25:5173', // <-- NUEVA: La IP real desde la que estás testeando
+  'http://localhost:5173'
 ];
 
 // cometar para subir a producción
@@ -226,9 +226,9 @@ const allowedOriginsSocket = [
 })*/
 
 // descomentar para subir a producción
-  const io = new SocketIOServer(server, {
-    cors: false
-  });
+const io = new SocketIOServer(server, {
+   cors: false
+ });
 
 // Manejador de conexiones
 io.on("connection", (socket) => {

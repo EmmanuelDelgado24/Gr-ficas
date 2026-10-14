@@ -23,6 +23,8 @@ export const MontadoAdornoCalidadL = () => {
         listaOperaciones,
         listaInspeccionesLeonMonAdor,
         listaSupervisores,
+        editandoId,
+        iniciarEdicion, 
         handleDeleteMonAdorL,
         handleFormularioChange,
         handleFecha,
@@ -62,7 +64,7 @@ export const MontadoAdornoCalidadL = () => {
                     onCiudad={handleCiudadChange}
                     onDepartamento={handleDepartamentoChange}
                     onSubdepartamento={handleSubdepartamentoChange}
-                    
+                    editandoId = {editandoId} 
                 />
 
                 <DatosProduccion produccion={produccion} onChange={handleProduccionChange} />
@@ -87,17 +89,12 @@ export const MontadoAdornoCalidadL = () => {
                     <Button type="submit" color="green">
                         Registrar inspección
                     </Button>
-                    <Button
-                        type="button"
-                        className="text-white bg-amber-500 hover:bg-amber-600 focus:ring-4 focus:ring-amber-300 font-medium rounded-base text-sm px-4 py-2.5"
-                    >
-                        Editar inspección
-                    </Button>
                 </div>
 
                 <TablaInspeccionesLeonMonAdor 
                 lista={listaInspeccionesLeonMonAdor}
-                handleDeleteMonAdorL={handleDeleteMonAdorL} />
+                handleDeleteMonAdorL={handleDeleteMonAdorL} 
+                iniciarEdicion={iniciarEdicion}/>
             </form>
         </div>
     );

@@ -100,7 +100,8 @@ export function useInspeccion() {
     }
 
     async function postGuardarFormulario(inspeccion) {
-        const envia = await fetch("https://api.avances-pazstor.online/avances/crearInspeccion", {
+        const envia = await fetch("https://api.avances-pazstor.online/avances/crearInspeccion", 
+        {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(inspeccion),
@@ -119,7 +120,7 @@ export function useInspeccion() {
     }
     // Obtener inspección id
     async function getObtenerInspeccionEditarID(id_inspeccion) {
-        const resultado = await fetch(`https://api.avances-pazstor.online/avances/obtenerLeonPorID/${id_inspeccion}`
+        const resultado = await fetch(`https://api.avances-pazstor.online/avances/obtenerLeonPorID/${id_inspeccion}`   
         );
         if (!resultado.ok) throw new Error("Error al obtener la inspección para editar");
         return await resultado.json();
@@ -340,7 +341,7 @@ export function useInspeccion() {
                 fetch(`https://api.avances-pazstor.online/avances/obtenerSubDepartamentos/${idDepto}`),
                 fetch(`https://api.avances-pazstor.online/avances/obtenerSupervisores/${idDepto}`),
             ]);
-
+            
             if (!resSub.ok) throw new Error("Error obteniendo subdepartamentos");
             if (!resSup.ok) throw new Error("Error obteniendo supervisores");
 
@@ -437,7 +438,8 @@ export function useInspeccion() {
     // Eliminar General 
     const handleDelete = async (id_inspeccion) => {
         try {
-            const response = await fetch(`https://api.avances-pazstor.online/avances/eliminarInspeccion/${id_inspeccion}`, {
+            const response = await fetch(`https://api.avances-pazstor.online/avances/eliminarInspeccion/${id_inspeccion}`,
+            {
                 method: 'DELETE',
             });
 
@@ -457,7 +459,8 @@ export function useInspeccion() {
     // Eliminar Corte León
     const handleDeleteCorteL = async (id_inspeccion) => {
         try {
-            const response = await fetch(`https://api.avances-pazstor.online/avances/eliminarInspeccionCorte/${id_inspeccion}`, {
+            const response = await fetch(`https://api.avances-pazstor.online/avances/eliminarInspeccionCorte/${id_inspeccion}`,
+            {
                 method: 'DELETE',
             });
 
@@ -477,7 +480,8 @@ export function useInspeccion() {
     // Eliminar General 
     const handleDeleteCoordinadoL = async (id_inspeccion) => {
         try {
-            const response = await fetch(`https://api.avances-pazstor.online/avances/eliminarInspeccionCoordinado/${id_inspeccion}`, {
+            const response = await fetch(`https://api.avances-pazstor.online/avances/eliminarInspeccionCoordinado/${id_inspeccion}`, 
+            {
                 method: 'DELETE',
             });
 
@@ -497,7 +501,8 @@ export function useInspeccion() {
     // Eliminar General 
     const handleDeletePespunteL = async (id_inspeccion) => {
         try {
-            const response = await fetch(`https://api.avances-pazstor.online/avances/eliminarInspeccionPespunte/${id_inspeccion}`, {
+            const response = await fetch(`https://api.avances-pazstor.online/avances/eliminarInspeccionPespunte/${id_inspeccion}`,
+            {
                 method: 'DELETE',
             });
 
@@ -517,7 +522,8 @@ export function useInspeccion() {
     // Eliminar General 
     const handleDeleteMonAdorL = async (id_inspeccion) => {
         try {
-            const response = await fetch(`https://api.avances-pazstor.online/avances/eliminarInspeccionMontadoAdorno/${id_inspeccion}`, {
+            const response = await fetch(`https://api.avances-pazstor.online/avances/eliminarInspeccionMontadoAdorno/${id_inspeccion}`,
+            {
                 method: 'DELETE',
             });
 
@@ -627,7 +633,7 @@ export function useInspeccion() {
                 fetch(`https://api.avances-pazstor.online/avances/obtenerLineas/${g.subdepartamento}`).then(r => r.json()),
                 fetch(`https://api.avances-pazstor.online/avances/obtenerDefectos/${inc.id_categoria}`).then(r => r.json()),
             ]);
-
+            
             setListaDepartamentos(deptos.data ?? []);
             setListaSubDepartamentos(subs.data ?? []);
             setListaSupervisores(sups.data ?? []);
