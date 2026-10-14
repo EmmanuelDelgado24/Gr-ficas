@@ -74,73 +74,121 @@ const GraficaEmbarque = () => {
       .reduce((acc, item) => acc + item.LC_PARLOT, 0);
   });
 
+  // Configuración dinámica: si hay muchos modelos, ajustamos el tamaño de fuente de las etiquetas de las barras
+  const esDenso = modelos.length > 8;
+
   const options = {
-    chart: { id: "basic-bar" },
+    chart: { 
+      id: "basic-bar",
+      toolbar: { show: false },
+      background: 'transparent'
+    },
+    colors: ["#3b82f6"],
+    plotOptions: {
+      bar: {
+        borderRadius: esDenso ? 2 : 4,
+        columnWidth: esDenso ? '85%' : '60%', // Más ancho si hay muchos para aprovechar el espacio
+      }
+    },
     dataLabels: {
-      enabled: true,
+      enabled: !esDenso,
       style: {
-        fontSize: "30px", // <--- Ajusta este tamaño a tu gusto (ej. '18px', '20px')
+        fontSize: "14px",
         fontFamily: "Inter, sans-serif",
         fontWeight: "bold",
-        colors: ["#fff"], // Mantiene el color blanco
+        colors: ["#fff"],
       },
+      offsetY: -5,
     },
     xaxis: {
       categories: modelos?.length > 0 ? modelos : ["Sin datos"],
       labels: {
         show: true,
+        rotate: esDenso ? -55 : -45, // Un poco más de rotación si hay muchos modelos
         style: {
+          fontSize: esDenso ? "10px" : "11px", // Ligeramente más pequeño si son muchos
           fontFamily: "Inter, sans-serif",
-          cssClass: "text-xs font-normal fill-gray-500 dark:fill-gray-400",
+          colors: "#9ca3af",
         },
       },
+      axisBorder: { show: false },
+      axisTicks: { show: false },
     },
     yaxis: {
       labels: {
         show: true,
         style: {
+          colors: "#9ca3af",
           fontFamily: "Inter, sans-serif",
-          cssClass: "text-xs font-normal fill-gray-500 dark:fill-gray-400",
         },
       },
     },
+    grid: {
+      borderColor: "#374151", // Gris oscuro para la cuadrícula interna (gray-700)
+      strokeDashArray: 4,
+    },
+    tooltip: {
+      theme: "dark",
+    }
   };
 
   const series = [{ name: "Pares", data: sumaPorModelo }];
 
   return (
+    <div className="w-full bg-gray-800 border border-gray-700 rounded-xl shadow-lg p-5 flex flex-col justify-between">
       <div>
-          <div className="max-w-lg p-6 border border-gray-100 rounded-lg shadow-sm bg-gray-800 border-dark-700">
-            <div>
-              <h5 className="leading-none text-3xl font-bold text-white pb-2 text-center">
-                Embarque
-              </h5>
-              <p className="text-base font-normal text-gray-400">
-                Pares producidos por día
-              </p>
-               <p className="text-base font-normal text-gray-400">
-                N° total pares: <span className="font-bold text-white"> {sumaLC_PARLOT} </span>
-              </p>
-              <p className="text-base font-normal text-gray-400">
-                Modelos: <br />
-                <span className="font-bold text-white"> {modelos.join(', ')} </span>
-              </p>
-  
-              {/* Mensaje si no hay datos */}
-              {data.length === 0 && (
-                <p className="text-yellow-400 mt-2">No hay datos registrados</p>
-              )}
-            </div>
-            <Chart
-              options={options}
-              series={series}
-              type="bar"
-              width="100%"
-              height="250px"
-            />
+        {/* Cabecera */}
+        <div className="flex justify-between items-start mb-4">
+          <div>
+            <h5 className="text-2xl font-bold text-white tracking-wide">
+              Embarque 5 Dígitos
+            </h5>
+            <p className="text-sm text-gray-400">
+              Pares producidos por día y modelo
+            </p>
           </div>
+          <span className="bg-blue-900/50 text-blue-300 text-xs font-semibold px-2.5 py-1 rounded-full border border-blue-700">
+            {modelos.length} Modelos Activos
+          </span>
+        </div>
+
+        {/* Tarjetas de Resumen Rápido */}
+        <div className="grid grid-cols-2 gap-3 mb-4">
+          <div className="bg-gray-900/60 p-3 rounded-lg border border-gray-700/50">
+            <span className="text-xs text-gray-400 block">N° Total de Pares</span>
+            <span className="text-2xl font-extrabold text-blue-400">
+              {sumaLC_PARLOT}
+            </span>
+          </div>
+          <div className="bg-gray-900/60 p-3 rounded-lg border border-gray-700/50 flex flex-col justify-center">
+            <span className="text-xs text-gray-400 block">Estado de Red</span>
+            <span className="text-sm font-medium text-green-400 flex items-center gap-1.5 mt-0.5">
+              <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span>
+              Conectado
+            </span>
+          </div>
+        </div>
+
+        {/* Mensaje si no hay datos */}
+        {data.length === 0 && (
+          <div className="bg-yellow-900/30 border border-yellow-700 text-yellow-300 text-sm p-3 rounded-lg mb-4 text-center">
+            No hay datos registrados en este momento.
+          </div>
+        )}
       </div>
-    );
-  };
+
+      {/* Gráfica */}
+      <div className="w-full pt-2">
+        <Chart
+          options={options}
+          series={series}
+          type="bar"
+          width="100%"
+          height="280px"
+        />
+      </div>
+    </div>
+  );
+};
 
 export default GraficaEmbarque;

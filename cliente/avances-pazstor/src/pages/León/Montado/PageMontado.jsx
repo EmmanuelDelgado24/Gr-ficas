@@ -188,18 +188,18 @@ export const PageMontado = () => {
       <div className="flex gap-2 items-stretch w-full">
 
         {/* SIDEBAR IZQUIERDO */}
-        <aside className="flex flex-col gap-4 w-72 bg-[#1a2332] p-4 rounded-xl border-l-[6px] border-green-500 shadow-xl shrink-0 max-h-[96vh] overflow-y-auto">
+        <aside className="flex flex-col gap-4 w-full lg:w-72 lg:shrink-0 bg-[#1a2332] p-4 rounded-xl border-l-[6px] border-green-500 shadow-xl max-h-[50vh]lg:max-h-[96vh] overflow-y-auto">
 
           {/* Primera Sección: Personal Montado */}
           <section className="bg-[#202c34] p-4 rounded-lg">
-            <h3 className="text-sm font-bold text-white uppercase tracking-wider mb-3 border-b border-gray-700 pb-2">
+            <h5 className="text-sm font-bold text-white uppercase tracking-wider mb-3 border-b border-gray-700 pb-2">
               PERSONAL MONTADO {sumarEmplaeadosmon}
-            </h3>
+            </h5>
             <div className="flex flex-col gap-1">
               {empleadosmo.map((empleado, index) => (
                 <div key={empleado.id || `${empleado.nombre}-${index}`} className="flex justify-between text-white text-sm">
-                  <span>{empleado.nombre}</span>
-                  <span>{empleado.apellidopaterno}</span>
+                  <span>{`${empleado.nombre} ${empleado.apellidopaterno}`}</span>
+                  <span>{empleado.puesto}</span>
                 </div>
               ))}
             </div>
@@ -213,8 +213,8 @@ export const PageMontado = () => {
             <div className="flex flex-col gap-1">
               {empleadosad.map((empleado, index) => (
                 <div key={empleado.id || `${empleado.nombre}-${index}`} className="flex justify-between text-white text-sm">
-                  <span>{empleado.nombre}</span>
-                  <span>{empleado.apellidopaterno}</span>
+                  <span>{`${empleado.nombre} ${empleado.apellidopaterno}`}</span>
+                  <span>{empleado.puesto}</span>
                 </div>
               ))}
             </div>
@@ -253,7 +253,7 @@ export const PageMontado = () => {
           <div className="py-5 relative overflow-x-auto shadow-md sm:rounded-lg">
             <table className="w-full text-lg text-left rtl:text-right text-gray-500 dark:text-gray-400">
               <thead className="block w-full text-xs text-gray-700 bg-gray-50 dark:bg-gray-100 dark:text-gray-400">
-                <tr className="flex items-stretch gap-4 w-full p-2 bg-[#1a2332] h-[55vh]">
+                <tr className="flex items-stretch gap-4 w-full p-2 bg-[#1a2332] h-[75vh]">
                   <th scope="col" className="flex-1 bg-[#202c34] p-2 rounded-xl flex flex-col justify-between items-center h-full text-white">
                     <MontadoL64 />
                   </th>

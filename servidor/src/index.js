@@ -73,20 +73,38 @@ import eliminarCategoria from './routes/Calidad/categoria.routes.js';
 import buscarCategoria from './routes/Calidad/categoria.routes.js';
 import obtenerDefectos from './routes/Calidad/defecto.routes.js';
 import crearInspeccion from './routes/Calidad/inspeccion.routes.js';
+import obtenerInspeccion  from './routes/Calidad/inspeccion.routes.js';
+import obtenerDepartamentos from './routes/Calidad/departamento.routes.js';
+import obtenerSubDepartamentos from './routes/Calidad/subDepartamento.routes.js';
+import obtenerLineas from './routes/Calidad/linea.routes.js';
+import obtenerOperaciones from './routes/Calidad/operacion.routes.js';
+import obtenerSeveridades from './routes/Calidad/severidad.routes.js';
+import obtenerCiudades from './routes/Calidad/ciudad.routes.js';
+import obtenerInspectores from './routes/Calidad/inspectores.routes.js'
+import obtenerSupervisores from './routes/Calidad/supervisores.routes.js'
+import obtenerLeonCorte from './routes/Calidad/inspecLeonCorte.routes.js'
+import obtenerLeonCoordinado from './routes/Calidad/inspecLeonCoordinado.routes.js'
+import obtenerLeonPespunte from './routes/Calidad/inspecLeonPespunte.routes.js'
+import obtenerLeonMonAdor from './routes/Calidad/inspecLeonMonAdor.routes.js'
+import eliminarInspeccion from './routes/Calidad/inspeccion.routes.js';
+import eliminarInspeccionCorte from './routes/Calidad/inspecLeonCorte.routes.js';
+import eliminarInspeccionCoordinado from './routes/Calidad/inspecLeonCoordinado.routes.js';
+import eliminarInspeccionPespunte from './routes/Calidad/inspecLeonPespunte.routes.js';
+import eliminarInspeccionMontadoAdorno from './routes/Calidad/inspecLeonMonAdor.routes.js';
+import obtenerLeonPorID from './routes/Calidad/inspeccion.routes.js';
 
 // Contraseñas HASH 
-// import bcrypt from 'bcrypt';
-// async function generarHash() {
-//     const hash = await bcrypt.hash('ASESORAINTERNA', 10);
-//     console.log(hash);
-// }
-// generarHash();
+/*import bcrypt from 'bcrypt';
+async function generarHash() {
+     const hash = await bcrypt.hash('Calidad.PAZS2026!', 10);
+    console.log(hash);
+ }
+ generarHash();*/
 
 // const privateKey = fs.readFileSync('./private_key.pem', 'utf8');
 // const certificate = fs.readFileSync('./certificate.pem', 'utf8');
 
 // const httpsServer = https.createServer({ key: privateKey, cert: certificate }, app);
-
 
 //dotenv.config();
 //app.listen(3000);
@@ -153,15 +171,35 @@ app.use("/avances", informacionGeneral);
 app.use("/avances", infoCorte); 
 app.use("/avances", infoCoordinado); 
 
+// Calidad
 app.use("/avances", obtenerCategorias); 
 app.use("/avances", crearCategoria);
 app.use("/avances", editarCategoria);
 app.use("/avances", eliminarCategoria);
 app.use("/avances", buscarCategoria);
-
 app.use("/avances", obtenerDefectos);
+app.use("/avances", crearInspeccion);
+app.use("avances", obtenerInspeccion);
+app.use("/avances", obtenerDepartamentos);
+app.use("/avances", obtenerSubDepartamentos);
+app.use("/avances", obtenerLineas);
+app.use("/avances", obtenerOperaciones);
+app.use("/avances", obtenerSeveridades);
+app.use("/avances", obtenerCiudades);
+app.use("/avances", obtenerInspectores);
+app.use("/avances", obtenerSupervisores);
+app.use("/avances", obtenerLeonCorte);
+app.use("/avances", obtenerLeonCoordinado);
+app.use("/avances", obtenerLeonPespunte);
+app.use("/avances", obtenerLeonMonAdor);
 
-app.use("avances", crearInspeccion);
+app.use("/avances", eliminarInspeccion);
+app.use("/avances", eliminarInspeccionCorte);
+app.use("/avances", eliminarInspeccionCoordinado);
+app.use("/avances", eliminarInspeccionPespunte);
+app.use("/avances", eliminarInspeccionMontadoAdorno);
+
+app.use("/avances", obtenerLeonPorID);
 
 // Creamos el servidor HTTP usando la app Express
 const server = createServer(app);

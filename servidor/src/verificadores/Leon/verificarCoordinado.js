@@ -2,71 +2,68 @@ import { obtenerLotes, lotesConfig } from '../../models/Leon/coordinado.model.js
 
 let verificadorIniciado = false;
 
+const datosPrevios = {};
+const ultimosDatos = {};
+const estadoHoraPorLinea = {};
+
 function obtenerHoraActual() {
-  const ahora = new Date();
-  const horas = String(ahora.getHours()).padStart(2, '0');
+  const horas = String(new Date().getHours()).padStart(2, '0');
   return `${horas}:00`;
 }
 
-export function iniciarVerificacionCoordinado(io) {
+export function iniciarVerificacionCoordinado(io, socket) {
+  // Enviar el estado actual al cliente que lo pidió
+  if (socket) {
+    for (const [nombre, datos] of Object.entries(ultimosDatos)) {
+      socket.emit(`actualizar-${nombre}`, datos);
+    }
+  }
+
   if (verificadorIniciado) return;
   verificadorIniciado = true;
 
-  const datosPrevios = {};
-  const estadoHoraPorLinea = {};
-
-  //Función que espera los datos de lotes config
   const verificar = async () => {
     const bloqueActual = obtenerHoraActual();
-    try {
-      // Iterar sobre cada info de lote
-      for (const config of lotesConfig) {
-        try {
-          //trae los datos de la base de datos según el depto, subdepto y origen, origen es 4 o 5 digitos
-          const datos = await obtenerLotes({ depto: config.depto, subdepto: config.subdepto, origen: config.origen, });
-          // el nombre que se le asigna como apuntador al socket, es el nombre que se le asigna en la configuracion de lotes
-          console.log(`consultando: ${config.nombre}`);
 
-          const calcularSumaLC_PARLOT = (datos) =>
-            datos?.reduce((acc, item) => acc + item.LC_PARLOT, 0) || 0;
+    for (const config of lotesConfig) {
+      try {
+        const datos = await obtenerLotes({
+          depto: config.depto,
+          subdepto: config.subdepto,
+          origen: config.origen,
+        });
 
-          const sumaPares = calcularSumaLC_PARLOT(datos);
+        ultimosDatos[config.nombre] = datos;
 
-          // Inicializar estado de la línea si es la primera vez
-          if (!estadoHoraPorLinea[config.nombre]) {
-            estadoHoraPorLinea[config.nombre] = {
-              hora: bloqueActual,
-              paresAlIniciar: sumaPares
-            };
-          }
+        const sumaPares = datos?.reduce((acc, item) => acc + item.LC_PARLOT, 0) || 0;
 
-          const estado = estadoHoraPorLinea[config.nombre];
-
-          //si cambia el boque de hora
-          if (estado.hora !== bloqueActual) {
-            const paresAhora = sumaPares - estado.paresAlIniciar;
-
-            console.log(`[Registro] ${config.nombre} hora ${estado.hora}: ${paresAhora} pares`);
-
-            estado.hora = bloqueActual;
-            estado.paresAlIniciar = sumaPares;
-          }
-
-          if (datosPrevios[config.nombre] !== sumaPares) {
-            datosPrevios[config.nombre] = sumaPares;
-            io.emit(`actualizar-${config.nombre}`, datos);
-            console.log(`[SocketIO] Pares cambiaron en ${config.nombre}: ${sumaPares}`);
-          }
-        } catch (error) {
-          console.error(`[Error] Consultando ${config.nombre}:`, error);
+        if (!estadoHoraPorLinea[config.nombre]) {
+          estadoHoraPorLinea[config.nombre] = {
+            hora: bloqueActual,
+            paresAlIniciar: sumaPares,
+          };
         }
+
+        const estado = estadoHoraPorLinea[config.nombre];
+        if (estado.hora !== bloqueActual) {
+          console.log(`[Registro] ${config.nombre} hora ${estado.hora}: ${sumaPares - estado.paresAlIniciar} pares`);
+          estado.hora = bloqueActual;
+          estado.paresAlIniciar = sumaPares;
+        }
+
+        // Compara la suma anterior 
+        if (datosPrevios[config.nombre] !== sumaPares) {
+          datosPrevios[config.nombre] = sumaPares;
+          console.log(`[SocketIO] Emitiendo actualizar-${config.nombre}`);
+          io.emit(`actualizar-${config.nombre}`, datos);
+          console.log(`[SocketIO] Pares cambiaron en ${config.nombre}: ${sumaPares}`);
+        }
+      } catch (error) {
+        console.error(`[Error] Consultando ${config.nombre}:`, error);
       }
-    } finally {
-      verificadorIniciado = false;
     }
   };
 
   verificar();
-
-  setInterval(verificar, 300000);   // 300000 cada 5 minutos, 60000 cada minuto, 5000 cada 5 segundos
+  setInterval(verificar, 60000);
 }

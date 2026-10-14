@@ -1,5 +1,45 @@
+import { Button } from "flowbite-react";
+import { useInspeccion } from "../../../components/Calidad/Leon/General Calidad/hooks/useInspeccion.js";
+import { DatosGenerales } from "./General Calidad/DatosGenerales.jsx";
+import { DatosProduccion } from "./General Calidad/DatosProduccion.jsx";
+import { FormularioIncidencia } from "./General Calidad/FormularioIncidencia.jsx";
+import { TablaIncidencias } from "./General Calidad/TablaIncidencias.jsx";
+import {TablaInspeccionesLeonCoordinado} from "./General Calidad/TablaInspeccionesLeonCoordinado.jsx"
 
 export const CoordinadoCalidadL = () => {
+    const {
+        formulario,
+        produccion,
+        incidenciaActual,
+        incidencias,
+        listaCategoria,
+        listaDefectos,
+        listaCiudades,
+        listaDepartamentos,
+        listaSubDepartamentos,
+        listaLineas,
+        listaInspectores,
+        listaSeveridades,
+        listaOperaciones,
+        listaInspeccionesLeonCoordinado,
+        listaSupervisores,
+        editandoId,
+        iniciarEdicion, 
+        handleDeleteCoordinadoL,
+        handleFormularioChange,
+        handleFecha,
+        handleProduccionChange,
+        handleIncidenciaChange,
+        handleCiudadChange,
+        handleDepartamentoChange,
+        handleSubdepartamentoChange,
+        handleCategoriaChange,
+        cargarIncidencia,
+        handleSubmit,
+        handleLimpiar,
+        eliminarIncidencia,
+    } = useInspeccion();
+
     return (
         <div className="max-w-7xl mx-auto p-6">
             <br /><br />
@@ -11,6 +51,53 @@ export const CoordinadoCalidadL = () => {
                     </p>
                 </div>
             </section>
+
+            <form onSubmit={handleSubmit}>
+                <DatosGenerales
+                    formulario={formulario}
+                    listaCiudades={listaCiudades}
+                    listaDepartamentos={listaDepartamentos}
+                    listaSubDepartamentos={listaSubDepartamentos}
+                    listaLineas={listaLineas}
+                    listaInspectores={listaInspectores}
+                    listaSupervisores={listaSupervisores}
+                    onChange={handleFormularioChange}
+                    onFecha={handleFecha}
+                    onCiudad={handleCiudadChange}
+                    onDepartamento={handleDepartamentoChange}
+                    onSubdepartamento={handleSubdepartamentoChange}
+                    editandoId = {editandoId}                   
+                />
+
+                <DatosProduccion produccion={produccion} onChange={handleProduccionChange} />
+
+                <FormularioIncidencia
+                    incidencia={incidenciaActual}
+                    listaCategoria={listaCategoria}
+                    listaDefectos={listaDefectos}
+                    listaSeveridades={listaSeveridades}
+                    listaOperaciones={listaOperaciones}
+                    onChange={handleIncidenciaChange}
+                    onCategoria={handleCategoriaChange}
+                    onAgregar={cargarIncidencia}
+                />
+
+                <TablaIncidencias incidencias={incidencias} onEliminar={eliminarIncidencia} />
+
+                <div className="flex justify-end gap-4 mb-8">
+                    <Button type="button" color="light" onClick={handleLimpiar}>
+                        Limpiar
+                    </Button>
+                    <Button type="submit" color="green">
+                        Registrar inspección
+                    </Button>
+                </div>
+
+                <TablaInspeccionesLeonCoordinado 
+                lista={listaInspeccionesLeonCoordinado}
+                handleDeleteCoordinadoL={handleDeleteCoordinadoL}
+                iniciarEdicion={iniciarEdicion} />
+            </form>
         </div>
     )
 }

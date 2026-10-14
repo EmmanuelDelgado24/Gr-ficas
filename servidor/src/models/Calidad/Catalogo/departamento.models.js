@@ -1,10 +1,20 @@
-import { executeQuery } from "../../config/dbPg/conectionModelos.js";
+import { executeQuery } from "../../../config/dbPg/conectionModelos.js";
 
-export async function getObtenerDepartamento() {
-    const query = `SELECT * FROM public.departamentos`;
+export async function getObtenerDepartamento(id_ciudad) {
+    const query = `
+        SELECT
+            d.id_depto,
+            d.nombre_depto,
+            c.id_ciudad,
+            c.nombre_ciudad
+        FROM public.departamentos d
+        INNER JOIN public.ciudades c
+            ON d.id_ciudad = c.id_ciudad
+        WHERE c.id_ciudad = $1
+        ORDER BY d.nombre_depto;`;
 
     try {
-        const result = await executeQuery(query);
+        const result = await executeQuery(query, [id_ciudad]);
         return result.rows;
     } catch (error) {
         throw new Error(`Error al obtener detalles de departamento: ${error.message}`);

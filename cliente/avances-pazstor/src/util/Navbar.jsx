@@ -337,7 +337,7 @@ export const Navbar = () => {
 
               {/* ---------------- CALIDAD ---------------- */}
               {hasRole([
-                "admin", "calidad_cueramaro", "calidad_m_doblado", "calidad_leon"
+                "admin", "calidad", "calidad_cueramaro", "calidad_m_doblado", "calidad_leon"
               ]) && (
                   <li className="relative">
                     <button
@@ -359,7 +359,7 @@ export const Navbar = () => {
                       <ul className="flex flex-col space-y-1 px-2 py-2">
 
                         {/* --- CUERÁMARO --- */}
-                        {hasRole(["admin", "calidad_cueramaro"]) && (
+                        {hasRole(["admin", "calidad", "calidad_cueramaro"]) && (
                           <li className="relative">
                             <button
                               type="button"
@@ -404,7 +404,7 @@ export const Navbar = () => {
                         )}
 
                         {/* --- MANUEL DOBLADO --- */}
-                        {hasRole(["admin", "calidad_m_doblado"]) && (
+                        {hasRole(["admin", "calidad", "calidad_m_doblado"]) && (
                           <li className="relative">
                             <button
                               type="button"
@@ -449,7 +449,7 @@ export const Navbar = () => {
                         )}
 
                         {/* --- LEÓN --- */}
-                        {hasRole(["admin", "calidad_leon"]) && (
+                        {hasRole(["admin", "calidad", "calidad_leon"]) && (
                           <li className="relative">
                             <button
                               type="button"

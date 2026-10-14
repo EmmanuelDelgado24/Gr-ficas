@@ -52,7 +52,7 @@ export const PageCoordinado = () => {
 
   const ConsultarMeta = async () => {
     //const apiUrl = `https://159.65.78.91/avances/ReflejarMeta?departamento=${departamento}&subdepto=${subdepto}&ciudad=${ciudad}`;
-   // const apiUrl = `http://192.168.17.25:3000/avances/ReflejarMeta?departamento=${departamento}&subdepto=${subdepto}&ciudad=${ciudad}`;
+   //const apiUrl = `http://192.168.17.25:3000/avances/ReflejarMeta?departamento=${departamento}&subdepto=${subdepto}&ciudad=${ciudad}`;
     const apiUrl = `https://api.avances-pazstor.online/avances/ReflejarMeta?departamento=${departamento}&subdepto=${subdepto}&ciudad=${ciudad}`;
     try {
       const response = await fetch(apiUrl);
@@ -164,8 +164,8 @@ export const PageCoordinado = () => {
             <div className="flex flex-col gap-1">
               {empleadoscor.map((empleado, index) => (
                 <div key={empleado.id || `${empleado.nombre}-${index}`} className="flex justify-between text-white text-sm">
-                  <span>{empleado.nombre}</span>
-                  <span>{empleado.apellidopaterno}</span>
+                   <span>{`${empleado.nombre} ${empleado.apellidopaterno}`}</span>
+                   <span>{empleado.puesto}</span>
                 </div>
               ))}
             </div>

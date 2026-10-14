@@ -46,5 +46,5 @@ export function iniciarVerificacionEmbarque(io) {
 
   verificar();
 
-  setInterval(verificar, 300000); // Cada 5 minutos
+  setInterval(verificar, 60000); // Cada 5 minutos
 }

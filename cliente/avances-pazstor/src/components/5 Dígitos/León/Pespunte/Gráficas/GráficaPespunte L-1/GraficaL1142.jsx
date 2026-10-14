@@ -4,7 +4,7 @@ import { socket } from "../../../../../../socket";
 
 const GraficaL1142 = () => {
   const [data, setData] = useState([]);
-  
+
   useEffect(() => {
     const conectarSocket = () => {
       if (!socket.connected) {
@@ -24,47 +24,74 @@ const GraficaL1142 = () => {
       }
     }, 5000);
 
-    // Conexión establecida
-    socket.on("connect", () => {
+
+    const onConnect = () => {
       console.log("Conectado al servidor de WebSockets Pespunte L2");
-    });
+    };
 
-    // Escuchar evento específico
-    socket.on("actualizar-Pespunte244", (datos) => {
-      console.log("Datos Actualizados en Pespunte L2");
-      console.log(datos);
-      if (Array.isArray(datos)) {
+    const onDatos = (datos) => {
+      setData(Array.isArray(datos) ? datos : []);
+    };
 
-        console.table(
-      datos.map(item => ({
-        programa: item.AV_PROGRAMA,
-        lote: item.AV_LOTE,
-        modelo: item.LC_ESTILO,
-        pares: item.LC_PARLOT,
-        departamento: item.AV_DEPTO,
-        subdepartamento: item.AV_SUBDEPTO
-      }))
-    );
-    
-        setData(datos);
-      } else {
-        setData([]);
-      }
-    });
-
-    // Manejo de error si se desconecta
-    socket.on("disconnect", () => {
+    const onDisconnect = () => {
       console.warn("Desconectado del servidor");
-    });
+    };
+
+    socket.on("connect", onConnect);
+    socket.on("actualizar-Pespunte244", onDatos);
+    socket.on("disconnect", onDisconnect);
 
     return () => {
-      // Limpieza al desmontar el componente
-      socket.off("connect");
-      socket.off("actualizar-Pespunte244");
       clearInterval(intervalo);
-      socket.off("disconnect");
+      socket.off("connect", onConnect);
+      socket.off("actualizar-Pespunte244", onDatos);
+      socket.off("disconnect", onDisconnect);
     };
   }, []);
+
+
+  /*
+  // Conexión establecida
+  socket.on("connect", () => {
+    console.log("Conectado al servidor de WebSockets Pespunte L2");
+  });
+
+  // Escuchar evento específico
+  socket.on("actualizar-Pespunte244", (datos) => {
+    console.log("Datos Actualizados en Pespunte L2");
+    console.log(datos);
+    if (Array.isArray(datos)) {
+
+      console.table(
+    datos.map(item => ({
+      programa: item.AV_PROGRAMA,
+      lote: item.AV_LOTE,
+      modelo: item.LC_ESTILO,
+      pares: item.LC_PARLOT,
+      departamento: item.AV_DEPTO,
+      subdepartamento: item.AV_SUBDEPTO
+    }))
+  );
+  
+      setData(datos);
+    } else {
+      setData([]);
+    }
+  });
+
+  // Manejo de error si se desconecta
+  socket.on("disconnect", () => {
+    console.warn("Desconectado del servidor");
+  });
+
+  return () => {
+    // Limpieza al desmontar el componente
+    socket.off("connect");
+    socket.off("actualizar-Pespunte244");
+    clearInterval(intervalo);
+    socket.off("disconnect");
+  };
+}, []);*/
 
   // Obtener modelos únicos
   //new Set evita los duplicados
@@ -122,32 +149,32 @@ const GraficaL1142 = () => {
   const series = [{ name: "Pares", data: sumaPorModelo }];
 
   return (
-      <div>
-          <div className="max-w-lg p-6 border border-gray-100 rounded-lg shadow-sm bg-gray-800 border-dark-700">
-            <div>
-              <h5 className="leading-none text-3xl font-bold text-white pb-2 text-center">
-                Pespunte L-2
-              </h5>
-               <p className="text-2xl font-normal text-gray-400">
-                N° total pares: <span className="font-bold text-white"> {sumaLC_PARLOT} </span>
-              </p>
-              <p className="text-2xl font-normal text-gray-400">
-                Modelos: <br/>
-                <span className={`font-bold ${modelos.length > 0 ? "text-white" : "text-lg text-yellow-400"}`}>
-                  {modelos.length > 0 ? modelos.join(", ") : " No hay datos"}
-                </span>
-              </p>
-            </div>
-            <Chart
-              options={options}
-              series={series}
-              type="bar"
-              width="100%"
-              height="250px"
-            />
-          </div>
+    <div>
+      <div className="max-w-lg p-6 border border-gray-100 rounded-lg shadow-sm bg-gray-800 border-dark-700">
+        <div>
+          <h5 className="leading-none text-3xl font-bold text-white pb-2 text-center">
+            Pespunte L-2
+          </h5>
+          <p className="text-2xl font-normal text-gray-400">
+            N° total pares: <span className="font-bold text-white"> {sumaLC_PARLOT} </span>
+          </p>
+          <p className="text-2xl font-normal text-gray-400">
+            Modelos: <br />
+            <span className={`font-bold ${modelos.length > 0 ? "text-white" : "text-lg text-yellow-400"}`}>
+              {modelos.length > 0 ? modelos.join(", ") : " No hay datos"}
+            </span>
+          </p>
+        </div>
+        <Chart
+          options={options}
+          series={series}
+          type="bar"
+          width="100%"
+          height="250px"
+        />
       </div>
-    );
-  };
+    </div>
+  );
+};
 
 export default GraficaL1142;

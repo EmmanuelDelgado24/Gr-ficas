@@ -1,4 +1,4 @@
-import { executeQuery } from "../../config/dbPg/conectionModelos.js";
+import { executeQuery } from "../../../config/dbPg/conectionModelos.js";
 
 export async function getObtenerLinea() {
     const query = `SELECT * FROM public.lineas`;

@@ -25,7 +25,32 @@ const GraficaL1 = () => {
     }
   }, 5000);
 
-  socket.on("connect", () => {
+
+  const onConnect = () => {
+      console.log("Conectado al servidor de WebSockets L1");
+    };
+
+    const onDatos = (datos) => {
+      setData(Array.isArray(datos) ? datos : []);
+    };
+
+    const onDisconnect = () => {
+      console.warn("Desconectado del servidor");
+    };
+
+    socket.on("connect", onConnect);
+    socket.on("actualizar-Pespunte242", onDatos);
+    socket.on("disconnect", onDisconnect);
+
+    return () => {
+      clearInterval(intervalo);
+      socket.off("connect", onConnect);
+      socket.off("actualizar-Pespunte242", onDatos);
+      socket.off("disconnect", onDisconnect);
+    };
+  }, []);
+
+  /*socket.on("connect", () => {
     console.log("✅ Conectado al servidor de WebSockets L1");
   });
 
@@ -48,7 +73,7 @@ const GraficaL1 = () => {
     socket.off("actualizar-Pespunte242");
     socket.off("disconnect");
   };
-}, []);
+}, []);*/
 
   // Obtener modelos únicos
   const modelos = [...new Set(data.map((item) => item.LC_ESTILO))];

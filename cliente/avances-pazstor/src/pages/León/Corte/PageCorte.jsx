@@ -52,7 +52,7 @@ export const PageCorte = () => {
 
 
   const ConsultarMeta = async () => {
-    //const apiUrl = `http://192.168.17.24:3000/avances/ReflejarMeta?departamento=${departamento}&subdepto=${subdepto.nombre}&ciudad=${ciudad}`;
+    //const apiUrl = `http://192.168.17.25:3000/avances/ReflejarMeta?departamento=${departamento}&subdepto=${subdepto.nombre}&ciudad=${ciudad}`;
     // const apiUrl = `https://159.65.78.91/avances/ReflejarMeta?departamento=${departamento}&subdepto=${subdepto.nombre}&ciudad=${ciudad}`;
     const apiUrl = `https://api.avances-pazstor.online/avances/ReflejarMeta?departamento=${departamento}&subdepto=${subdepto.nombre}&ciudad=${ciudad}`;
     try {
@@ -196,7 +196,7 @@ export const PageCorte = () => {
 
 
         {/* SIDEBAR IZQUIERDO */}
-        <aside className="flex flex-col gap-4 w-full lg:w-72 lg:shrink-0 bg-[#1a2332] p-4 rounded-xl border-l-[6px] border-green-500 shadow-xl max-h-[50vh] lg:max-h-[115vh] overflow-y-auto">
+        <aside className="flex flex-col gap-4 w-full lg:w-72 lg:shrink-0 bg-[#1a2332] p-4 rounded-xl border-l-[6px] border-green-500 shadow-xl max-h-[50vh]lg:max-h-[96vh] overflow-y-auto">
           <section className="bg-[#202c34] p-4 rounded-lg">
             <h3 className="text-sm font-bold text-white uppercase tracking-wider mb-3 border-b border-gray-700 pb-2">
               PERSONAL CORTE {sumarEmpleadosCorte}
@@ -208,8 +208,8 @@ export const PageCorte = () => {
                   key={empleado.id || `${empleado.nombre}-${index}`}
                   className="flex justify-between text-white text-sm"
                 >
-                  <span>{empleado.nombre}</span>
-                  <span>{empleado.apellidopaterno}</span>
+                  <span>{`${empleado.nombre} ${empleado.apellidopaterno}`}</span>
+                  <span>{empleado.puesto}</span>
                 </div>
               ))}
             </div>

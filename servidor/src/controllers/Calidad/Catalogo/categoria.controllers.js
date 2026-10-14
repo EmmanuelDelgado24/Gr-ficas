@@ -40,9 +40,7 @@ export async function crearCategoria(req, res) {
             });
         }
 
-        const nuevaCategoria = await postCrearCategoria(
-            nombre_categoria
-        );
+        const nuevaCategoria = await postCrearCategoria(nombre_categoria);
 
         return res.status(201).json({
             ok: true,
