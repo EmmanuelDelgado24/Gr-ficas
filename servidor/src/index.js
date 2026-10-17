@@ -237,12 +237,12 @@ io.on("connection", (socket) => {
   socket.on("iniciar-verificacion", (modulo) => {
     console.log("Solicitan verificador de:", modulo);
     switch (modulo) {
-      case "coordinado": iniciarVerificacionCoordinado(io); break;
-      case "pespunte": iniciarVerificacionPespunte(io); break;
-      case "embarque": iniciarVerificacionEmbarque(io); break;
-      case "montado": iniciarVerificacionMontado(io); break;
-      case "corte": iniciarVerificacionCorte(io); break;
-      case "general": iniciarVerificacionCoordinado(io); iniciarVerificacionPespunte(io); iniciarVerificacionMontado(io); iniciarVerificacionCorte(io); iniciarVerificacionEmbarque(io); break;
+      case "coordinado": iniciarVerificacionCoordinado(io, socket); break;
+      case "pespunte": iniciarVerificacionPespunte(io, socket); break;
+      case "embarque": iniciarVerificacionEmbarque(io, socket); break;
+      case "montado": iniciarVerificacionMontado(io, socket); break;
+      case "corte": iniciarVerificacionCorte(io, socket); break;
+      case "general": iniciarVerificacionCoordinado(io, socket); iniciarVerificacionPespunte(io); iniciarVerificacionMontado(io); iniciarVerificacionCorte(io); iniciarVerificacionEmbarque(io); break;
 
       case "inyeccion": iniciarVerificacionInyeccion(io); break;
       case "suela": iniciarVerificacionSuela(io); break;

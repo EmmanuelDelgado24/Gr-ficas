@@ -25,9 +25,9 @@ export function iniciarVerificacionCoordinado(io, socket) {
   const verificar = async () => {
     const bloqueActual = obtenerHoraActual();
 
-    for (const config of lotesConfig) {
+    for (const config of lotesConfig) { // lotesConfig: define las líneas que se consultan.
       try {
-        const datos = await obtenerLotes({
+        const datos = await obtenerLotes({ // obtenerLotes: consulta los datos de producción.
           depto: config.depto,
           subdepto: config.subdepto,
           origen: config.origen,

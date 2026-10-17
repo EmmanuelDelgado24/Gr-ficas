@@ -3,7 +3,7 @@ import { getInformacionCorte } from "../../models/Ingenieria/informacionCorte.mo
 export class InformacionCorte {
     static async getInformacionCorte(_req, res, config) {
         try {
-            const infocorte = await getInformacion(config);
+            const infocorte = await getInformacionCorte(config);
 
             if (!infocorte || infocorte.length === 0) {
                 return res.status(200).json({ message: 'No se encontraron infocorte' });

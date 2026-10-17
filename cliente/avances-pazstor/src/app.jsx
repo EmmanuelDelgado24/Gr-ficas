@@ -10,7 +10,7 @@ const App = () => {
   // Verificar token haciendo una petición al backend
   const verificarToken = async (token) => {
     try {
-       //const response = await fetch("http://192.168.17.25:3000/avances/verificar-token", {
+      //const response = await fetch("http://192.168.17.25:3000/avances/verificar-token", {
       //const response = await fetch("https://159.65.78.91/avances/verificar-token", {
       const response = await fetch("https://api.avances-pazstor.online/avances/verificar-token", {  
         method: "GET",
