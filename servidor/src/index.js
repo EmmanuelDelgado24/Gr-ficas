@@ -120,12 +120,12 @@ const allowedOrigins = [
 ];
 
 // cometar para subir a producción
-app.use(cors({
+/*app.use(cors({
   origin: allowedOrigins,
   methods: 'GET,POST,PUT,DELETE', //Este parámetro especifica qué métodos HTTP pueden ser utilizados en las solicitudes desde el frontend
   allowedHeaders: ['Content-Type', 'Authorization'],//Este parámetro define qué encabezados HTTP pueden ser enviados en la solicitud. En este caso, solo permite el encabezado Content-Type, que indica el tipo de datos enviados en el cuerpo de la solicitud.
   credentials: true
-}));
+}));*/
 
 app.use(morgan("dev"));
 app.use(express.json());
@@ -217,19 +217,19 @@ const allowedOriginsSocket = [
 ];
 
 // cometar para subir a producción
-const io = new SocketIOServer(server, {
+/*const io = new SocketIOServer(server, {
   cors: {
     origin: allowedOriginsSocket,
     methods: 'GET,POST,PUT,DELETE', //Este parámetro especifica qué métodos HTTP pueden ser utilizados en las solicitudes desde el frontend
     allowedHeaders: ['Content-Type', 'Authorization'], //Este parámetro define qué encabezados HTTP pueden ser enviados en la solicitud. En este caso, solo permite el encabezado Content-Type, que indica el tipo de datos enviados en el cuerpo de la solicitud.
     credentials: true
   }
-})
+})*/
 
 // descomentar para subir a producción
-/*const io = new SocketIOServer(server, {
+const io = new SocketIOServer(server, {
    cors: false
- });*/
+ });
 
 // Manejador de conexiones
 io.on("connection", (socket) => {
