@@ -43,6 +43,7 @@ export async function getObtenerMonAdorLeon(){
             ON ins.id_inspector = i.id_inspector
 	    INNER JOIN supervisores sup
             ON sup.id_supervisor = i.id_supervisor
+        WHERE i.fecha = current_date   
   			AND i.id_depto = 14
         ORDER BY i.fecha DESC;
         `;

@@ -43,6 +43,7 @@ export async function getObtenerCoordinadoLeon(){
             ON ins.id_inspector = i.id_inspector
 	    INNER JOIN supervisores sup
             ON sup.id_supervisor = i.id_supervisor
+        WHERE i.fecha = current_date    
   			AND i.id_depto = 12
         ORDER BY i.fecha DESC;
         `;
