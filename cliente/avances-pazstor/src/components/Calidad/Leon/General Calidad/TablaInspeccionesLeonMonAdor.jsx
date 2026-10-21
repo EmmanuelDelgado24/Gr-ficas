@@ -37,11 +37,12 @@ export function TablaInspeccionesLeonMonAdor({ lista, handleDeleteMonAdorL, inic
                                 <TableCell className="whitespace-nowrap font-medium text-gray-900 dark:text-white">{insp.nombre_subdepto}</TableCell>
                                 <TableCell className="whitespace-nowrap font-medium text-gray-900 dark:text-white">{insp.nombre_linea}</TableCell>
                                 <TableCell className="whitespace-nowrap font-medium text-gray-900 dark:text-white">
-                                    {insp.fecha
+                                     {insp.fecha
                                         ? new Date(insp.fecha).toLocaleDateString("es-MX", {
                                             day: "2-digit",
                                             month: "2-digit",
                                             year: "numeric",
+                                            timeZone: "UTC",
                                         })
                                         : ""}
                                 </TableCell>
