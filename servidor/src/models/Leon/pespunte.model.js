@@ -39,7 +39,7 @@ export async function obtenerLotes({ depto, subdepto, origen }) {
 }
 
 export const lotesConfig = [
-  //{ nombre: 'Pespunte242', depto: 59, subdepto: 91, origen: "5D" },    //Linea 1
+  { nombre: 'Pespunte242', depto: 50, subdepto: 510, origen: "5D" },    //Linea 1
   { nombre: 'Pespunte244', depto: 50, subdepto: 502, origen: "5D" },     //Linea 2
   { nombre: 'Pespunte241', depto: 50, subdepto: 504, origen: "5D" },    //Linea 4
   { nombre: 'Pespunte141', depto: 50, subdepto: 55, origen: "5D" },    //Linea 5
@@ -47,7 +47,7 @@ export const lotesConfig = [
   { nombre: 'MaquilaL8', depto: 50, subdepto: 58, origen: "5D" },    //Linea 8
 
 
- // { nombre: '4D-Pespunte242', depto: 59, subdepto: 91, origen: "4D" }, //Linea 1
+  { nombre: '4D-Pespunte242', depto: 50, subdepto: 510, origen: "4D" }, //Linea 1
   { nombre: '4D-Pespunte244', depto: 50, subdepto: 502, origen: "4D" }, //Linea 2
   { nombre: '4D-Pespunte241', depto: 50, subdepto: 504, origen: "4D" }, //Linea 4
   { nombre: '4D-Pespunte141', depto: 50, subdepto: 55, origen: "4D" }, //Linea 5

@@ -32,11 +32,13 @@ export const PageCoordinado = () => {
   const [metaDiaria, setMetaDiaria] = useState(null);
   const [empleadoscor, setEmpleadosCor] = useState([]);
   const [totales, setTotales] = useState({
+    coordinado1: 0,
     coordinado2: 0,
     coordinado4: 0,
     coordinado5: 0,
     coordinado6: 0,
     coordinado8: 0,
+    coordinado14: 0,
     coordinado24: 0,
     coordinado44: 0,
     coordinado54: 0,
@@ -100,6 +102,10 @@ export const PageCoordinado = () => {
 
   const sumarEmpleadosCoordinado = empleadoscor.length;
 
+   const setTotalCoordinado1 = useCallback((valor) => {
+    setTotales((prev) => ({ ...prev, coordinado2: valor }));
+  }, []);
+
   const setTotalCoordinado2 = useCallback((valor) => {
     setTotales((prev) => ({ ...prev, coordinado2: valor }));
   }, []);
@@ -118,6 +124,11 @@ export const PageCoordinado = () => {
 
   const setTotalCoordinado8 = useCallback((valor) => {
     setTotales((prev) => ({ ...prev, coordinado8: valor }));
+  }, []);
+
+
+  const setTotalCoordinado14 = useCallback((valor) => {
+    setTotales((prev) => ({ ...prev, coordinado24: valor }));
   }, []);
 
   const setTotalCoordinado24 = useCallback((valor) => {
@@ -204,9 +215,9 @@ export const PageCoordinado = () => {
             <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
               <thead class="text-xs text-gray-700 bg-gray-50 dark:bg-gray-100 dark:text-gray-400">
                 <tr>
-                 {/* <th scope="col" class="px-0">
-                    <GraficaCoordinado4L1 />
-                  </th>*/} 
+                  <th scope="col" class="px-0">
+                    <GraficaCoordinado4L1 onTotalChange={setTotalCoordinado14} />
+                  </th> 
                   <th scope="col" class="px-0">
                     <GraficaCoordinado4L2 onTotalChange={setTotalCoordinado24} />
                   </th>
@@ -216,12 +227,12 @@ export const PageCoordinado = () => {
                   <th scope="col" class="px-0">
                     <GraficaCoordinado4L5 onTotalChange={setTotalCoordinado54} />
                   </th>
-                  {/*<th scope="col" class="px-0">
+                    {/* <th scope="col" class="px-0">
                     <GraficaCoordinado4L6 onTotalChange={setTotalCoordinado64} />
                   </th>
                  <th scope="col" class="px-0">
                     <GraficaCoordinado4L7 />
-                  </th>*/} 
+                  </th> */}
                   <th scope="col" class="px-0">
                     <GraficaCoordinado4L8 onTotalChange={setTotalCoordinado84} />
                   </th>
@@ -229,9 +240,9 @@ export const PageCoordinado = () => {
               </thead>
               <tbody>
                 <tr class="odd:bg-white odd:dark:bg-gray-50 even:bg-gray-50 even:dark:bg-gray-500 border-b dark:border-gray-500 border-gray-400">
-                  {/*<th scope="row" class="px-0">
-                    <GraficaCoordinadoL1 />
-                  </th>*/} 
+                  <th scope="row" class="px-0">
+                    <GraficaCoordinadoL1 onTotalChange={setTotalCoordinado1} />
+                  </th> 
                   <th scope="row" class="px-0">
                     <GraficaCoordinadoL2 onTotalChange={setTotalCoordinado2} />
                   </th>

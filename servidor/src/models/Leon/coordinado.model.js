@@ -37,7 +37,7 @@ export async function obtenerLotes({ depto, subdepto, origen}) {
 }
 
 export const lotesConfig = [
-  { nombre: 'CoordinadoL1', depto: 40, subdepto: 242, origen: "5D" },    //Linea 1
+  { nombre: 'CoordinadoL1', depto: 40, subdepto: 401, origen: "5D" },    //Linea 1
   { nombre: 'CoordinadoL2', depto: 40, subdepto: 244, origen: "5D" },    //Linea 2
   { nombre: 'CoordinadoL4', depto: 40, subdepto: 241, origen: "5D" },    //Linea 4 
   { nombre: 'CoordinadoL5', depto: 40, subdepto: 450, origen: "5D" },    //Linea 5
@@ -45,7 +45,7 @@ export const lotesConfig = [
  // { nombre: 'CoordinadoL7', depto: 40, subdepto:  27, origen: "5D" },    //Linea 7
   { nombre: 'CoordinadoL8', depto: 40, subdepto: 408, origen: "5D" },    //Linea 8
 
-  { nombre: '4D-CoordinadoL1', depto: 40, subdepto: 242, origen: "4D" }, //Linea 1
+  { nombre: '4D-CoordinadoL1', depto: 40, subdepto: 401, origen: "4D" }, //Linea 1
   { nombre: '4D-CoordinadoL2', depto: 40, subdepto: 244, origen: "4D" }, //Linea 2
   { nombre: '4D-CoordinadoL4', depto: 40, subdepto: 241, origen: "4D" }, //Linea 4
   { nombre: '4D-CoordinadoL5', depto: 40, subdepto: 450, origen: "4D" }, //Linea 5

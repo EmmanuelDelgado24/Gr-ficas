@@ -37,11 +37,13 @@ export const PageCorte = () => {
   const [metas, setMetas] = useState(null);
   const [empleadoscort, setEmpleadosCort] = useState([]);
   const [totales, setTotales] = useState({
+    corte1: 0,
     corte2: 0,
     corte4: 0,
     corte5: 0,
     corte6: 0,
     corte8: 0,
+    corte14: 0,
     corte24: 0,
     corte44: 0,
     corte54: 0,
@@ -140,6 +142,10 @@ export const PageCorte = () => {
 
   const sumarEmpleadosCorte = empleadoscort.length;
 
+  const setTotalCorte1 = useCallback((valor) => {
+    setTotales((prev) => ({ ...prev, corte2: valor }));
+  }, []);
+
   const setTotalCorte2 = useCallback((valor) => {
     setTotales((prev) => ({ ...prev, corte2: valor }));
   }, []);
@@ -158,6 +164,10 @@ export const PageCorte = () => {
 
   const setTotalCorte8 = useCallback((valor) => {
     setTotales((prev) => ({ ...prev, corte8: valor }));
+  }, []);
+
+  const setTotalCorte14 = useCallback((valor) => {
+    setTotales((prev) => ({ ...prev, corte24: valor }));
   }, []);
 
   const setTotalCorte24 = useCallback((valor) => {
@@ -277,29 +287,31 @@ export const PageCorte = () => {
               <thead className="text-xs text-gray-700 bg-gray-50 dark:bg-gray-100 dark:text-gray-400">
                 <tr>
                   <th scope="col" className="px-0">
+                    <GraficaCorte4L1
+                      onTotalChange={setTotalCorte14}
+                    />
+                  </th>
+                  <th scope="col" className="px-0">
                     <GraficaCorte4L2
                       onTotalChange={setTotalCorte24}
                     />
                   </th>
-
                   <th scope="col" className="px-0">
                     <GraficaCorte4L4
                       onTotalChange={setTotalCorte44}
                     />
                   </th>
-
                   <th scope="col" className="px-0">
                     <GraficaCorte4L5
                       onTotalChange={setTotalCorte54}
                     />
                   </th>
-{/*
+                  {/*
                   <th scope="col" className="px-0">
                     <GraficaCorte4L6
                       onTotalChange={setTotalCorte64}
                     />
                   </th>*/}
-
                   <th scope="col" className="px-0">
                     <GraficaCorte4L8
                       onTotalChange={setTotalCorte84}
@@ -311,6 +323,11 @@ export const PageCorte = () => {
               {/* GRÁFICAS 5 DÍGITOS */}
               <tbody>
                 <tr className="odd:bg-white odd:dark:bg-gray-50 even:bg-gray-50 even:dark:bg-gray-500 border-b dark:border-gray-500 border-gray-400">
+                  <th scope="row" className="px-0">
+                    <GraficaCorteL1
+                      onTotalChange={setTotalCorte1}
+                    />
+                  </th>
                   <th scope="row" className="px-0">
                     <GraficaCorteL2
                       onTotalChange={setTotalCorte2}
@@ -329,7 +346,7 @@ export const PageCorte = () => {
                     />
                   </th>
 
-                 {/* <th scope="row" className="px-0">
+                  {/* <th scope="row" className="px-0">
                     <GraficaCorteL6
                       onTotalChange={setTotalCorte6}
                     />
