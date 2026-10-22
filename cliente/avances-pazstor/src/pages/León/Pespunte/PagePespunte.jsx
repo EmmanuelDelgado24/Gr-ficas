@@ -113,11 +113,11 @@ export const PagePespunte = () => {
                   <GraficaPespunte4L5 />
                 </div>
               </th>
-              <th scope="col" className="w-1/4">
+             {/* <th scope="col" className="w-1/4">
                 <div className="">
                   <GraficaPespunte4L6 />
                 </div>
-              </th>
+              </th>*/}
               <th scope="col" className="w-1/4">
                 <div className="">
                   <GraficaPespunte4L8 />
@@ -147,11 +147,11 @@ export const PagePespunte = () => {
                   <GraficaL5 />
                 </div>
               </th>
-              <th scope="row" className="w-1/4">
+              {/*<th scope="row" className="w-1/4">
                 <div className="">
                   <GraficaL6 />
                 </div>
-              </th>
+              </th>*/}
               <th scope="row" className="w-1/4">
                 <div className="">
                   <GraficaL8 />

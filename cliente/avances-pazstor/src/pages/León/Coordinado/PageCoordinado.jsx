@@ -112,9 +112,9 @@ export const PageCoordinado = () => {
     setTotales((prev) => ({ ...prev, coordinado5: valor }));
   }, []);
 
-  const setTotalCoordinado6 = useCallback((valor) => {
+  /*const setTotalCoordinado6 = useCallback((valor) => {
     setTotales((prev) => ({ ...prev, coordinado6: valor }));
-  }, []);
+  }, []);*/
 
   const setTotalCoordinado8 = useCallback((valor) => {
     setTotales((prev) => ({ ...prev, coordinado8: valor }));
@@ -128,9 +128,9 @@ export const PageCoordinado = () => {
     setTotales((prev) => ({ ...prev, coordinado44: valor }));
   }, []);
 
-  const setTotalCoordinado64 = useCallback((valor) => {
+  /*const setTotalCoordinado64 = useCallback((valor) => {
     setTotales((prev) => ({ ...prev, coordinado64: valor }));
-  }, []);
+  }, []);*/
 
   const setTotalCoordinado54 = useCallback((valor) => {
     setTotales((prev) => ({ ...prev, coordinado54: valor }));
@@ -216,10 +216,10 @@ export const PageCoordinado = () => {
                   <th scope="col" class="px-0">
                     <GraficaCoordinado4L5 onTotalChange={setTotalCoordinado54} />
                   </th>
-                  <th scope="col" class="px-0">
+                  {/*<th scope="col" class="px-0">
                     <GraficaCoordinado4L6 onTotalChange={setTotalCoordinado64} />
                   </th>
-                {/* <th scope="col" class="px-0">
+                 <th scope="col" class="px-0">
                     <GraficaCoordinado4L7 />
                   </th>*/} 
                   <th scope="col" class="px-0">
@@ -241,7 +241,7 @@ export const PageCoordinado = () => {
                   <th scope="row" class="px-0">
                     <GraficaCoordinadoL5 onTotalChange={setTotalCoordinado5} />
                   </th>
-                  <th scope="row" class="px-0">
+                  {/*<th scope="row" class="px-0">
                     <GraficaCoordinadoL6 onTotalChange={setTotalCoordinado6} />
                   </th>
                  {/* <th scope="row" class="px-0">

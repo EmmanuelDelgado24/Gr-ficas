@@ -152,9 +152,9 @@ export const PageCorte = () => {
     setTotales((prev) => ({ ...prev, corte5: valor }));
   }, []);
 
-  const setTotalCorte6 = useCallback((valor) => {
+  /*const setTotalCorte6 = useCallback((valor) => {
     setTotales((prev) => ({ ...prev, corte6: valor }));
-  }, []);
+  }, []);*/
 
   const setTotalCorte8 = useCallback((valor) => {
     setTotales((prev) => ({ ...prev, corte8: valor }));
@@ -172,9 +172,9 @@ export const PageCorte = () => {
     setTotales((prev) => ({ ...prev, corte54: valor }));
   }, []);
 
-  const setTotalCorte64 = useCallback((valor) => {
+  /*const setTotalCorte64 = useCallback((valor) => {
     setTotales((prev) => ({ ...prev, corte64: valor }));
-  }, []);
+  }, []);*/
 
   const setTotalCorte84 = useCallback((valor) => {
     setTotales((prev) => ({ ...prev, corte84: valor }));
@@ -293,12 +293,12 @@ export const PageCorte = () => {
                       onTotalChange={setTotalCorte54}
                     />
                   </th>
-
+{/*
                   <th scope="col" className="px-0">
                     <GraficaCorte4L6
                       onTotalChange={setTotalCorte64}
                     />
-                  </th>
+                  </th>*/}
 
                   <th scope="col" className="px-0">
                     <GraficaCorte4L8
@@ -329,11 +329,11 @@ export const PageCorte = () => {
                     />
                   </th>
 
-                  <th scope="row" className="px-0">
+                 {/* <th scope="row" className="px-0">
                     <GraficaCorteL6
                       onTotalChange={setTotalCorte6}
                     />
-                  </th>
+                  </th>*/}
 
                   <th scope="row" className="px-0">
                     <GraficaCorteL8
