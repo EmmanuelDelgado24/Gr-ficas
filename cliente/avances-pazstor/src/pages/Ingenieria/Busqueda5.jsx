@@ -202,7 +202,7 @@ export const PageBusqueda5 = () => {
                     {[
                       { label: "Corte", value: 20 },
                       { label: "Coordinado", value: 40 },
-                      { label: "Pespunte", value: 59 },
+                      { label: "Pespunte", value: 50 },
                       { label: "Montado/Adorno", value: 80 },
                       // { label: "Embarque", value: 89 },
                     ].map((departamento) => (
