@@ -103,7 +103,7 @@ export const PageCoordinado = () => {
   const sumarEmpleadosCoordinado = empleadoscor.length;
 
    const setTotalCoordinado1 = useCallback((valor) => {
-    setTotales((prev) => ({ ...prev, coordinado2: valor }));
+    setTotales((prev) => ({ ...prev, coordinado1: valor }));
   }, []);
 
   const setTotalCoordinado2 = useCallback((valor) => {
@@ -128,7 +128,7 @@ export const PageCoordinado = () => {
 
 
   const setTotalCoordinado14 = useCallback((valor) => {
-    setTotales((prev) => ({ ...prev, coordinado24: valor }));
+    setTotales((prev) => ({ ...prev, coordinado14: valor }));
   }, []);
 
   const setTotalCoordinado24 = useCallback((valor) => {
