@@ -53,7 +53,7 @@ export const PageMontadoCU = () => {
   }, [subdeptos, departamento, ciudad]);
 
   useEffect(() => {
-        socket.emit("iniciar-verificacion", "montadoCU");
+        socket.emit("iniciar-verificacion", "montadoCUE");
         ConsultarMeta();
       }, [ConsultarMeta]);
 
@@ -61,7 +61,7 @@ export const PageMontadoCU = () => {
     <div>
       <br/><br/>
       <div className="flex pb-20">
-      <p className="titulo-produccion w-full">PRODUCCIÓN MONTADO </p>
+      <p className="titulo-produccion w-full">PRODUCCIÓN MONTADO CUERÁMARO</p>
       &nbsp;&nbsp;
       <Reloj/>
       </div>

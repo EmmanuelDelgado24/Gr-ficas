@@ -30,7 +30,7 @@ const GraficaL1142 = () => {
     });
 
     // Escuchar evento específico
-    socket.on("actualizar-Pespunte142", (datos) => {
+    socket.on("actualizar-CueraPespunteL2", (datos) => {
       console.log("Datos Actualizados en Pespunte-L2");
       if (Array.isArray(datos)) {
         setData(datos);
@@ -47,7 +47,7 @@ const GraficaL1142 = () => {
     return () => {
       clearInterval(intervalo);
       socket.off("connect");
-      socket.off("actualizar-Pespunte142");
+      socket.off("actualizar-CueraPespunteL2");
       socket.off("disconnect");
     };
   }, []);

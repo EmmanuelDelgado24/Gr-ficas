@@ -43,7 +43,7 @@ export async function getObtenerLeon() {
             ON ins.id_inspector = i.id_inspector
 	    INNER JOIN supervisores sup
             ON sup.id_supervisor = i.id_supervisor
-	    WHERE i.id_ciudad = $1	  
+	    WHERE i.id_ciudad = $3	  
         ORDER BY i.fecha DESC;
         `;
 

@@ -19,7 +19,7 @@ export const PageInyeccion = () => {
       <br/><br/>
       <section>
       <div className="flex">
-              <p className="titulo-produccion w-full">PRODUCCIÓN INYECCIÓN </p>
+              <p className="titulo-produccion w-full">PRODUCCIÓN INYECCIÓN MANUEL DOBLADO </p>
               &nbsp;&nbsp;
               <Reloj/>
             </div>

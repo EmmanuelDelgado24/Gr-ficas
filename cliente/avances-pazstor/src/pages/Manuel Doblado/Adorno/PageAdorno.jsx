@@ -6,10 +6,10 @@ import {Reloj} from "../../../util/Reloj.jsx";
 
 
 //Gráficas 4 Dígitos
-import AdornoL1 from "../../../components/4 Dígitos/Manuel Doblado/Adorno/AdornoL1/AdornoL1.jsx";
-import AdornoL2 from "../../../components/4 Dígitos/Manuel Doblado/Adorno/AdornoL2/AdornoL2.jsx";
-import AdornoL4 from "../../../components/4 Dígitos/Manuel Doblado/Adorno/AdornoL4/AdornoL4.jsx";
-
+import Adorno4L1 from "../../../components/4 Dígitos/Manuel Doblado/Adorno/AdornoL1/Adorno4L1.jsx";
+import Adorno4L2 from "../../../components/4 Dígitos/Manuel Doblado/Adorno/AdornoL2/Adorno4L2.jsx";
+import Adorno4L4 from "../../../components/4 Dígitos/Manuel Doblado/Adorno/AdornoL4/Adorno4L4.jsx";
+import Adorno4L5 from "../../../components/4 Dígitos/Manuel Doblado/Adorno/AdornoL5/Adorno4L5.jsx";
 
 //Gráficas 5 Dígitos
 import Adorno5L1 from "../../../components/5 Dígitos/Manuel Doblado/Adorno/AdornoL1/AdornoL1.jsx";
@@ -23,6 +23,7 @@ export const PageAdornoMD = () => {
         { nombre: 'Linea 1' },
         { nombre: 'Linea 2' },
         { nombre: 'Linea 4' },
+        { nombre: 'Linea 5' },
       ], []);
       const [metas, setMetas] = useState({});
 
@@ -66,7 +67,7 @@ export const PageAdornoMD = () => {
     <div>
       <br/><br/>
       <div className="flex pb-20">
-      <p className="titulo-produccion w-full">PRODUCCIÓN Adorno </p>
+      <p className="titulo-produccion w-full">PRODUCCIÓN ADORNO MANUEL DOBLADO </p>
       &nbsp;&nbsp;
       <Reloj/>
       </div>
@@ -85,14 +86,17 @@ export const PageAdornoMD = () => {
           <thead class="text-xs text-gray-700 bg-gray-50 dark:bg-gray-100 dark:text-gray-400">
             <tr>
               <th scope="col" className="w-1/3">
-                <AdornoL1 />
+                <Adorno4L1 />
               </th>
               <th scope="col" className="w-1/3">
-                <AdornoL2 />
+                <Adorno4L2 />
               </th>
               <th scope="col" className="w-1/3">
-                <AdornoL4 />
+                <Adorno4L4 />
               </th>
+              {/*<th scope="col" className="w-1/3">
+                <Adorno4L5 />
+              </th>*/}
             </tr>
             <tr>
               <th scope="col" className="w-1/3">

@@ -6,19 +6,15 @@ import {Reloj} from "../../../util/Reloj.jsx";
 
 
 //Gráficas 4 Dígitos
-import GraficaPespunte4L1 from "../../../components/4 Dígitos/Cueramaro/Pespunte/Gráficas/GráficaPespunte L-1/GraficaPespunte4L1.jsx";
 import GraficaPespunte4L2 from "../../../components/4 Dígitos/Cueramaro/Pespunte/Gráficas/GráficaPespunte L-2/GraficaPespunte4L2.jsx";
 import GraficaPespunte4L4 from "../../../components/4 Dígitos/Cueramaro/Pespunte/Gráficas/GráficaPespunte L-4/GraficaPespunte4L4.jsx";
 import GraficaPespunte4L5 from "../../../components/4 Dígitos/Cueramaro/Pespunte/Gráficas/GráficaPespunte L-5/GraficaPespunte4L5.jsx";
-import GraficaPespunte4L6 from "../../../components/4 Dígitos/Cueramaro/Pespunte/Gráficas/GráficaPespunte L-6/GraficaPespunte4L6.jsx";
 import GraficaPespunte4L8 from "../../../components/4 Dígitos/Cueramaro/Pespunte/Gráficas/GráficaPespunte L-8/GraficaPespunte4L8.jsx";
 
 //Gráficas 5 Dígitos
-import GraficaL1 from "../../../components/5 Dígitos/Cueramaro/Pespunte/Gráficas/GráficaPespunte L-1/GraficaL1.jsx";
 import GraficaL1142 from "../../../components/5 Dígitos/Cueramaro/Pespunte/Gráficas/GráficaPespunte L-1/GraficaL1142.jsx";
 import GraficaL4 from "../../../components/5 Dígitos/Cueramaro/Pespunte/Gráficas/GráficaPespunte L-4/GraficaL4.jsx";
 import GraficaL5 from "../../../components/5 Dígitos/Cueramaro/Pespunte/Gráficas/GráficaPespunte L-5/GraficaL5.jsx";
-import GraficaL6 from "../../../components/5 Dígitos/Cueramaro/Pespunte/Gráficas/GráficaPespunte L-6/GraficaL6.jsx";
 import GraficaL8 from "../../../components/5 Dígitos/Cueramaro/Pespunte/Gráficas/GráficaMaquilaL8/GraficaL8.jsx";
 
 
@@ -65,7 +61,7 @@ export const PagePespunteCU = () => {
   }, [subdeptos, departamento, ciudad]);
 
   useEffect(() => {
-    socket.emit("iniciar-verificacion", "pespunte");
+    socket.emit("iniciar-verificacion", "pespunteCUE");
     ConsultarMeta();
   }, [ConsultarMeta]);
 
@@ -75,7 +71,7 @@ export const PagePespunteCU = () => {
     <div>
       <br/><br/>
       <div className="flex">
-        <p className="titulo-produccion w-full">PRODUCCIÓN PESPUNTE </p>
+        <p className="titulo-produccion w-full">PRODUCCIÓN PESPUNTE CUERÁMARO</p>
         &nbsp;&nbsp;
         <Reloj/>
       </div>
@@ -94,11 +90,6 @@ export const PagePespunteCU = () => {
           <thead className="text-xs text-gray-700 bg-gray-50 dark:bg-gray-100 dark:text-gray-400">
             <tr>
               <th scope="col" className="w-1/4">
-                <div>
-                <GraficaPespunte4L1 />
-                </div>
-              </th>
-              <th scope="col" className="w-1/4">
                 <div className="">
                 <GraficaPespunte4L2 />
                 </div>
@@ -115,11 +106,6 @@ export const PagePespunteCU = () => {
               </th>
               <th scope="col" className="w-1/4">
                 <div className="">
-                <GraficaPespunte4L6 />
-                </div>
-              </th>
-              <th scope="col" className="w-1/4">
-                <div className="">
                 <GraficaPespunte4L8 />
                 </div>
               </th>
@@ -127,11 +113,6 @@ export const PagePespunteCU = () => {
           </thead>
           <tbody>
             <tr className="odd:bg-white odd:dark:bg-gray-50 even:bg-gray-50 even:dark:bg-gray-500">
-              <th scope="row" className="w-1/4">
-                <div className="">
-                <GraficaL1 />
-                </div>
-              </th>
               <th scope="row" className="w-1/4">
                 <div className="">
                 <GraficaL1142 />
@@ -145,11 +126,6 @@ export const PagePespunteCU = () => {
               <th scope="row" className="w-1/4">
                 <div className="">
                 <GraficaL5 />
-                </div>
-              </th>
-              <th scope="row" className="w-1/4">
-                <div className="">
-                <GraficaL6 />
                 </div>
               </th>
               <th scope="row" className="w-1/4">

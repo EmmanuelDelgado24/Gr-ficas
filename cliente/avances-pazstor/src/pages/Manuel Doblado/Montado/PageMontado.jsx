@@ -6,15 +6,16 @@ import {Reloj} from "../../../util/Reloj.jsx";
 
 
 //Gráficas 4 Dígitos
-import MontadoL1 from "../../../components/4 Dígitos/Manuel Doblado/Montado/MontadoL1/MontadoL1.jsx";
-import MontadoL2 from "../../../components/4 Dígitos/Manuel Doblado/Montado/MontadoL2/MontadoL2.jsx";
-import MontadoL4 from "../../../components/4 Dígitos/Manuel Doblado/Montado/MontadoL4/MontadoL4.jsx";
-
+import Montado4L1 from "../../../components/4 Dígitos/Manuel Doblado/Montado/MontadoL1/Montado4L1.jsx";
+import Montado4L2 from "../../../components/4 Dígitos/Manuel Doblado/Montado/MontadoL2/Montado4L2.jsx";
+import Montado4L4 from "../../../components/4 Dígitos/Manuel Doblado/Montado/MontadoL4/Montado4L4.jsx";
+import Montado4L5 from "../../../components/4 Dígitos/Manuel Doblado/Montado/MontadoL5/Montado4L5.jsx";
 
 //Gráficas 5 Dígitos
 import Montado5L1 from "../../../components/5 Dígitos/Manuel Doblado/Montado/MontadoL1/MontadoL1.jsx";
 import Montado5L2 from "../../../components/5 Dígitos/Manuel Doblado/Montado/MontadoL2/MontadoL2.jsx";
 import Montado5L4 from "../../../components/5 Dígitos/Manuel Doblado/Montado/MontadoL4/MontadoL4.jsx";
+//import Montado5L5 from "../../../components/5 Dígitos/Manuel Doblado/Montado/MontadoL5/MontadoL5.jsx";
 
 export const PageMontadoMD = () => {
   const departamento = "Montado";
@@ -23,6 +24,7 @@ export const PageMontadoMD = () => {
         { nombre: 'Linea 1' },
         { nombre: 'Linea 2' },
         { nombre: 'Linea 4' },
+        { nombre: 'Linea 5' },
       ], []);
       const [metas, setMetas] = useState({});
 
@@ -65,7 +67,7 @@ export const PageMontadoMD = () => {
     <div>
       <br/><br/>
       <div className="flex pb-20">
-      <p className="titulo-produccion w-full">PRODUCCIÓN MONTADO </p>
+      <p className="titulo-produccion w-full">PRODUCCIÓN MONTADO MANUEL DOBLADO</p>
       &nbsp;&nbsp;
       <Reloj/>
       </div>
@@ -84,14 +86,17 @@ export const PageMontadoMD = () => {
           <thead class="text-xs text-gray-700 bg-gray-50 dark:bg-gray-100 dark:text-gray-400">
             <tr>
               <th scope="col" className="w-1/3">
-                <MontadoL1 />
+                <Montado4L1 />
               </th>
               <th scope="col" className="w-1/3">
-                <MontadoL2 />
+                <Montado4L2 />
               </th>
               <th scope="col" className="w-1/3">
-                <MontadoL4 />
+                <Montado4L4 />
               </th>
+              {/*<th scope="col" className="w-1/3">
+                <Montado4L5 />
+              </th>*/}
             </tr>
             <tr>
               <th scope="col" className="w-1/3">

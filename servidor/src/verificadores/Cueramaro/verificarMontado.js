@@ -2,7 +2,7 @@ import { obtenerLotes, lotesConfig } from '../../models/Cueramaro/montado.models
 
 let verificadorIniciado = false;
 
-export function iniciarVerificacionMontadoCU(io) {
+export function iniciarVerificacionMontadoCUE(io) {
   if (verificadorIniciado) return;
   verificadorIniciado = true;
 

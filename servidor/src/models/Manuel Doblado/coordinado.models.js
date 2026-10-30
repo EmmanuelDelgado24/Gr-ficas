@@ -37,20 +37,14 @@ export async function obtenerLotes({ depto, subdepto, origen}) {
 }
 
 export const lotesConfig = [
-  //{ nombre: 'CoordinadoL1', depto: 40, subdepto: 242, origen: "5D" },    //Linea 1
-  { nombre: 'MDCoordinadoL2', depto: 40, subdepto: 244, origen: "5D" },    //Linea 2
-  { nombre: 'MDCoordinadoL4', depto: 40, subdepto: 241, origen: "5D" },    //Linea 4 
-  { nombre: 'MDCoordinadoL5', depto: 40, subdepto: 450, origen: "5D" },    //Linea 5
-  { nombre: 'MDCoordinadoL6', depto: 40, subdepto: 245, origen: "5D" },    //Linea 6
- // { nombre: 'CoordinadoL7', depto: 40, subdepto:  27, origen: "5D" },    //Linea 7
-  { nombre: 'MDCoordinadoL8', depto: 40, subdepto: 408, origen: "5D" },    //Linea 8
+  { nombre: 'MDCoordinadoL1', depto: 40, subdepto: 41, origen: "5D" },    //Linea 1
+  { nombre: 'MDCoordinadoL4', depto: 40, subdepto: 44, origen: "5D" },    //Linea 4 
+  { nombre: 'MDCoordinadoL5', depto: 40, subdepto: 45, origen: "5D" },    //Linea 5
+  { nombre: 'MDCoordinadoL7', depto: 40, subdepto: 47, origen: "5D" },    //Linea 7
 
-  //{ nombre: '4D-CoordinadoL1', depto: 40, subdepto: 242, origen: "4D" }, //Linea 1
-  { nombre: '4D-MDCoordinadoL2', depto: 40, subdepto: 244, origen: "4D" }, //Linea 2
-  { nombre: '4D-MDCoordinadoL4', depto: 40, subdepto: 241, origen: "4D" }, //Linea 4
-  { nombre: '4D-MDCoordinadoL5', depto: 40, subdepto: 450, origen: "4D" }, //Linea 5
-  { nombre: '4D-MDCoordinadoL6', depto: 40, subdepto: 245, origen: "4D" }, //Linea 6
- // { nombre: '4D-MDCoordinadoL7', depto: 40, subdepto:  27, origen: "4D" }, //Linea 7
-  { nombre: '4D-MDCoordinadoL8', depto: 40, subdepto: 408, origen: "4D" }, //Linea 8
-  // { nombre: 'Pespunte245', depto: 59, subdepto: 96 },
+  { nombre: '4D-MDCoordinadoL1', depto: 40, subdepto: 41, origen: "4D" }, //Linea 1
+  { nombre: '4D-MDCoordinadoL4', depto: 40, subdepto: 44, origen: "4D" }, //Linea 4
+  { nombre: '4D-MDCoordinadoL5', depto: 40, subdepto: 45, origen: "4D" }, //Linea 5
+  { nombre: '4D-MDCoordinadoL7', depto: 40, subdepto: 47, origen: "4D" }, //Linea 7
+
 ];

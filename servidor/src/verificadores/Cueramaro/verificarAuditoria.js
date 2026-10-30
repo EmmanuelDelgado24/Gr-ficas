@@ -2,7 +2,7 @@ import { obtenerLotes, lotesConfig } from '../../models/Cueramaro/auditoria.mode
 
 let verificadorIniciado = false;
 
-export function iniciarVerificacionAuditoriaCU(io) {
+export function iniciarVerificacionAuditoriaCUE(io) {
   if (verificadorIniciado) return;
   verificadorIniciado = true;
 

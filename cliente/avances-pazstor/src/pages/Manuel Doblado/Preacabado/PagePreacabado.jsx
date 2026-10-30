@@ -19,7 +19,7 @@ export const PagePreacabado = () => {
       <br/><br/>
       <section>
       <div className="flex">
-              <p className="titulo-produccion w-full">PRODUCCIÓN PREACABADO </p>
+              <p className="titulo-produccion w-full">PRODUCCIÓN PREACABADO MANUEL DOBLADO</p>
               &nbsp;&nbsp;
               <Reloj/>
             </div>

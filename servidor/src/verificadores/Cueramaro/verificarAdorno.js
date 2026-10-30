@@ -2,7 +2,7 @@ import { obtenerLotes, lotesConfig } from '../../models/Cueramaro/adorno.models.
 
 let verificadorIniciado = false;
 
-export function iniciarVerificacionAdornoCU(io) {
+export function iniciarVerificacionAdornoCUE(io) {
   if (verificadorIniciado) return;
   verificadorIniciado = true;
 

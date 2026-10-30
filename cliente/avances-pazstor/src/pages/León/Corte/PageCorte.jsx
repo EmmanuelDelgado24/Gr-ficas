@@ -232,7 +232,7 @@ export const PageCorte = () => {
           {/* TARJETAS SUPERIORES */}
           <div className="flex pb-20">
             <p className="titulo-produccion w-full">
-              PRODUCCIÓN CORTE
+              PRODUCCIÓN CORTE LEÓN
             </p>
 
             &nbsp;&nbsp;

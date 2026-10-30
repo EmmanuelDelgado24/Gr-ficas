@@ -75,7 +75,7 @@ export const PagePespunte = () => {
     <div>
       <br /><br />
       <div className="flex">
-        <p className="titulo-produccion w-full">PRODUCCIÓN PESPUNTE </p>
+        <p className="titulo-produccion w-full">PRODUCCIÓN PESPUNTE LEÓN</p>
         &nbsp;&nbsp;
         <Reloj />
       </div>

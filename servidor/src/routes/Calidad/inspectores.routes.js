@@ -4,6 +4,6 @@ import { obtenerInspectores } from '../../controllers/Calidad/Catalogo/inspector
 
 const router = express.Router();
 
-router.get("/obtenerInspectores",  obtenerInspectores);
+router.get("/obtenerInspectores/:id_ciudad",  obtenerInspectores);
 
 export default router;

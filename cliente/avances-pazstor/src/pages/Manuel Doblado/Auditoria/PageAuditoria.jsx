@@ -6,10 +6,10 @@ import {Reloj} from "../../../util/Reloj.jsx";
 
 
 //Gráficas 4 Dígitos
-import AuditoriaL1 from "../../../components/4 Dígitos/Manuel Doblado/Auditoria/AuditoriaL1/AuditoriaL1.jsx";
-import AuditoriaL2 from "../../../components/4 Dígitos/Manuel Doblado/Auditoria/AuditoriaL2/AuditoriaL2.jsx";
-import AuditoriaL4 from "../../../components/4 Dígitos/Manuel Doblado/Auditoria/AuditoriaL4/AuditoriaL4.jsx";
-
+import Auditoria4L1 from "../../../components/4 Dígitos/Manuel Doblado/Auditoria/AuditoriaL1/Auditoria4L1.jsx";
+import Auditoria4L2 from "../../../components/4 Dígitos/Manuel Doblado/Auditoria/AuditoriaL2/Auditoria4L2.jsx";
+import Auditoria4L4 from "../../../components/4 Dígitos/Manuel Doblado/Auditoria/AuditoriaL4/Auditoria4L4.jsx";
+import Auditoria4L5 from "../../../components/4 Dígitos/Manuel Doblado/Auditoria/AuditoriaL5/Auditoria4L5.jsx";
 
 //Gráficas 5 Dígitos
 import Auditoria5L1 from "../../../components/5 Dígitos/Manuel Doblado/Auditoria/AuditoriaL1/AuditoriaL1.jsx";
@@ -23,6 +23,7 @@ export const PageAuditoriaMD = () => {
         { nombre: 'Linea 1' },
         { nombre: 'Linea 2' },
         { nombre: 'Linea 4' },
+        { nombre: 'Linea 5' },
       ], []);
       const [metas, setMetas] = useState({});
 
@@ -65,7 +66,7 @@ export const PageAuditoriaMD = () => {
     <div>
       <br/><br/>
       <div className="flex pb-20">
-      <p className="titulo-produccion w-full">PRODUCCIÓN AUDITORIA </p>
+      <p className="titulo-produccion w-full">PRODUCCIÓN AUDITORIA MANUEL DOBLADO</p>
       &nbsp;&nbsp;
       <Reloj/>
       </div>
@@ -84,14 +85,17 @@ export const PageAuditoriaMD = () => {
           <thead class="text-xs text-gray-700 bg-gray-50 dark:bg-gray-100 dark:text-gray-400">
             <tr>
               <th scope="col" className="w-1/3">
-                <AuditoriaL1 />
+                <Auditoria4L1 />
               </th>
               <th scope="col" className="w-1/3">
-                <AuditoriaL2 />
+                <Auditoria4L2 />
               </th>
               <th scope="col" className="w-1/3">
-                <AuditoriaL4 />
+                <Auditoria4L4 />
               </th>
+             {/*  <th scope="col" className="w-1/3">
+                <Auditoria4L5 />
+              </th>*/}
             </tr>
             <tr>
               <th scope="col" className="w-1/3">

@@ -6,22 +6,16 @@ import {Reloj} from "../../../util/Reloj.jsx";
 
 
 //Gráficas 4 Dígitos
-import GraficaCorte4L1 from "../../../components/4 Dígitos/León/Corte/Gráficas/GráficaCorte L-1/GraficaCorte4L1.jsx";
-import GraficaCorte4L2 from "../../../components/4 Dígitos/León/Corte/Gráficas/GráficaCorte L-2/GraficaCorte4L2.jsx";
-import GraficaCorte4L4 from "../../../components/4 Dígitos/León/Corte/Gráficas/GráficaCorte L-4/GraficaCorte4L4.jsx";
-import GraficaCorte4L5 from "../../../components/4 Dígitos/León/Corte/Gráficas/GráficaCorte L-5/GraficaCorte4L5.jsx";
-import GraficaCorte4L6 from "../../../components/4 Dígitos/León/Corte/Gráficas/GráficaCorte L-6/GraficaCorte4L6.jsx";
-import GraficaCorte4L7 from "../../../components/4 Dígitos/León/Corte/Gráficas/GráficaCorte L-7/GraficaCorte4L7.jsx";
-import GraficaCorte4L8 from "../../../components/4 Dígitos/León/Corte/Gráficas/GráficaCorte L-8/GraficaCorte4L8.jsx";
+import GraficaCorte4L1 from "../../../components/4 Dígitos/Manuel Doblado/Corte/GráficaCorteL1/GraficaCorte4L1.jsx";
+import GraficaCorte4L2 from "../../../components/4 Dígitos/Manuel Doblado/Corte/GráficaCorteL2/GraficaCorte4L2.jsx";
+import GraficaCorte4L4 from "../../../components/4 Dígitos/Manuel Doblado/Corte/GráficaCorteL4/GraficaCorte4L4.jsx";
+
 
 //Gráficas 5 Dígitos
-import GraficaCorteL1 from "../../../components/5 Dígitos/León/Corte/Gráficas/GráficaCorte L-1/GraficaCorteL1.jsx";
-import GraficaCorteL2 from "../../../components/5 Dígitos/León/Corte/Gráficas/GráficaCorte L-2/GraficaCorteL2.jsx";
-import GraficaCorteL4 from "../../../components/5 Dígitos/León/Corte/Gráficas/GráficaCorte L-4/GraficaCorteL4.jsx";
-import GraficaCorteL5 from "../../../components/5 Dígitos/León/Corte/Gráficas/GráficaCorte L-5/GraficaCorteL5.jsx";
-import GraficaCorteL6 from "../../../components/5 Dígitos/León/Corte/Gráficas/GráficaCorte L-6/GraficaCorteL6.jsx";
-import GraficaCorteL7 from "../../../components/5 Dígitos/León/Corte/Gráficas/GráficaCorte L-7/GraficaCorteL7.jsx";
-import GraficaCorteL8 from "../../../components/5 Dígitos/León/Corte/Gráficas/GráficaCorte L-8/GraficaCorteL8.jsx";
+import GraficaCorteL1 from "../../../components/5 Dígitos/Manuel Doblado/Corte/GráficaCorteL1/GraficaCorteL1.jsx";
+import GraficaCorteL2 from "../../../components/5 Dígitos/Manuel Doblado/Corte/GráficaCorteL2/GraficaCorteL2.jsx";
+import GraficaCorteL4 from "../../../components/5 Dígitos/Manuel Doblado/Corte/GráficaCorteL4/GraficaCorteL4.jsx";
+
 
 export const PageCorteMD = () => {
   const departamento = "Corte";
@@ -64,7 +58,7 @@ export const PageCorteMD = () => {
   }, [subdeptos, departamento, ciudad]);
     
       useEffect(() => {
-            socket.emit("iniciar-verificacion", "corte");
+            socket.emit("iniciar-verificacion", "corteMD");
             ConsultarMeta();
   }, [ConsultarMeta]);
     
@@ -73,7 +67,7 @@ export const PageCorteMD = () => {
       <br/><br/>
       <section>
       <div className="flex">
-              <p className="titulo-produccion w-full">PRODUCCIÓN CORTE </p>
+              <p className="titulo-produccion w-full">PRODUCCIÓN CORTE MANUEL DOBLADO</p>
               &nbsp;&nbsp;
               <Reloj/>
             </div>
@@ -95,22 +89,10 @@ export const PageCorteMD = () => {
                   <GraficaCorte4L1 />
                 </th>
                 <th scope="col" className="px-0">
-                  <GraficaCorte4L2 />
+                  < GraficaCorte4L2 />
                 </th>
                 <th scope="col" className="px-0">
                   <GraficaCorte4L4 />
-                </th>
-                <th scope="col" className="px-0">
-                  <GraficaCorte4L5 />
-                </th>
-                <th scope="col" className="px-0">
-                  <GraficaCorte4L6 />
-                </th>
-                <th scope="col" className="px-0">
-                  <GraficaCorte4L7 />
-                </th>
-                <th scope="col" className="px-0">
-                  <GraficaCorte4L8 />
                 </th>
               </tr>
             </thead>
@@ -124,18 +106,6 @@ export const PageCorteMD = () => {
                 </th>
                 <th scope="row" className="px-0">
                   <GraficaCorteL4 />
-                </th>
-                <th scope="row" className="px-0">
-                  <GraficaCorteL5 />
-                </th>
-                <th scope="row" className="px-0">
-                  <GraficaCorteL6 />
-                </th>
-                <th scope="row" className="px-0">
-                  <GraficaCorteL7 />
-                </th>
-                <th scope="row" className="px-0">
-                  <GraficaCorteL8 />
                 </th>
               </tr>
             </tbody>

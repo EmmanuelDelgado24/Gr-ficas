@@ -52,7 +52,7 @@ export const PageAuditoriaCU = () => {
   }, [subdeptos, departamento, ciudad]);
 
   useEffect(() => {
-        socket.emit("iniciar-verificacion", "auditoriaCU");
+        socket.emit("iniciar-verificacion", "auditoriaCUE");
         ConsultarMeta();
       }, [ConsultarMeta]);
 
@@ -60,7 +60,7 @@ export const PageAuditoriaCU = () => {
     <div>
       <br/><br/>
       <div className="flex pb-20">
-      <p className="titulo-produccion w-full">PRODUCCIÓN AUDITORIA </p>
+      <p className="titulo-produccion w-full">PRODUCCIÓN AUDITORIA CUERÁMARO</p>
       &nbsp;&nbsp;
       <Reloj/>
       </div>

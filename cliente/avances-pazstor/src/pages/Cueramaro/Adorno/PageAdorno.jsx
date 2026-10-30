@@ -53,7 +53,7 @@ export const PageAdornoCU = () => {
   }, [subdeptos, departamento, ciudad]);
 
   useEffect(() => {
-        socket.emit("iniciar-verificacion", "adornoCU");
+        socket.emit("iniciar-verificacion", "adornoCUE");
         ConsultarMeta();
       }, [ConsultarMeta]);
 
@@ -61,7 +61,7 @@ export const PageAdornoCU = () => {
     <div>
       <br/><br/>
       <div className="flex pb-20">
-      <p className="titulo-produccion w-full">PRODUCCIÓN ADORNO </p>
+      <p className="titulo-produccion w-full">PRODUCCIÓN ADORNO CUERÁMARO</p>
       &nbsp;&nbsp;
       <Reloj/>
       </div>

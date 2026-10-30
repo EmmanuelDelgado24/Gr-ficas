@@ -37,10 +37,10 @@ export async function obtenerLotes({ depto, subdepto, origen}) {
 }
 
 export const lotesConfig = [
-  { nombre: 'Adorno-L5', depto: 70, subdepto: 75, origen: "5D"},
-  { nombre: 'Adorno-L8', depto: 70, subdepto: 78, origen: "5D" },    
+  { nombre: 'CueraAdorno-L5', depto: 70, subdepto: 75, origen: "5D"},
+  { nombre: 'CueraAdorno-L8', depto: 70, subdepto: 78, origen: "5D" },    
   
-  { nombre: '4D-Adorno-L5', depto: 70, subdepto: 75, origen: "4D" }, //Linea 5
-  { nombre: '4D-Adorno-L8', depto: 70, subdepto: 78, origen: "4D" }, //Linea 8
+  { nombre: '4D-CueraAdorno-L5', depto: 70, subdepto: 75, origen: "4D" }, //Linea 5
+  { nombre: '4D-CueraAdorno-L8', depto: 70, subdepto: 78, origen: "4D" }, //Linea 8
   
 ];

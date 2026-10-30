@@ -30,7 +30,7 @@ const Montado5L1 = () => {
     });
 
     // Escuchar evento específico
-    socket.on("actualizar-Montado-L1", (datos) => {
+    socket.on("actualizar-MDMontado-L1", (datos) => {
       console.log("Datos Actualizados en Montado L1");
       if (Array.isArray(datos)) {
         setData(datos);
@@ -47,7 +47,7 @@ const Montado5L1 = () => {
     return () => {
       clearInterval(intervalo);
       socket.off("connect");
-      socket.off("actualizar-Montado-L1");
+      socket.off("actualizar-MDMontado-L1");
       socket.off("disconnect");
     };
   }, []);

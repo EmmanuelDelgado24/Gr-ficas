@@ -6,31 +6,22 @@ import {Reloj} from "../../../util/Reloj.jsx";
 
 
 //Gráficas 4 Dígitos
-import GraficaPespunte4L1 from "../../../components/4 Dígitos/Cueramaro/Pespunte/Gráficas/GráficaPespunte L-1/GraficaPespunte4L1.jsx";
-import GraficaPespunte4L2 from "../../../components/4 Dígitos/Cueramaro/Pespunte/Gráficas/GráficaPespunte L-2/GraficaPespunte4L2.jsx";
-import GraficaPespunte4L4 from "../../../components/4 Dígitos/Cueramaro/Pespunte/Gráficas/GráficaPespunte L-4/GraficaPespunte4L4.jsx";
-import GraficaPespunte4L5 from "../../../components/4 Dígitos/Cueramaro/Pespunte/Gráficas/GráficaPespunte L-5/GraficaPespunte4L5.jsx";
-import GraficaPespunte4L6 from "../../../components/4 Dígitos/Cueramaro/Pespunte/Gráficas/GráficaPespunte L-6/GraficaPespunte4L6.jsx";
-import GraficaPespunte4L8 from "../../../components/4 Dígitos/Cueramaro/Pespunte/Gráficas/GráficaPespunte L-8/GraficaPespunte4L8.jsx";
+import GraficaPespunte4L1 from "../../../components/4 Dígitos/Manuel Doblado/Pespunte/GráficaPespunteL1/GraficaPespunte4L1.jsx";
+import GraficaPespunte4L2 from "../../../components/4 Dígitos/Manuel Doblado/Pespunte/GráficaPespunteL2/GraficaPespunte4L2.jsx";
+import GraficaPespunte4L4 from "../../../components/4 Dígitos/Manuel Doblado/Pespunte/GráficaPespunteL4/GraficaPespunte4L4.jsx";
 
 //Gráficas 5 Dígitos
-import GraficaL1 from "../../../components/5 Dígitos/Cueramaro/Pespunte/Gráficas/GráficaPespunte L-1/GraficaL1.jsx";
-import GraficaL1142 from "../../../components/5 Dígitos/Cueramaro/Pespunte/Gráficas/GráficaPespunte L-1/GraficaL1142.jsx";
-import GraficaL4 from "../../../components/5 Dígitos/Cueramaro/Pespunte/Gráficas/GráficaPespunte L-4/GraficaL4.jsx";
-import GraficaL5 from "../../../components/5 Dígitos/Cueramaro/Pespunte/Gráficas/GráficaPespunte L-5/GraficaL5.jsx";
-import GraficaL6 from "../../../components/5 Dígitos/Cueramaro/Pespunte/Gráficas/GráficaPespunte L-6/GraficaL6.jsx";
-import GraficaL8 from "../../../components/5 Dígitos/Cueramaro/Pespunte/Gráficas/GráficaMaquilaL8/GraficaL8.jsx";
-
+import GraficaPespunteL1 from "../../../components/5 Dígitos/Manuel Doblado/Pespunte/GráficaPespunteL1/GraficaPespunteL1.jsx";
+import GraficaPespunteL2 from "../../../components/5 Dígitos/Manuel Doblado/Pespunte/GráficaPespunteL2/GraficaPespunteL2.jsx";
+import GraficaPespunteL4 from "../../../components/5 Dígitos/Manuel Doblado/Pespunte/GráficaPespunteL4/GraficaPespunteL4.jsx";
 
 export const PagePespunteMD = () => {
   const departamento = "Pespunte";
     const ciudad = "Manuel Doblado";
     const subdeptos = useMemo(() => [
-      { nombre: 'Banda 241' },
-      { nombre: 'Banda 242' },
-      { nombre: 'Banda 243' },
-      { nombre: 'Banda 244' },  
-      { nombre: 'Banda 245' },
+      { nombre: 'Banda 1' },
+      { nombre: 'Banda 2' },
+      { nombre: 'Banda 4' },
     ], []);
     const [metas, setMetas] = useState({});
   
@@ -65,7 +56,7 @@ export const PagePespunteMD = () => {
   }, [subdeptos, departamento, ciudad]);
 
   useEffect(() => {
-    socket.emit("iniciar-verificacion", "pespunte");
+    socket.emit("iniciar-verificacion", "pespunteMD");
     ConsultarMeta();
   }, [ConsultarMeta]);
 
@@ -75,7 +66,7 @@ export const PagePespunteMD = () => {
     <div>
       <br/><br/>
       <div className="flex">
-        <p className="titulo-produccion w-full">PRODUCCIÓN PESPUNTE </p>
+        <p className="titulo-produccion w-full">PRODUCCIÓN PESPUNTE MANUEL DOBLADO</p>
         &nbsp;&nbsp;
         <Reloj/>
       </div>
@@ -108,53 +99,23 @@ export const PagePespunteMD = () => {
                 <GraficaPespunte4L4 />
                 </div>
               </th>
-              <th scope="col" className="w-1/4">
-                <div className="">
-                <GraficaPespunte4L5 />
-                </div>
-              </th>
-              <th scope="col" className="w-1/4">
-                <div className="">
-                <GraficaPespunte4L6 />
-                </div>
-              </th>
-              <th scope="col" className="w-1/4">
-                <div className="">
-                <GraficaPespunte4L8 />
-                </div>
-              </th>
             </tr>
           </thead>
           <tbody>
             <tr className="odd:bg-white odd:dark:bg-gray-50 even:bg-gray-50 even:dark:bg-gray-500">
               <th scope="row" className="w-1/4">
                 <div className="">
-                <GraficaL1 />
+                <GraficaPespunteL1 />
                 </div>
               </th>
               <th scope="row" className="w-1/4">
                 <div className="">
-                <GraficaL1142 />
+                <GraficaPespunteL2/>
                 </div>
               </th>
               <th scope="row" className="w-1/4">
                 <div className="">
-                <GraficaL4 />
-                </div>
-              </th>
-              <th scope="row" className="w-1/4">
-                <div className="">
-                <GraficaL5 />
-                </div>
-              </th>
-              <th scope="row" className="w-1/4">
-                <div className="">
-                <GraficaL6 />
-                </div>
-              </th>
-              <th scope="row" className="w-1/4">
-                <div className="">
-                <GraficaL8 />
+                <GraficaPespunteL4 />
                 </div>
               </th>
             </tr>

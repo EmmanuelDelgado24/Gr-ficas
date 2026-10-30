@@ -18,11 +18,16 @@ import { iniciarVerificacionPespunte } from './verificadores/Leon/verificarPespu
 import { iniciarVerificacionCoordinado } from "./verificadores/Leon/verificarCoordinado.js";
 
 
-import { iniciarVerificacionMontadoCU } from "./verificadores/Cueramaro/verificarMontado.js";
-import { iniciarVerificacionAdornoCU } from "./verificadores/Cueramaro/verificarAdorno.js";
-import { iniciarVerificacionAuditoriaCU } from "./verificadores/Cueramaro/verificarAuditoria.js";
+import { iniciarVerificacionMontadoCUE } from "./verificadores/Cueramaro/verificarMontado.js";
+import { iniciarVerificacionAdornoCUE } from "./verificadores/Cueramaro/verificarAdorno.js";
+import { iniciarVerificacionAuditoriaCUE } from "./verificadores/Cueramaro/verificarAuditoria.js";
+import { iniciarVerificacionCorteCUE } from "./verificadores/Cueramaro/verificarCorte.js"
+import { iniciarVerificacionCoordinadoCUE } from "./verificadores/Cueramaro/verificarCoordinado.js"
+import { iniciarVerificacionPespunteCUE } from "./verificadores/Cueramaro/verificarPespunte.js"
 
-
+import { iniciarVerificacionCorteMD } from './verificadores/Manuel Doblado/verificarCorte.js';
+import { iniciarVerificacionPespunteMD } from './verificadores/Manuel Doblado/verificarPespunte.js';
+import { iniciarVerificacionCoordinadoMD } from "./verificadores/Manuel Doblado/verificarCoordinado.js";
 import { iniciarVerificacionMontadoMD } from "./verificadores/Manuel Doblado/verificarMontado.js";
 import { iniciarVerificacionAdornoMD } from "./verificadores/Manuel Doblado/verificarAdorno.js";
 import { iniciarVerificacionAuditoriaMD } from "./verificadores/Manuel Doblado/verificarAuditoria.js";
@@ -38,9 +43,23 @@ import embarqueRouter from "./routes/Leon/embarque.routes.js"
 import pespunteRouter from "./routes/Leon/pespunte.routes.js"
 import coordinadoRouter from "./routes/Leon/coordinado.routes.js"
 
-import inyeccionRouter from "./routes/Manuel Doblado/inyeccion.routes.js"
-import preacabadoRouter from "./routes/Manuel Doblado/preacabado.routes.js"
-import suelaRouter from "./routes/Manuel Doblado/suela.routes.js"
+import corteRouterMD from './routes/Manuel Doblado/corte.routes.js'
+import coordinadoRouterMD from './routes/Manuel Doblado/coordinado.routes.js'
+import pespunteRouterMD from './routes/Manuel Doblado/pespunte.routes.js'
+import montadoRouterMD from './routes/Manuel Doblado/montado.routes.js'
+import adornoRouterMD from './routes/Manuel Doblado/adorno.routes.js'
+import auditoriaRouterMD from './routes/Manuel Doblado/auditoria.routes.js'
+import inyeccionRouterMD from "./routes/Manuel Doblado/inyeccion.routes.js"
+import preacabadoRouterMD from "./routes/Manuel Doblado/preacabado.routes.js"
+import suelaRouterMD from "./routes/Manuel Doblado/suela.routes.js"
+
+import corteRouterCUE from "./routes/Cueramaro/corte.routes.js"
+import coordinadoRouterCUE from "./routes/Cueramaro/coordinado.routes.js"
+import pespunteRouterCUE from "./routes/Cueramaro/pespunte.routes.js"
+import montadoRouterCUE from "./routes/Cueramaro/montado.routes.js"
+import adornoRouterCUE from "./routes/Cueramaro/adorno.routes.js"
+import auditoriaRouterCUE from "./routes/Cueramaro/auditoria.routes.js"
+
 
 import modeloPespunte from "./routes/Ingenieria/modeloPespunte.routes.js"
 import busquedaFecha from "./routes/Ingenieria/busquedaFechas.routes.js"
@@ -80,17 +99,33 @@ import obtenerLineas from './routes/Calidad/linea.routes.js';
 import obtenerOperaciones from './routes/Calidad/operacion.routes.js';
 import obtenerSeveridades from './routes/Calidad/severidad.routes.js';
 import obtenerCiudades from './routes/Calidad/ciudad.routes.js';
-import obtenerInspectores from './routes/Calidad/inspectores.routes.js'
-import obtenerSupervisores from './routes/Calidad/supervisores.routes.js'
-import obtenerLeonCorte from './routes/Calidad/inspecLeonCorte.routes.js'
-import obtenerLeonCoordinado from './routes/Calidad/inspecLeonCoordinado.routes.js'
-import obtenerLeonPespunte from './routes/Calidad/inspecLeonPespunte.routes.js'
-import obtenerLeonMonAdor from './routes/Calidad/inspecLeonMonAdor.routes.js'
+import obtenerInspectores from './routes/Calidad/inspectores.routes.js';
+import obtenerSupervisores from './routes/Calidad/supervisores.routes.js';
+import obtenerLeonCorte from './routes/Calidad/inspecLeonCorte.routes.js';
+import obtenerLeonCoordinado from './routes/Calidad/inspecLeonCoordinado.routes.js';
+import obtenerLeonPespunte from './routes/Calidad/inspecLeonPespunte.routes.js';
+import obtenerLeonMonAdor from './routes/Calidad/inspecLeonMonAdor.routes.js';
+import obtenerCueramaroCorte from './routes/Calidad/inspecCueraCorte.routes.js';
+import obtenerCueramaroCoordinado from './routes/Calidad/inspecCueraCoordinado.routes.js';
+import obtenerCueramaroPespunte from './routes/Calidad/inspecCueraPespunte.routes.js';
+import obtenerCueramaroMonAdor from './routes/Calidad/inspecCueraMonAdor.routes.js';
+import obtenerMDCorte from './routes/Calidad/inspecMDCorte.routes.js';
+import obtenerMDCoordinado from './routes/Calidad/inspecMDCoordinado.routes.js';
+import obtenerMDPespunte from './routes/Calidad/inspecMDPespunte.routes.js';
+import obtenerMDMonAdor from './routes/Calidad/inspecMDMonAdor.routes.js';
 import eliminarInspeccion from './routes/Calidad/inspeccion.routes.js';
 import eliminarInspeccionCorte from './routes/Calidad/inspecLeonCorte.routes.js';
 import eliminarInspeccionCoordinado from './routes/Calidad/inspecLeonCoordinado.routes.js';
 import eliminarInspeccionPespunte from './routes/Calidad/inspecLeonPespunte.routes.js';
 import eliminarInspeccionMontadoAdorno from './routes/Calidad/inspecLeonMonAdor.routes.js';
+import eliminarInspeccionCorteMD from './routes/Calidad/inspecMDCorte.routes.js';
+import eliminarInspeccionCoordinadoMD from './routes/Calidad/inspecMDCoordinado.routes.js';
+import eliminarInspeccionPespunteMD from './routes/Calidad/inspecMDPespunte.routes.js';
+import eliminarInspeccionMontadoAdornoMD from './routes/Calidad/inspecMDMonAdor.routes.js';
+import eliminarInspeccionCorteCuer from './routes/Calidad/inspecCueraCorte.routes.js';
+import eliminarInspeccionCoordinadoCuer from './routes/Calidad/inspecCueraCoordinado.routes.js';
+import eliminarInspeccionPespunteCuer from './routes/Calidad/inspecCueraPespunte.routes.js';
+import eliminarInspeccionMontadoAdornoCuer from './routes/Calidad/inspecCueraMonAdor.routes.js';
 import obtenerLeonPorID from './routes/Calidad/inspeccion.routes.js';
 
 // Contraseñas HASH 
@@ -139,15 +174,35 @@ app.get("/health", (req, res) => {
   });
 });
 
+// León
 app.use("/avances", pespunteRouter);     //Rutas para Pespunte general
 app.use("/avances", corteRouter);        //Rutas para Corte general
 app.use("/avances", coordinadoRouter);   //Rutas para Coordinado general
 app.use("/avances", montadoRouter);      //Montado, auditoria, adorno
 app.use("/avances", embarqueRouter);
 
-app.use("/avances", inyeccionRouter);
-app.use("/avances", preacabadoRouter);
-app.use("/avances", suelaRouter);
+// MD 
+app.use("/avances", pespunteRouterMD);
+app.use("/avances", corteRouterMD);
+app.use("/avances", coordinadoRouterMD);
+app.use("/avances", montadoRouterMD);
+app.use("/avances", adornoRouterMD);
+app.use("/avances", auditoriaRouterMD)
+
+// CUERÁMARO
+
+app.use("/avances", pespunteRouterCUE);
+app.use("/avances", corteRouterCUE);
+app.use("/avances", coordinadoRouterCUE);
+app.use("/avances", montadoRouterCUE);
+app.use("/avances", adornoRouterCUE);
+app.use("/avances", auditoriaRouterCUE)
+
+
+
+app.use("/avances", inyeccionRouterMD);
+app.use("/avances", preacabadoRouterMD);
+app.use("/avances", suelaRouterMD);
 
 app.use("/avances", modeloPespunte);
 app.use("/avances", busquedaFecha);
@@ -189,6 +244,7 @@ app.use("/avances", obtenerSeveridades);
 app.use("/avances", obtenerCiudades);
 app.use("/avances", obtenerInspectores);
 app.use("/avances", obtenerSupervisores);
+
 app.use("/avances", obtenerLeonCorte);
 app.use("/avances", obtenerLeonCoordinado);
 app.use("/avances", obtenerLeonPespunte);
@@ -199,6 +255,26 @@ app.use("/avances", eliminarInspeccionCorte);
 app.use("/avances", eliminarInspeccionCoordinado);
 app.use("/avances", eliminarInspeccionPespunte);
 app.use("/avances", eliminarInspeccionMontadoAdorno);
+
+app.use("/avances", obtenerCueramaroCorte);
+app.use("/avances", obtenerCueramaroCoordinado);
+app.use("/avances", obtenerCueramaroPespunte);
+app.use("/avances", obtenerCueramaroMonAdor);
+
+app.use("/avances", eliminarInspeccionCorteCuer);
+app.use("/avances", eliminarInspeccionCoordinadoCuer);
+app.use("/avances", eliminarInspeccionPespunteCuer);
+app.use("/avances", eliminarInspeccionMontadoAdornoCuer);
+
+app.use("/avances", obtenerMDCorte);
+app.use("/avances", obtenerMDCoordinado);
+app.use("/avances", obtenerMDPespunte);
+app.use("/avances", obtenerMDMonAdor);
+
+app.use("/avances", eliminarInspeccionCorteMD);
+app.use("/avances", eliminarInspeccionCoordinadoMD);
+app.use("/avances", eliminarInspeccionPespunteMD);
+app.use("/avances", eliminarInspeccionMontadoAdornoMD);
 
 app.use("/avances", obtenerLeonPorID);
 
@@ -245,18 +321,25 @@ io.on("connection", (socket) => {
       case "corte": iniciarVerificacionCorte(io, socket); break;
       case "general": iniciarVerificacionCoordinado(io, socket); iniciarVerificacionPespunte(io); iniciarVerificacionMontado(io); iniciarVerificacionCorte(io); iniciarVerificacionEmbarque(io); break;
 
-      case "inyeccion": iniciarVerificacionInyeccion(io); break;
-      case "suela": iniciarVerificacionSuela(io); break;
-      case "preacabado": iniciarVerificacionPreacabado(io); break;
-      case "montadoMD": iniciarVerificacionMontadoMD(io); break;
-      case "adornoMD": iniciarVerificacionAdornoMD(io); break;
-      case "auditoriaMD": iniciarVerificacionAuditoriaMD(io); break;
-      case "generalMD": iniciarVerificacionAuditoriaMD(io); iniciarVerificacionAdornoMD(io); iniciarVerificacionPreacabado(io); iniciarVerificacionSuela(io); iniciarVerificacionInyeccion(io); iniciarVerificacionCoordinado(io); iniciarVerificacionPespunte(io); iniciarVerificacionMontadoMD(io); iniciarVerificacionCorte(io); iniciarVerificacionEmbarque(io); break;
+      case "inyeccion": iniciarVerificacionInyeccion(io, socket); break;
+      case "suela": iniciarVerificacionSuela(io, socket); break;
+      case "preacabado": iniciarVerificacionPreacabado(io, socket); break;
+      case "corteMD": iniciarVerificacionCorteMD(io, socket); break;
+      case "coordinadoMD": iniciarVerificacionCoordinadoMD(io, socket); break;
+      case "pespunteMD": iniciarVerificacionPespunteMD(io, socket); break;
+      case "montadoMD": iniciarVerificacionMontadoMD(io, socket); break;
+      case "adornoMD": iniciarVerificacionAdornoMD(io, socket); break;
+      case "auditoriaMD": iniciarVerificacionAuditoriaMD(io, socket); break;
+      case "generalMD": iniciarVerificacionAuditoriaMD(io, socket); iniciarVerificacionAdornoMD(io); iniciarVerificacionPreacabado(io); iniciarVerificacionSuela(io); iniciarVerificacionInyeccion(io); iniciarVerificacionCoordinado(io); iniciarVerificacionPespunte(io); iniciarVerificacionMontadoMD(io); iniciarVerificacionCorte(io); iniciarVerificacionEmbarque(io); break;
 
-      case "generalCU": iniciarVerificacionAuditoriaCU(io); iniciarVerificacionAdornoCU(io); iniciarVerificacionCoordinado(io); iniciarVerificacionPespunte(io); iniciarVerificacionMontadoCU(io); iniciarVerificacionCorte(io); iniciarVerificacionEmbarque(io); break;
-      case "montadoCU": iniciarVerificacionMontadoCU(io); break;
-      case "adornoCU": iniciarVerificacionAdornoCU(io); break;
-      case "auditoriaCU": iniciarVerificacionAuditoriaCU(io); break;
+      case "corteCUE": iniciarVerificacionCorteCUE(io, socket); break;
+      case "coordinadoCUE": iniciarVerificacionCoordinadoCUE(io, socket); break;
+      case "pespunteCUE": iniciarVerificacionPespunteCUE(io, socket); break;
+      case "montadoCUE": iniciarVerificacionMontadoCUE(io, socket); break;
+      case "adornoCUE": iniciarVerificacionAdornoCUE(io, socket); break;
+      case "auditoriaCUE": iniciarVerificacionAuditoriaCUE(io, socket); break;
+      case "generalCUE": iniciarVerificacionAuditoriaCUE(io, socket); iniciarVerificacionAdornoCUE(io); iniciarVerificacionCoordinado(io); iniciarVerificacionPespunte(io); iniciarVerificacionMontadoCUE(io); iniciarVerificacionCorte(io); iniciarVerificacionEmbarque(io); break;
+
     }
   });
 

@@ -30,7 +30,7 @@ const Auditoria5L1 = () => {
     });
 
     // Escuchar evento específico
-    socket.on("actualizar-Auditoria-L1", (datos) => {
+    socket.on("actualizar-MDAuditoria-L1", (datos) => {
       console.log("Datos Actualizados en Auditoria L1");
       if (Array.isArray(datos)) {
         setData(datos);
@@ -47,7 +47,7 @@ const Auditoria5L1 = () => {
     return () => {
       clearInterval(intervalo);
       socket.off("connect");
-      socket.off("actualizar-Auditoria-L1");
+      socket.off("actualizar-MDAuditoria-L1");
       socket.off("disconnect");
     };
   }, []);

@@ -30,7 +30,7 @@ const Adorno5L2 = () => {
       });
   
       // Escuchar evento específico
-      socket.on("actualizar-Adorno-L2", (datos) => {
+      socket.on("actualizar-MDAdorno-L2", (datos) => {
         console.log("Datos Actualizados en Adorno L2");
         if (Array.isArray(datos)) {
           setData(datos);
@@ -47,7 +47,7 @@ const Adorno5L2 = () => {
     return () => {
       clearInterval(intervalo);
       socket.off("connect");
-      socket.off("actualizar-Adorno-L2");
+      socket.off("actualizar-MDAdorno-L2");
       socket.off("disconnect");
     };
     }, []);

@@ -1,10 +1,10 @@
 import { Button } from "flowbite-react";
-import { useInspeccion } from "../../../components/Calidad/Leon/General Calidad/hooks/useInspeccion.js";
-import { DatosGenerales } from "./General Calidad/DatosGenerales.jsx";
-import { DatosProduccion } from "./General Calidad/DatosProduccion.jsx";
-import { FormularioIncidencia } from "./General Calidad/FormularioIncidencia.jsx";
-import { TablaIncidencias } from "./General Calidad/TablaIncidencias.jsx";
-import { TablaInspeccionesLeonCorte } from "./General Calidad/TablaInspeccionesLeonCorte.jsx";
+import { useInspeccion } from "../../Calidad/General Calidad/hooks/useInspeccion.js";
+import { DatosGenerales } from "../../Calidad/General Calidad/DatosGenerales.jsx";
+import { DatosProduccion } from "../../Calidad/General Calidad/DatosProduccion.jsx";
+import { FormularioIncidencia } from "../../Calidad/General Calidad/FormularioIncidencia.jsx";
+import { TablaIncidencias } from "../../Calidad/General Calidad/TablaIncidencias.jsx";
+import { TablaInspeccionesLeonCorte } from "../Leon/TablaInspeccionesLeonCorte.jsx";
 
 export const CorteCalidadL = () => {
     const {

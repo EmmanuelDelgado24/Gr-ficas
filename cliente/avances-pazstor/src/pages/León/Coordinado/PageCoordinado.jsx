@@ -103,7 +103,7 @@ export const PageCoordinado = () => {
   const sumarEmpleadosCoordinado = empleadoscor.length;
 
    const setTotalCoordinado1 = useCallback((valor) => {
-    setTotales((prev) => ({ ...prev, coordinado2: valor }));
+    setTotales((prev) => ({ ...prev, coordinado1: valor }));
   }, []);
 
   const setTotalCoordinado2 = useCallback((valor) => {
@@ -128,7 +128,7 @@ export const PageCoordinado = () => {
 
 
   const setTotalCoordinado14 = useCallback((valor) => {
-    setTotales((prev) => ({ ...prev, coordinado24: valor }));
+    setTotales((prev) => ({ ...prev, coordinado14: valor }));
   }, []);
 
   const setTotalCoordinado24 = useCallback((valor) => {
@@ -156,6 +156,7 @@ export const PageCoordinado = () => {
     () => Object.values(totales).reduce((a, b) => a + b, 0),
     [totales]
   );
+  console.log(totales)
 
   return (
     <div>
@@ -188,7 +189,7 @@ export const PageCoordinado = () => {
 
 
           <div className="flex pb-20">
-            <p className="titulo-produccion w-full">PRODUCCIÓN COORDINADO </p>
+            <p className="titulo-produccion w-full">PRODUCCIÓN COORDINADO LEÓN</p>
             &nbsp;&nbsp;
             <div className="p-6 rounded-2xl bg-[#202c34] h-56 text-white shadow-md w-125 mx-auto text-center">
               <h5 className="mb-3 text-2xl font-semibold tracking-tight text-heading leading-8">PARES TOTALES</h5>

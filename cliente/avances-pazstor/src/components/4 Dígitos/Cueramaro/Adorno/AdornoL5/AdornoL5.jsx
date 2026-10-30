@@ -30,7 +30,7 @@ const AdornoL5 = () => {
     });
 
     // Escuchar evento específico
-    socket.on("actualizar-4D-Adorno-L5", (datos) => {
+    socket.on("actualizar-4D-CueraAdorno-L5", (datos) => {
       console.log("Datos Actualizados en 4L5");
       if (Array.isArray(datos)) {
         setData(datos);
@@ -47,7 +47,7 @@ const AdornoL5 = () => {
     return () => {
       clearInterval(intervalo);
       socket.off("connect");
-      socket.off("actualizar-Pespunte142");
+      socket.off("actualizar-4D-CueraAdorno-L5");
       socket.off("disconnect");
     };
   }, []);
