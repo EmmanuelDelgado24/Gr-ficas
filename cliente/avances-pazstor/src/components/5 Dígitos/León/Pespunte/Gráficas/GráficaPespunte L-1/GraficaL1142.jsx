@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import Chart from "react-apexcharts";
 import { socket } from "../../../../../../socket";
 
-const GraficaL1142 = () => {
+const GraficaL1142 = ({ onTotalChange }) => {
   const [data, setData] = useState([]);
 
   useEffect(() => {
@@ -106,6 +106,12 @@ const GraficaL1142 = () => {
   };
 
   const sumaLC_PARLOT = calcularSumaLC_PARLOT(data);
+
+   useEffect(() => {
+    if (onTotalChange) {
+      onTotalChange(sumaLC_PARLOT);
+    }
+  }, [sumaLC_PARLOT, onTotalChange]);
 
   // Calcular suma de pares por modelo
   const sumaPorModelo = modelos.map((modelo) => {
